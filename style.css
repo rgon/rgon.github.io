@@ -1,0 +1,777 @@
+/*
+    Z- Indexes:
+    Header:     100
+    Section (d):0
+    Section (t):1
+    Section (l):0
+    Footer:     50
+    Lightbox:   1000
+
+    Different Section types have different z-indexes for stylish shading
+
+    Exceptions:
+    .smoked:    5
+    .overlay:   2
+*/
+a {
+    text-decoration: none;
+    color: cornflowerblue;
+}
+hr {
+    border: none;
+    border-top: 1px dashed grey;
+    border-bottom: 1px solid white;
+}
+button {
+    background: rgb(50,50,50);
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px 10px 20px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+	margin: 2px 0 2px 0;
+    transition: .5s all;
+}
+button.stealth {
+    background: rgba(50,50,50,0.35);
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px 10px 20px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+
+    transition: .5s all;
+}
+button.stealth:hover {
+    background: none;
+    color: rgb(50,50,50);
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px dashed rgb(50,50,50);
+}
+button:not(.noAnimation):hover {
+    background: none;
+    border: 2px solid white;
+}
+button:active {
+    background: none;
+    border: 2px solid white;
+    
+    box-shadow: inset 0 0 10px 5px rgb(50,50,50);
+    text-shadow: 0 0 10px rgb(50,50,50);
+}
+
+button.long {
+    min-width: 200px;
+}
+button.extralong {
+    min-width: 350px;
+}
+button.fullwidth {
+    width: 100%;
+}
+
+ul.linear {
+    margin: 0;
+}
+ul.linear li {
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+}
+
+ul.noBullets {
+    text-align: left;
+    list-style: none;
+    padding-left: 5px;
+}
+ul.noBullets li {
+    padding: 2px;
+}
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    background: grey;
+
+    text-align: left;
+    color: black;
+
+    z-index: 50;
+    box-sizing: border-box;
+}
+header.fixed {
+    position: fixed;
+    z-index: 100;
+    /* Also modify the section's shadow */
+    box-shadow: 0 0px 30px 5px black;
+}
+
+header > * {
+    vertical-align: center;
+}
+header .logo {
+    vertical-align: top;
+    margin: 0 0 0 20px;
+    padding: 5px;
+    box-sizing: border-box;
+    height: 100%;
+}
+header h1 {
+    vertical-align: sub;
+    margin: 0 20px 0 20px;
+    display: inline-block;
+}
+header ul {
+    padding: 0;
+    display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+}
+header ul li {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 100%;
+    padding: 7px;
+    /*border-bottom: 2px solid rgb(30,30,30);*/
+    transition: border .7s, width 1s, opacity 1s;
+}
+
+
+header ul li:hover {
+    text-decoration-color: white;
+    text-decoration: underline;
+}
+
+body {
+    background: rgb(30,30,30);
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+
+    color: white;
+
+    /* Just for that feature at the last bit of the page */
+    text-align: center;
+}
+.container {
+    position: relative;
+
+    display: block;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    max-width: 1280px;
+
+    box-sizing: border-box;
+    padding: 15px;
+    
+    text-align: left;
+}
+body > .container {
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+/* header, .container */
+/* It can be a div.headerSpacer
+   Or .container if it's the first child.
+*/
+body > div:nth-child(2) {
+    /* Modify with the header's ---and footer's height---!! */
+    /*margin-top: 75px;*/
+}
+.container > h1, .container > h2, .container > h3 {
+    /*padding-left: 15px;*/
+}
+
+/* So you can add an iframe inside (ie Youtube Embed) and it's centered */
+div.img {
+    text-align: center;
+}
+
+.imagePair {
+    margin: 30px 10% 30px 10%;
+}
+
+.shadowed {
+    box-shadow: 0 0px 30px 5px black;
+}
+.imagePair > p, .imagePair > div {
+    vertical-align: middle;
+    display: inline-block;
+    max-width: 50%;
+
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+/* Overrides >div, so you can use divs as images and texts as well */
+.imagePair > img, .imagePair > div.img {
+    vertical-align: middle;
+    display: inline-block;
+    max-width: 49%;
+}
+
+.verticalDivision {
+    width: 100%;
+}
+.verticalDivision img, .verticalDivision div.img {
+    width: 100%;
+}
+.fullImage {
+    display: block;
+    width: auto;
+    margin: 30px 10% 30px 10%;
+}
+.fullImage img, .fullImage div.img {
+    /* Display is required for this to work */
+    display: block;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.insideDescription {
+    position: relative;
+    padding: 0;
+}
+.insideDescription span, .insideDescription div:not(.img) {
+    width: 100%;
+    display: inline-block;
+    display: inline-block;
+    background: rgba(255,255,255,.8);
+    padding: 5px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.insideDescription > img, .insideDescription > div.img {
+    width: 100%;
+}
+
+.imageOverlay {
+    position: relative;
+    height: auto;
+}
+.imageOverlay > img, .imageOverlay > div.img {
+    width: 100%;
+}
+.imageOverlay > div.img > img {
+    width: 100%;
+}
+.imageOverlay .overlay {
+    z-index: 2;
+    position: absolute;
+    top:0 !important;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    color: white;
+    font-size: 30px;
+    opacity: 0;
+
+    box-shadow: inset 0 0 250px white;
+    text-align: center;
+
+    transition: opacity .5s;
+}
+.imageOverlay .overlay:hover {
+    opacity: 1;
+}
+
+.imageDescription {
+    position: relative;
+    overflow:hidden;
+}
+.imageDescription > img, .imageDescription > div.img, .imageDescription > div.img img {
+    /* Don't set anything, as the image size will set everything by default */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    /*Gets rid of the annoying spacing between the image and the description in case it's inline or an img inside a div.img*/
+    vertical-align: top;
+}
+
+/* Make sure it's the text, as you may use a div.img to adjust the image size, this is not dependant on the order of the elements */
+.imageDescription > span, .imageDescription > div:not(.img) {
+    /*Redundant, reasons described in the image class */
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 20px 20px 10px 20px;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    background: rgb(30,30,30);
+    color: white;
+}
+.imageDescription > div:not(.img) h3, .imageDescription > div:not(.img) h4 {
+    margin: 0;
+}
+
+.col2 {
+    display: inline-block;
+    width: 49.5%;
+    /* The following leads to some problems... */
+    /*float: left;    /* Prevent the otherwise present nasty spacing */
+}
+.col3 {
+    display: inline-block;
+    width: 33%;
+}
+.col4 {
+    display: inline-block;
+    width: 24.5%;
+}
+.col5 {
+    display: inline-block;
+    width: 19.5%;
+}
+
+.feature {
+    margin: 30px 10% 30px 10%;
+}
+/* .dividedNoExpand Allows normal divided behaviour but it doesn't expand to 100% in a mobile browser. */
+.dividedNoExpand {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+.divided {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+.divided.alignCenter {
+    /* Custom spacing of unevenly sized columns */
+    vertical-align: middle;
+}
+.divided.alignTop {
+    vertical-align: top;
+}
+.divided.alignBottom {
+    vertical-align: bottom;
+}
+
+/* Direct children of a column */
+.divided > img {
+    width: 100%;
+}
+.quote {
+    margin: 0;
+    border-left: 1px solid rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.7);
+    position: relative;
+    font-size: bold;
+    font-size: 1.3em;
+    font-weight: 400;
+    
+    padding: 0 20px 20px 20px;
+}
+/* Author of the quote */
+.quote span {
+    font-size: .8em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.per1 {
+    width: 9.5%;
+}
+.per2 {
+    width: 19.5%;
+}
+.per3 {
+    width: 29.5%;
+}
+.per4 {
+    width: 39.5%;
+}
+.per5 {
+    width: 49.5%;
+}
+.per6 {
+    width: 59.5%;
+}
+.per7 {
+    width: 69.5%;
+}
+.per8 {
+    width: 79.5%;
+}
+.per9 {
+    width: 89.5%;
+}
+body.absoluteFooter {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 100px;
+    position: relative;
+}
+footer {
+    position: relative;
+    display: block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    width: 100%;
+    background: #d4d4d4;
+
+    text-align: center;
+    color: black;
+    z-index: 50;
+}
+body.absoluteFooter footer {
+    position: absolute;
+}
+section {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* As there's no padding, if a single line of text were to appear, the section would collapse to being 20px height, not particularly pleasing */
+    /* Weird, using min-height makes the children who are percentile-ly positioned adjust to the irreal with (not to the minimum, and thus displayed one) */
+    height: auto;
+
+    padding: 45px;
+    width: 100%;
+    
+    text-align: center;
+    
+    /* Default: .light */
+    background: #d4d4d4;
+    color: black;
+    box-shadow: 0 0px 30px 5px black;
+    z-index: 1;
+}
+/* Shadow over the dark sections */
+section.dark {
+    background: rgb(30,30,30);
+    color: white;
+    box-shadow: none;
+    z-index: 0;
+}
+section.light {
+    background: #d4d4d4;
+    color: black;
+    box-shadow: 0 0px 30px 5px black;
+    z-index: 2;
+}
+section.transparent {
+    background: transparent;
+    color: black;
+    box-shadow: 0 0px 30px 5px black;
+    z-index: 1;
+}
+
+section .container {
+    /* Use the section's padding, not the .container's */
+    padding: 0;
+}
+
+section.map {
+    height: 300px;
+    padding: 0;
+}
+
+section.map div, section.map iframe {
+    display: relative;
+    box-sizing: border-box;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+/* Make good use of the space */
+/*.video.fullSize {*/
+.noPadding {
+    padding:0;
+}
+.noMargin {
+    margin: 0;
+}
+
+.carousel {
+    white-space: nowrap;
+    overflow-x: auto;
+    
+    /* Prevent text selection, as it will be dragged, and that can be annoying */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+.carousel > * {
+    white-space:normal;
+}
+
+.carousel .smoked {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    /* Drag Bar */
+    bottom: 0;
+    /*bottom: 15px;*/
+    display: block;
+    
+    pointer-events:none;
+    
+    z-index: 5;
+    /* X Y Blur Spread COLOR */
+    box-shadow: inset -50px 0 50px 0 rgba(0,0,0,0.75);
+}
+
+.smoked {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    /* Drag Bar */
+    bottom: 0;
+    /*bottom: 15px;*/
+    display: block;
+    
+    pointer-events:none;
+    
+    z-index: 5;
+    /* X Y Blur Spread COLOR */
+    box-shadow: inset 0 0 50px 10px rgba(0,0,0,0.75);
+}
+
+.middleOfContainer {
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+}
+.vertical-third {
+    display: block;
+    position: relative;
+    top: 30%;
+}
+.vertical-center {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.vertical-bottom {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+}
+.top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+.top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+.float-right {
+    float: right;
+}
+
+.rtl {
+    text-align: right;
+}
+.textAlignLeft {
+    text-align: left;
+}
+.centerText {
+    text-align: center;
+}
+
+.italics {
+    font-style: italic;
+}
+.centerChildren {
+    width: 100%;
+    text-align: center;
+}
+.centerChildren > * {
+    text-align: center;
+    margin: 10px;
+}
+
+.noTextSelection {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.mobileOnly {
+    display: none;
+}
+.desktopOnly {
+    /*display: inherit;*/
+}
+/* Parallax / Perspective Classes */
+/* Scale: 1 + (translateZ * -1) / perspective */
+/*
+.parallax {
+    perspective: 1px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.parallax .par-2 {
+    position: absolute;
+    transform: translateZ(-2px) scale(3);
+}
+.parallax .par-1 {
+    position: absolute;
+    transform: translateZ(-1px) scale(2);
+}
+.parallax .par0 {
+    position: absolute;
+    transform: translateZ(0px) scale(1);
+}
+.parallax .par1 {
+    position: absolute;
+    transform: translateZ(1px) scale(0.5);
+}
+*/
+/* Responsive */
+@media screen and (max-width: 800px) {
+    .padMobile {
+        padding: 20px;
+    }
+    .breakMobile {
+        flex-direction: column;
+    }
+    section.fullWindowMobile {
+        height: 100vh;
+        max-height: 100vh !important;
+    }
+    .desktopOnly {
+        display: none;
+    }
+    .mobileOnly {
+        display: inherit;
+    }
+    .addPaddingMobile {
+        padding: 0 20px 20px 20px;
+    }
+    .mobileNoMargin {
+        margin: 0;
+    }
+    .mobileNoPadding {
+        /* Or otherwise, an h2's margin (children of a section) would result in a weird spacing. */
+        padding: 0.1px;
+    }
+    /* A carousel doesn't use the .divided class,
+       and thus does not block when on a mobile platform. */
+    
+	.mobileFullWidth {
+        display: block;
+        width: 100%;
+        /* Just in case the width property has been set in inline CSS. */
+		max-width: 100%;
+    }
+	
+    .divided.col2 {
+        display: block;
+        width: 100%;
+    }
+    .divided.col3 {
+        display: block;
+        width: 100%;
+    }
+    .divided.col4 {
+        display: block;
+        width: 100%;
+    }
+    .divided.col5 {
+        display: block;
+        width: 100%;
+    }
+    .divided {
+        display: block;
+    }
+
+    .divided.per1 {
+        width: 100%;
+    }
+    .divided.per2 {
+        width: 100%;
+    }
+    .divided.per3 {
+        width: 100%;
+    }
+    .divided.per4 {
+        width: 100%;
+    }
+    .divided.per5 {
+        width: 100%;
+    }
+    .divided.per6 {
+        width: 100%;
+    }
+    .divided.per7 {
+        width: 100%;
+    }
+    .divided.per8 {
+        width: 100%;
+    }
+    .divided.per9 {
+        width: 100%;
+    }
+    .imagePair > p, .imagePair > div {
+        display: block;
+        max-width: 100%;
+    }
+
+    /* Overrides >div, so you can use divs as images and texts as well */
+    .imagePair > img, .imagePair > div.img {
+        display: block;
+        max-width: 100%;
+    }
+    
+    /*Prevent it from being over the link list */
+    footer .bottom-right {
+        top: 0;
+        bottom: auto;
+    }
+}
