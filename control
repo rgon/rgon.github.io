@@ -1,0 +1,10 @@
+[
+  {
+    action: "message('Swarm test 01')",
+    time: "1497553435"
+  },
+  {
+    action: "message('Swarm test 02, Relative timing.')",
+    time: "+5s"
+  }
+]
