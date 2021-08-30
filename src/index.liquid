@@ -1,21 +1,18 @@
 ---
 layout: indexpage.liquid
 title: rgon.es
-images:
-  - stallman1.jpg
-  - stallman2.jpg
-  - stallman3.jpg
+subTitle: Gonzalo Ruiz
 ---
 
-<!--
 {% for filename in images %}
 <li><a href="img/{{ filename | url_encode }}">{{ filename }}</a> {{ filename | filesize }}</li>
-{% endfor %}--
+{% endfor %}
 
+<ul class="postList">
 {% for post in collections.posts %}
-    <h2><a href="{{ post.url }}">{{ post.data.pageTitle }}</a></h2>
-    <em>{{ post.date | date: "%Y-%m-%d" }}</em>
+<li><a href="{{ post.url }}">
+  <h3>{{ post.data.pageTitle }}</h3>
+  <em>- {{ post.date | date: "%Y-%m-%d" }}</em></a>
+</li>
 {% endfor %}
 </ul>
-</body>
-</html>
