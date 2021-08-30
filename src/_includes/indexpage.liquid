@@ -128,6 +128,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     position: fixed;
     top: 0;
     bottom: 0;
+    will-change: transform;
 }
 .mainbg > img {
     position: absolute;
@@ -139,6 +140,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     opacity: 0;
     transition: opacity 1s;
     filter: saturate(0) blur(10px) contrast(50%);
+    z-index: 0;
 }
 .mainbg > img.saturated {
     filter: blur(10px);
@@ -149,7 +151,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     content: "";
     width: 100%;
     height: 100%;
-    z-index: 4;
+    z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
@@ -161,7 +163,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     content: "";
     width: 100%;
     height: 100%;
-    z-index: 4;
+    z-index: 3;
     position: absolute;
     top: 0;
     left: 0;
@@ -172,14 +174,15 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
 .mainbg.loaded > img:not(.saturated) {
     opacity: .6;
 }
+/*
 .mainbg.night > img:not(.saturated) {
     opacity: 0;
 }
-.mainbg.night > img.saturated {
-    opacity: 1;
-}
 .mainbg.night::after {
     opacity: 0;
+} */
+.mainbg.night > img.saturated {
+    opacity: 1;
 }
 .mainbg.night::before {
     opacity: 1;
