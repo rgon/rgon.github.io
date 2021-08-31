@@ -1,5 +1,6 @@
 {
     "layout": "blogpost.liquid",
     "tags": ["posts"],
-    "permalink": "/posts/{{ pageTitle | slug }}/"
+    "permalink": "/posts/{{ pageTitle | slug }}/",
+    "description": "Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. This is my journal."
 }

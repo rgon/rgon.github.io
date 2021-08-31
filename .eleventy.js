@@ -94,6 +94,10 @@ module.exports = function(eleventyConfig) {
     if (tags) return tags.filter(tag => !(tag in HIDDENTAGS))
   });
 
+  eleventyConfig.addFilter("arrayToString", function(arr) {
+    if (arr) return arr.join(", ")
+  });
+
   eleventyConfig.addFilter("filesize", function(path) {
     let stat = fs.statSync('src/img/' + path);
     if (stat) {

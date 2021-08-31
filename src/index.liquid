@@ -14,7 +14,7 @@ https://tracxn.com/d/companies/hriman.com
 project individual view
 https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/header-and-nav
 -->
-<html>
+<html lang="en">
 <head>
     <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width">
@@ -226,8 +226,8 @@ section, header {
             
                 <h2>{{ subTitle }}</h2>
                 <div class="horizontalflex socialLinks">
-                    <a class="stealth" href="https://github.com/rgon"><img class="githublogo" src="logo/github.svg">github.com/rgon</a>
-                    <a class="stealth" href="https://instagram.com/gonruizp"><img class="iglogo" src="logo/instagram.svg">instagr.am/gonruizp</a>
+                    <a class="stealth" href="https://github.com/rgon"><img class="githublogo" src="logo/github.svg" alt="github logo">github.com/rgon</a>
+                    <a class="stealth" href="https://instagram.com/gonruizp"><img class="iglogo" src="logo/instagram.svg" alt="instagram logo">instagr.am/gonruizp</a>
                 </div>
             </div>
 
@@ -245,7 +245,7 @@ section, header {
         </div>
 
         <section class="readerblock" style="margin-top: 2em;" id="recentPosts">
-            <div class="mainportfolio postList">
+            <ul class="mainportfolio postList">
                 <h3>Recent Journal Posts:</h3>
 {% for post in collections.posts %}
 <li><a href="{{ post.url }}">
@@ -253,11 +253,11 @@ section, header {
   <em>- {{ post.date | date: "%Y-%m-%d" }}</em></a>
 </li>
 {% endfor %}
-            </div>
+            </ul>
 
             <div class="hiddenportfolio">
                 <h3>Lighting design works:</h3>
-                    <ul class="postList">
+                <ul class="postList">
                     <li><a href="/"><h3>Busking performance at Momento Marbella, 2021 [video]<h3></a></li>
                 </ul>
             </div>
