@@ -249,20 +249,22 @@ section, header {
         </div>
 
         <section class="readerblock" style="margin-top: 2em;" id="recentPosts">
-            <ul class="mainportfolio postList">
-                <h3>Recent Journal Posts:</h3>
+            <div class="mainportfolio">
+              <h3>Recent Journal Posts:</h3>
+              <ul class="postList">
 {% for post in collections.posts %}
 <li><a href="{{ post.url }}">
   <h3>{{ post.data.pageTitle }}</h3>
   <em>- {{ post.date | date: "%Y-%m-%d" }}</em></a>
 </li>
 {% endfor %}
-            </ul>
+              </ul>
+            </div>
 
             <div class="hiddenportfolio">
                 <h3>Lighting design works:</h3>
                 <ul class="postList">
-                    <li><a href="/"><h3>Busking performance at Momento Marbella, 2021 [video]<h3></a></li>
+                    <li><a href="/"><h3>Busking performance at Momento Marbella, 2021 [video]</h3></a></li>
                 </ul>
             </div>
         </section>
