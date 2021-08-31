@@ -1,4 +1,5 @@
 {
     "layout": "blogpost.liquid",
-    "tags": ["posts"]
+    "tags": ["posts"],
+    "permalink": "/posts/{{ pageTitle | slug }}/"
 }

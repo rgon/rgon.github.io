@@ -4,33 +4,82 @@
     <title>{{ pageTitle }} | rgon.es</title>
     <meta name="viewport" content="width=device-width">
 
-    <link rel="icon" href="logo/favicon.svg">
-    <link rel=”mask-icon” href=logo/favicon.svg” color=”#000000">
+    <link rel="icon" href="/logo/favicon.svg">
+    <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.css">
     <link rel="stylesheet" type="text/css" href="/css/components/header.css">
 
 <style>
-h3 {
+.pageTitle {
     font-size: 2em;
-}
-article {
-    overflow: hidden;
-}
-article img {
-    width: 100%;
 }
 .titleSection {
     min-height: 500px;
     position: relative;
 }
 .infoblock {
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+/* *********** */
+header .currentIndex {
+    padding: 1em;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+header.expanded .currentIndex {
+    display: none;
+}
+header .currentIndex h3 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    --lh: 1rem;
+    line-height: var(--lh);
+    --max-lines: 4;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+    position: relative;
+}
+header .currentIndex h3:after {
+    /* Pure css multiline clamp! */
+    content: "...";
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 1.5em;
+    position: absolute;
+    top: calc(var(--lh) * calc(var(--max-lines) - 1));
+    right: 0;
+    width: 5em;
+    height: var(--lh);
+    background: linear-gradient(to right, transparent, var(--bg-color) 50%);
+}
+
+@media only screen and (min-width: 650px) {
+    .currentIndex {
+        display: none;
+    }
+}
+/* ***************** */
+@media only screen and (max-width: 400px) {
+    header > .hero {
+        font-size: .7em;
+    }
+}
+
+aside .expandIndex {
+    float: right;
+    margin-top: 6px;
 }
 </style>
 </head>
@@ -42,29 +91,46 @@ article img {
             <h2>Gonzalo Ruiz</h2>
         </div>
 
+        <div class="currentIndex">
+            <h3 id="readingIndex"></h3>
+            <!-- And some shitcode for your pleasure with a very very very long section name -->
+        </div>
+
         <!-- main header title etc -->
         <ul class="viewport">
-            <li><a class="stealth" href="#">Journal</a></li>
-            <li><a class="stealth" href="#">Projects</a></li>
+            <li><a class="stealth" href="/">Journal</a></li>
+            <li><a class="stealth" href="/">Projects</a></li>
             <!-- <li><a href="#">Open Source</a></li> -->
-            <li><a class="stealth" href="#">Curriculum Vitae</a></li>
-            <li><a class="stealth" href="#">Contact</a></li>
+            <li><a class="stealth" href="/">Curriculum Vitae</a></li>
+            <li><a class="stealth" href="/">Contact</a></li>
         </ul>
         
-        <div class="expand" id="expandHeader"></div>
+        <button class="expand" id="expandHeader"></button>
     </header>
 
     <section class="fullpage center dark titleSection">
         <div class="viewport">
-            <h3>{{ pageTitle }}</h3>
+            <h1 class="pageTitle">{{ pageTitle }}
+{% assign visibleTags = tags | filterTags %}
+{% for mtag in visibleTags %}
+                <a href="/" class="tag">{{ mtag }}</a>
+{% endfor %}</h1>
         </div>
-        <div class="readerblock infoblock">
-            <span> tags should appear here</span>
-            <span>DATE/DATE/DATE</span>
+            <div class="viewport infoblock">
+            <span>Gonzalo's Journal</span>
+            <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
+
+            <b>{{ page.date | date: "%Y-%m-%d" }}</b>
         </div>
     </section>
 
     <section class="light center">
+        <aside class="tableofcontents">
+            <!--<h2>Index <button class="expandIndex">expand</button></h2>-->
+            <h2>Index</h2>
+            {{ content | toc }}
+            <hr/>
+        </aside>
         <article class="readerblock">
         {{ content }}
         </article>
@@ -75,6 +141,13 @@ article img {
         <p><a href="/contact">Let's have a chat!</a></p>
     </footer>
 <script src="/js/main.js" type="text/javascript"></script>
-<script src="js/components/header.js" type="text/javascript"></script>
+<script src="/js/components/header.js" type="text/javascript"></script>
+<script>
+for (let elem of document.getElementsByClassName('direct-link')) {
+    detectScroll(elem.parentNode, (e) => {
+        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+    })
+}
+</script>
 </body>
 </html>

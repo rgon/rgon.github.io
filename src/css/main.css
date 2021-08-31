@@ -43,6 +43,7 @@ section.dark {
 
 ::selection {
     background: var(--selection-color);
+    color: var(--text-light);
 }
 img::selection {
     background: transparent;
@@ -90,7 +91,7 @@ body {
     align-items: center;
     justify-content: center;
 }
-
+/*
 h1 {
     font-size: 3em;
     margin-top: .5em;
@@ -99,6 +100,38 @@ h1 {
 h2 {
     margin-top: 0;
     font-size: 1.57em;
+}
+h3 {
+    margin-top: 0;
+    font-size: 1.45em;
+    margin-bottom: 0;
+}
+*/
+hr {
+    border-style: dashed;
+}
+
+button {
+    display: inline-block;
+    vertical-align: 2px;
+    padding: .2em .7em;
+
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid var(--text-color);
+    border-radius: 1px;
+    justify-content: center;
+    align-items: center;
+    
+    cursor: pointer;
+    
+    color: unset;
+    background: none;
+    font-family: unset;
+    margin: unset;
+}
+button:hover {
+    background-color: rgba(100,100,100, 0.3);
 }
 
 .viewport {
@@ -142,4 +175,25 @@ footer {
 
     flex-wrap: wrap-reverse;
     overflow: hidden;
+}
+
+/* ************** */
+.socialLinks {
+    justify-content: flex-start;
+}
+.socialLinks > a {
+    margin-right: 2em;
+    vertical-align: 0px;
+}
+.socialLinks > a > img {
+    vertical-align: -.8em;
+    filter: invert(1);
+    opacity: 0.75;
+    height: 35px;
+    margin-right: 6px;
+}
+.socialLinks a:hover {
+    border-color: transparent;
+    border-bottom-color: transparent;
+    text-decoration: underline;
 }
