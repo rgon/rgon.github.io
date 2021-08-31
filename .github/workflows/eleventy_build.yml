@@ -23,7 +23,8 @@ jobs:
         - name: Deploy
           uses: peaceiris/actions-gh-pages@v3
           with:
-            github_token: ${{ secrets.c }}
-            publish_dir: docs
-            publish_branch: gh-pages
-#force_orphan: true
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./docs # Source directory to publish: docs is 11ty's output
+            publish_branch: gh-pages # Publishes to root
+            cname: www.rgon.es
+#"force_orphan: true
