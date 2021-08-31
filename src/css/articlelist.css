@@ -50,7 +50,7 @@
     font-size: .8em;
 }
 .articleList article i, 
-i.tag { /* .tag */
+.tag { /* .tag */
     background: var(--selection-color);
     color: var(--text-light);
     text-transform: lowercase;
@@ -61,6 +61,6 @@ i.tag { /* .tag */
     cursor: pointer;
 }
 .articleList article i:hover, 
-i.tag:hover { /* .tag */
+.tag:hover { /* .tag */
     opacity: .8;
 }
