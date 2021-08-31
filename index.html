@@ -10,7 +10,7 @@ https://tracxn.com/d/companies/hriman.com
 project individual view
 https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/header-and-nav
 -->
-<html>
+<html lang="en">
 <head>
     <title>rgon.es</title>
     <meta name="viewport" content="width=device-width">
@@ -18,6 +18,8 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     <link rel="icon" href="/logo/favicon.svg">
     <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
     <meta name="theme-color" content="#ffffff">
+
+    <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
@@ -220,8 +222,8 @@ section, header {
             
                 <h2>Gonzalo Ruiz</h2>
                 <div class="horizontalflex socialLinks">
-                    <a class="stealth" href="https://github.com/rgon"><img class="githublogo" src="logo/github.svg">github.com/rgon</a>
-                    <a class="stealth" href="https://instagram.com/gonruizp"><img class="iglogo" src="logo/instagram.svg">instagr.am/gonruizp</a>
+                    <a class="stealth" href="https://github.com/rgon"><img class="githublogo" src="logo/github.svg" alt="github logo">github.com/rgon</a>
+                    <a class="stealth" href="https://instagram.com/gonruizp"><img class="iglogo" src="logo/instagram.svg" alt="instagram logo">instagr.am/gonruizp</a>
                 </div>
             </div>
 
@@ -239,7 +241,7 @@ section, header {
         </div>
 
         <section class="readerblock" style="margin-top: 2em;" id="recentPosts">
-            <div class="mainportfolio postList">
+            <ul class="mainportfolio postList">
                 <h3>Recent Journal Posts:</h3>
 
 <li><a href="/posts/reverse-engineering-rf-tpms-sensors-and-developing-a-linux-client-to-analyze-them/">
@@ -257,11 +259,11 @@ section, header {
   <em>- 2021-08-31</em></a>
 </li>
 
-            </div>
+            </ul>
 
             <div class="hiddenportfolio">
                 <h3>Lighting design works:</h3>
-                    <ul class="postList">
+                <ul class="postList">
                     <li><a href="/"><h3>Busking performance at Momento Marbella, 2021 [video]<h3></a></li>
                 </ul>
             </div>
