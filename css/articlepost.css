@@ -1,0 +1,44 @@
+
+article {
+    overflow: hidden;
+}
+article img {
+    width: 100%;
+}
+article picture {
+    max-height: 50vh;
+}
+article picture img {
+    object-fit: contain;
+}
+article pre {
+  counter-reset: lineNumber;
+  overflow-x: auto;
+}
+code .highlight-line:before {
+  position: sticky; /* for horizontal scrolling https://github.com/11ty/eleventy-plugin-syntaxhighlight/issues/10#issuecomment-834563245 */
+  left: 0;
+  user-select: none;
+  
+  content: counter(lineNumber);
+  counter-increment: lineNumber;
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  margin-right: 1.2rem;
+  text-align: center;
+  width: 3em;
+
+  border-right: 1px solid var(--text-color);
+  background-color: var(--bg-color);
+  opacity: .5;
+  /*
+  background: var(--code-bg);
+  color: var(--text-color);
+  */
+}
+
+.direct-link { /* Links to sections */
+    font-size: .8rem;
+    vertical-align: .2rem;
+    opacity: .6;
+}

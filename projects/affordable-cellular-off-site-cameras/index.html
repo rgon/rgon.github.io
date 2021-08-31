@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Affordable cellular off-site cameras | rgon.es</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="/logo/favicon.svg">
+    <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.css">
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css">
+
+<style>
+.pageTitle {
+    font-size: 2em;
+}
+.titleSection {
+    min-height: 500px;
+    position: relative;
+}
+.infoblock {
+    /* position: absolute; */
+    bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* *********** */
+header .currentIndex {
+    padding: 1em;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+header.expanded .currentIndex {
+    display: none;
+}
+header .currentIndex h3 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    --lh: 1rem;
+    line-height: var(--lh);
+    --max-lines: 4;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+    position: relative;
+}
+header .currentIndex h3:after {
+    /* Pure css multiline clamp! */
+    content: "...";
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 1.5em;
+    position: absolute;
+    top: calc(var(--lh) * calc(var(--max-lines) - 1));
+    right: 0;
+    width: 5em;
+    height: var(--lh);
+    background: linear-gradient(to right, transparent, var(--bg-color) 50%);
+}
+
+@media only screen and (min-width: 650px) {
+    .currentIndex {
+        display: none;
+    }
+}
+/* ***************** */
+@media only screen and (max-width: 400px) {
+    header > .hero {
+        font-size: .7em;
+    }
+}
+
+aside .expandIndex {
+    float: right;
+    margin-top: 6px;
+}
+</style>
+</head>
+<body>
+    <header class="dark isfirst sticking">
+        <div class="hero">
+            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
+        
+            <h2>Gonzalo Ruiz</h2>
+        </div>
+
+        <div class="currentIndex">
+            <h3 id="readingIndex"></h3>
+            <!-- And some shitcode for your pleasure with a very very very long section name -->
+        </div>
+
+        <!-- main header title etc -->
+        <ul class="viewport">
+            <li><a class="stealth" href="/">Journal</a></li>
+            <li><a class="stealth" href="/">Projects</a></li>
+            <!-- <li><a href="#">Open Source</a></li> -->
+            <li><a class="stealth" href="/">Curriculum Vitae</a></li>
+            <li><a class="stealth" href="/">Contact</a></li>
+        </ul>
+        
+        <button class="expand" id="expandHeader"></button>
+    </header>
+
+    <section class="fullpage center dark titleSection">
+        <div class="viewport">
+            <h1 class="pageTitle">Affordable cellular off-site cameras
+
+</h1>
+        </div>
+            <div class="viewport infoblock">
+            <span>Gonzalo's Journal</span>
+            <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
+
+            <b>2021-08-31</b>
+        </div>
+    </section>
+
+    <section class="light center">
+        <aside class="tableofcontents">
+            <!--<h2>Index <button class="expandIndex">expand</button></h2>-->
+            <h2>Index</h2>
+            <nav class="toc">
+        <ol><li><a href="#prologo">Prólogo</a></li><li><a href="#al-libro-de-don-quijote-de-la-mancha">Al libro de don Quijote de la Mancha</a><ol><li><a href="#urganda-la-desconocida">Urganda la desconocida</a></li><li><a href="#amadis-de-gaula-a-don-quijote-de-la-mancha">Amadís de Gaula a don Quijote de la Mancha</a><ol><li><a href="#soneto">Soneto</a></li></ol></li></ol></li></ol></nav>
+            <hr/>
+        </aside>
+        <article class="readerblock">
+        <h2 id="prologo" tabindex="-1">Prólogo <a class="direct-link" href="#prologo">#</a></h2>
+<p>Desocupado lector, sin juramento me podrás creer que quisiera que este libro, como hijo del entendimiento, fuera el más hermoso, el más gallardo y más discreto que pudiera imaginarse. Pero no he podido yo contravenir al orden de naturaleza; que en ella cada cosa engendra su semejante. Y así, ¿qué podrá engendrar el estéril y mal cultivado ingenio mío, sino la historia de un hijo seco, avellanado, antojadizo y lleno de pensamientos varios y nunca imaginados de otro alguno, bien como quien se engendró en una cárcel, donde toda incomodidad tiene su asiento y donde todo triste ruido hace su habitación? El sosiego, el lugar apacible, la amenidad de los campos, la serenidad de los cielos, el murmurar de las fuentes, la quietud del espíritu son grande parte para que las musas más estériles se muestren fecundas y ofrezcan partos al mundo que le colmen de maravilla y de contento. Acontece tener un padre un hijo feo y sin gracia alguna, y el amor que le tiene le pone una venda en los ojos para que no vea sus faltas, antes las juzga por discreciones y lindezas y las cuenta a sus amigos por agudezas y donaires. Pero yo, que, aunque parezco padre, soy padrastro de Don Quijote, no quiero irme con la corriente del uso, ni suplicarte, casi con las lágrimas en los ojos, como otros hacen, lector carísimo, que perdones o disimules las faltas que en este mi hijo vieres, pues ni eres su pariente ni su amigo, y tienes tu alma en tu cuerpo y tu libre albedrío como el más pintado, y estás en tu casa, donde eres señor della, como el rey de sus alcabalas, y sabes lo que comúnmente se dice, que debajo de mi manto, al rey mato. Todo lo cual te exenta y hace libre de todo respecto y obligación, y así, puedes decir de la historia todo aquello que te pareciere, sin temor que te calunien por el mal ni te premien por el bien que dijeres della.</p>
+<p>Sólo quisiera dártela monda y desnuda, sin el ornato de prólogo, ni de la inumerabilidad y catálogo de los acostumbrados sonetos, epigramas y elogios que al principio de los libros suelen ponerse. Porque te sé decir que, aunque me costó algún trabajo componerla, ninguno tuve por mayor que hacer esta prefación que vas leyendo. Muchas veces tomé la pluma para escribille, y muchas la dejé, por no saber lo que escribiría; y estando una suspenso, con el papel delante, la pluma en la oreja, el codo en el bufete y la mano en la mejilla, pensando lo que diría, entró a deshora un amigo mío, gracioso y bien entendido, el cual, viéndome tan imaginativo, me preguntó la causa, y, no encubriéndosela yo, le dije que pensaba en el prólogo que había de hacer a la historia de don Quijote, y que me tenía de suerte que ni quería hacerle, ni menos sacar a luz las hazañas de tan noble caballero. «Porque, ¿cómo queréis vos que no me tenga confuso el qué dirá el antiguo legislador que llaman vulgo cuando vea que, al cabo de tantos años como ha que duermo en el silencio del olvido, salgo ahora, con todos mis años a cuestas, con una leyenda seca como un esparto, ajena de invención, menguada de estilo, pobre de concetos y falta de toda erudición y doctrina; sin acotaciones en las márgenes y sin anotaciones en el fin del libro, como veo que están otros libros, aunque sean fabulosos y profanos, tan llenos de sentencias de Aristóteles, de Platón y de toda la caterva de filósofos, que admiran a los leyentes, y tienen a sus autores por hombres leídos, eruditos y elocuentes? ¡Pues qué, cuando citan la Divina Escritura! No dirán sino que son unos santos Tomases y otros doctores de la Iglesia; guardando en esto un decoro tan ingenioso que en un renglón han pintado un enamorado distraído y en otro hacen un sermoncico cristiano, que es un contento y un regalo oílle o leelle. De todo esto ha de carecer mi libro, porque ni tengo qué acotar en el margen, ni qué anotar en el fin, ni menos sé qué autores sigo en él, para ponerlos al principio, como hacen todos, por las letras del A B C, comenzando en Aristóteles y acabando en Xenofonte y en Zoilo o Zeuxis, aunque fue maldiciente el uno y pintor el otro. También ha de carecer mi libro de sonetos al principio, a lo menos de sonetos cuyos autores sean duques, marqueses, condes, obispos, damas o poetas celebérrimos; aunque, si yo los pidiese a dos o tres oficiales amigos, yo sé que me los darían, y tales, que no les igualasen los de aquéllos que tienen más nombre en nuestra España. En fin, señor y amigo mío -proseguí-, yo determino que el señor don Quijote se quede sepultado en sus archivos en la Mancha, hasta que el cielo depare quien le adorne de tantas cosas como le faltan; porque yo me hallo incapaz de remediarlas, por mi insuficiencia y pocas letras, y porque naturalmente soy poltrón y perezoso de andarme buscando autores que digan lo que yo me sé decir sin ellos.</p>
+<h2 id="al-libro-de-don-quijote-de-la-mancha" tabindex="-1">Al libro de don Quijote de la Mancha <a class="direct-link" href="#al-libro-de-don-quijote-de-la-mancha">#</a></h2>
+<h3 id="urganda-la-desconocida" tabindex="-1">Urganda la desconocida <a class="direct-link" href="#urganda-la-desconocida">#</a></h3>
+<pre class="language-text"><code class="language-text"><span class="highlight-line">    Si de llegarte a los bue-, 		</span><br><span class="highlight-line">	Libro, fueres con letu-, 		</span><br><span class="highlight-line">	No te dirá el boquirru- 		</span><br><span class="highlight-line">	Que no pones bien los de-. 		</span><br><span class="highlight-line">	Mas si el pan no se te cue- 		</span><br><span class="highlight-line">	Por ir a manos de idio-, 		</span><br><span class="highlight-line">	Verás de manos a bo- 		</span><br><span class="highlight-line">	Aun no dar una en el cla-, 		</span><br><span class="highlight-line">	Si bien se comen las ma- 		</span><br><span class="highlight-line">	Por mostrar que son curio-. 		</span><br><span class="highlight-line"></span><br><span class="highlight-line">	    Y, pues la expiriencia ense- 		</span><br><span class="highlight-line">	Que el que a buen árbol se arri- 		</span><br><span class="highlight-line">	Buena sombra le cobi-, 		</span><br><span class="highlight-line">	En Béjar tu buena estre- 		</span><br><span class="highlight-line">	Un árbol real te ofre- 		</span><br><span class="highlight-line">	Que da príncipes por fru-, 		</span><br><span class="highlight-line">	En el cual floreció un Du- 		</span><br><span class="highlight-line">	Que es nuevo Alejandro Ma-: 		</span><br><span class="highlight-line">	Llega a su sombra, que a osa- 		</span><br><span class="highlight-line">	Favorece la fortu-. 		</span><br><span class="highlight-line"></span><br><span class="highlight-line">	    De un noble hidalgo manche- 		</span><br><span class="highlight-line">	Contarás las aventu-, 		</span><br><span class="highlight-line">	A quien ociosas letu-, 		</span><br><span class="highlight-line">	Trastornaron la cabe-: 		</span><br><span class="highlight-line">	Damas, armas, caballe-, 		</span><br><span class="highlight-line">	Le provocaron de mo-, 		</span><br><span class="highlight-line">	Que, cual Orlando furio- 		</span><br><span class="highlight-line">	Templado a lo enamora-, 		</span><br><span class="highlight-line">	Alcanzó a fuerza de bra- 		</span><br><span class="highlight-line">	a Dulcinea del Tobo-. 		</span><br><span class="highlight-line"></span><br><span class="highlight-line">	    No indiscretos hieroglí- 		</span><br><span class="highlight-line">	Estampes en el escu-; 		</span><br><span class="highlight-line">	Que cuando es todo figu-, 		</span><br><span class="highlight-line">	Con ruines puntos se envi-. 		</span><br><span class="highlight-line">	Si en la dirección te humi-, 		</span><br><span class="highlight-line">	No dirá, mofante, algu-: 		</span><br><span class="highlight-line">	«¡Qué don Álvaro de Lu-, 		</span><br><span class="highlight-line">	Qué Aníbal el de Carta-, 		</span><br><span class="highlight-line">	Qué rey Francisco en Espa- 		</span><br><span class="highlight-line">	Se queja de la fortu-!» 		</span><br><span class="highlight-line">	Pues al cielo no le plu- 		</span><br><span class="highlight-line">	Que salieses tan ladi- 		</span><br><span class="highlight-line">	Como el negro Juan Lati-, 		</span><br><span class="highlight-line">	Hablar latines rehu-. 		</span><br><span class="highlight-line">	No me despuntes de agu-, 		</span><br><span class="highlight-line">	Ni me alegues con filó-; 		</span><br><span class="highlight-line">	Porque, torciendo la bo-, 		</span><br><span class="highlight-line">	Dirá el que entiende la le-, 		</span><br><span class="highlight-line">	No un palmo de las ore-: 		</span><br><span class="highlight-line">	«¿Para qué conmigo flo-?» 		</span><br><span class="highlight-line"></span><br><span class="highlight-line">	    No te metas en dibu-, 		</span><br><span class="highlight-line">	Ni en saber vidas aje-; 		</span><br><span class="highlight-line">	Que en lo que no va ni vie- 		</span><br><span class="highlight-line">	Pasar de largo es cordu-. 		</span><br><span class="highlight-line">	Que suelen en caperu- 		</span><br><span class="highlight-line">	Darles a los que grace-; 		</span><br><span class="highlight-line">	Mas tú quémate las ce- 		</span><br><span class="highlight-line">	Sólo en cobrar buena fa-: 		</span><br><span class="highlight-line">	que el que imprime neceda- 		</span><br><span class="highlight-line">	Dalas a censo perpe-. 		</span><br><span class="highlight-line"></span><br><span class="highlight-line">	    Advierte que es desati-, 		</span><br><span class="highlight-line">	Siendo de vidrio el teja-, 		</span><br><span class="highlight-line">	Tomar piedras en la ma- 		</span><br><span class="highlight-line">	Para tirar al veci-. 		</span><br><span class="highlight-line">	Deja que el hombre de jui-, 		</span><br><span class="highlight-line">	En las obras que compo- 		</span><br><span class="highlight-line">	Se vaya con pies de plo-: 		</span><br><span class="highlight-line">	Que el que saca a luz pape- 		</span><br><span class="highlight-line">	Para entretener donce- 		</span><br><span class="highlight-line">	Escribe a tontas y a lo-.</span></code></pre>
+<h3 id="amadis-de-gaula-a-don-quijote-de-la-mancha" tabindex="-1">Amadís de Gaula a don Quijote de la Mancha <a class="direct-link" href="#amadis-de-gaula-a-don-quijote-de-la-mancha">#</a></h3>
+<h4 id="soneto" tabindex="-1">Soneto <a class="direct-link" href="#soneto">#</a></h4>
+<pre class="language-text"><code class="language-text"><span class="highlight-line">    Tú, que imitaste la llorosa vida 		</span><br><span class="highlight-line">	Que tuve, ausente y desdeñado sobre 		</span><br><span class="highlight-line">	El gran ribazo de la Peña Pobre, 		</span><br><span class="highlight-line">	De alegre a penitencia reducida, 		</span><br><span class="highlight-line">	    Tú, a quien los ojos dieron la bebida 		</span><br><span class="highlight-line">	De abundante licor, aunque salobre, 		</span><br><span class="highlight-line">	Y alzándote la plata, estaño y cobre, 		</span><br><span class="highlight-line">	Te dio la tierra en tierra la comida, 		</span><br><span class="highlight-line">	    Vive seguro de que eternamente, 		</span><br><span class="highlight-line">	En tanto, al menos, que en la cuarta esfera 		</span><br><span class="highlight-line">	Sus caballos aguije el rubio Apolo, 		</span><br><span class="highlight-line">	    Tendrás claro renombre de valiente; 		</span><br><span class="highlight-line">	Tu patria será en todas la primera; 		</span><br><span class="highlight-line">	Tu sabio autor, al mundo único y solo.</span></code></pre>
+
+        </article>
+    </section>
+
+    <footer class="dark center">
+        <p style="text-align: center;"><a class="hiddenlink" href="/">Gonzalo Ruiz,</a> independent software consultant and Lighting Designer.</p>
+        <p><a href="/contact">Let's have a chat!</a></p>
+    </footer>
+<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/components/header.js" type="text/javascript"></script>
+<script>
+for (let elem of document.getElementsByClassName('direct-link')) {
+    detectScroll(elem.parentNode, (e) => {
+        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+    })
+}
+</script>
+</body>
+</html>

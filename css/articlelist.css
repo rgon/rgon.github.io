@@ -1,0 +1,66 @@
+/* ************ */
+.articleList h2 {
+    margin: 0;
+}
+.articleList article {
+    display: flex;
+    width: 100%;
+    padding: 2em 0;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+}
+.articleList article h3 {
+    margin: 0;
+}
+.articleList article > .description {
+    flex-direction: column;
+    flex-shrink: 1;
+    flex-grow: 2;
+    flex-basis: 45%; /* 60% but caused wrap on tablet view */
+    padding-right: 2em;
+    padding-bottom: 1em;
+}
+.articleList article > a {
+    flex-grow: 1;
+    position: relative;
+    /*text-align: center;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.articleList article > a > img, .articleList article > a > picture {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+}
+.articleList article > a > picture > img {
+    width: 100%;
+    height: auto;
+}
+
+.articleList article .description .callToAction {
+    margin-bottom: 1em;
+}
+.articleList article .description .callToAction::after {
+    content: ">";
+    margin-left: .5em;
+    vertical-align: 1px;
+    font-size: .8em;
+}
+.articleList article i, 
+i.tag { /* .tag */
+    background: var(--selection-color);
+    color: var(--text-light);
+    text-transform: lowercase;
+    padding: 0 .25em 0 .2em;
+    /* margin-right: .5em; */
+    line-height: .9;
+    font-size: .8em;
+    cursor: pointer;
+}
+.articleList article i:hover, 
+i.tag:hover { /* .tag */
+    opacity: .8;
+}

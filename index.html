@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!--
+Page TODO:
+    + fix scroll bump issue
+    + proper project site
+
+blog stle
+https://tracxn.com/d/companies/hriman.com
+
+project individual view
+https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/header-and-nav
+-->
+<html>
+<head>
+    <title>rgon.es</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="/logo/favicon.svg">
+    <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
+    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css">
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css">
+<style>
+.hero {
+    box-sizing: border-box;
+    /* min-width: 450px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 100;
+
+    position: relative;
+    user-select: none;
+}
+.hero h1 {
+    font-size: 3em;
+    margin-top: .5em;
+    margin-bottom: 0;
+}
+.hero h2 {
+    margin-top: 0;
+    font-size: 1.57em;
+}
+
+.githublogo {
+    vertical-align: middle;
+}
+.profilepic {
+    height: 200px;
+    opacity: 0.75;
+    border-radius: 50%;
+}
+.profilewrapper {
+    align-self: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+/* ************ */
+@media only screen and (max-height: 800px) {
+    #recentPosts {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+.postList {
+    padding-left: 1em;
+}
+.postList li {
+    list-style: none;
+}
+.postList li::before {
+    content: "</>";
+    vertical-align: 2px;
+    font-size: .8em;
+}
+.postList li h3 {
+    display: inline-block;
+    margin: 0;
+    max-width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+}
+.postList li em {
+    white-space: nowrap;
+    vertical-align: 2px;
+}
+
+.scrollClue {
+    overflow: visible;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scrollClue::after {
+    display: none;
+    content: ">";
+    position: absolute;
+    transform: rotate(90deg);
+    font-size: 20px;
+    color: var(--text-color);
+}
+/* ************ */
+.mainbg {
+    /*background-color: black;*/
+    z-index: -100;
+    width: 100%;
+    height: 100vh;
+    transition: height 999999s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    will-change: transform;
+}
+.mainbg > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 1s;
+    filter: saturate(0) blur(10px) contrast(50%);
+    z-index: 0;
+}
+.mainbg > img.saturated {
+    filter: blur(10px);
+    opacity: 0;
+    z-index: 2;
+}
+.mainbg::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity .5s ease-in;
+    opacity: 1;
+    background: linear-gradient(140deg, transparent 0%, black 50%, black 100%);
+}
+.mainbg::before { /* Two because gradient transitions don't work */
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity .5s ease-in;
+    opacity: 0;
+    background: linear-gradient(240deg, transparent 0%, black 60%, black 100%);
+}
+.mainbg.loaded > img:not(.saturated) {
+    opacity: .6;
+}
+/*
+.mainbg.night > img:not(.saturated) {
+    opacity: 0;
+}
+.mainbg.night::after {
+    opacity: 0;
+} */
+.mainbg.night > img.saturated {
+    opacity: 1;
+}
+.mainbg.night::before {
+    opacity: 1;
+}
+
+/* ************ */
+section, header {
+    transition: color .5s;
+}
+.night {
+    --text-dark: #c45018;
+}
+#recentPosts {
+    position: relative;
+}
+.night #recentPosts .mainportfolio {
+    opacity: 0;
+    pointer-events: none;
+}
+#recentPosts .hiddenportfolio {
+    position: absolute;
+    top: 0;
+    left: 2em;
+    right: 2em;
+    opacity: 0;
+    pointer-events: none;
+}
+.night #recentPosts .hiddenportfolio {
+    opacity: 1;
+    pointer-events: all;
+}
+</style>
+</head>
+<body>
+    <div class="mainbg">
+        <img id="bgimg" src="" alt="background image" />
+        <img id="bgimgSaturated" class="saturated" src="" alt="background image, saturated" />
+    </div>
+
+    <section class="fullpage center dark" style="min-height: calc(100vh - 150px); background-color: transparent;">
+        <div class="horizontalflex viewport">
+            <div class="hero" style="margin-top: 2em;">
+                <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
+            
+                <h2>Gonzalo Ruiz</h2>
+                <div class="horizontalflex socialLinks">
+                    <a class="stealth" href="https://github.com/rgon"><img class="githublogo" src="logo/github.svg">github.com/rgon</a>
+                    <a class="stealth" href="https://instagram.com/gonruizp"><img class="iglogo" src="logo/instagram.svg">instagr.am/gonruizp</a>
+                </div>
+            </div>
+
+            <div class="profilewrapper">
+                <img class="profilepic" src="img/profilepic.jpg" alt="profile picture" />
+
+                <label class="toggle" for="dayNightToggle" style="margin-top: 1.5em;">
+                    <input name="" type="checkbox" id="dayNightToggle">
+                    <div class="toggleFill">
+                        <span>Day Mode</span>
+                        <span>Night Mode</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <section class="readerblock" style="margin-top: 2em;" id="recentPosts">
+            <div class="mainportfolio postList">
+                <h3>Recent Journal Posts:</h3>
+
+<li><a href="/posts/reverse-engineering-rf-tpms-sensors-and-developing-a-linux-client-to-analyze-them/">
+  <h3>Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them</h3>
+  <em>- 2021-08-31</em></a>
+</li>
+
+<li><a href="/posts/furby-turns-on-the-lights-for-me/">
+  <h3>Furby turns on the lights for me</h3>
+  <em>- 2021-08-31</em></a>
+</li>
+
+<li><a href="/posts/reverse-engineering-and-controlling-a-martin-m-touch-using-python/">
+  <h3>Reverse-engineering and controlling a Martin M-touch using Python</h3>
+  <em>- 2021-08-31</em></a>
+</li>
+
+            </div>
+
+            <div class="hiddenportfolio">
+                <h3>Lighting design works:</h3>
+                    <ul class="postList">
+                    <li><a href="/"><h3>Busking performance at Momento Marbella, 2021 [video]<h3></a></li>
+                </ul>
+            </div>
+        </section>
+    </section>
+
+    <header class="dark">
+        <div class="hero">
+            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
+        
+            <h2>Gonzalo Ruiz</h2>
+        </div>
+
+        <!-- main header title etc -->
+        <ul class="viewport">
+            <li><a class="stealth" href="/">Journal</a></li>
+            <li><a class="stealth" href="/">Projects</a></li>
+            <!-- <li><a href="#">Open Source</a></li> -->
+            <li><a class="stealth" href="/">Curriculum Vitae</a></li>
+            <li><a class="stealth" href="/">Contact</a></li>
+        </ul>
+        
+        <button class="expand" id="expandHeader"></button>
+    </header>
+
+    <div class="scrollClue dark"></div>
+
+
+    <section class="light fullpage center">
+        <div class="viewport articleList">
+            <h2>Project Showcase:</h2>
+
+
+            <article>
+                <div class="description">
+                    <h3><a class="hiddenlink" href="/projects/affordable-cellular-off-site-cameras/">Affordable cellular off-site cameras</a></h3>
+
+
+                    <p>Developing and installing custom firmware & drivers for GSM/LTE modems. Using cheap security cameras to remotely surveil areas for around 30 dollars. Includes cellular plan cost analysis.</p>
+                    <a class="callToAction" href="/projects/affordable-cellular-off-site-cameras/">View Project</a>
+                </div>
+
+                <a class="hiddenlink" href="/projects/affordable-cellular-off-site-cameras/"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
+            </article>
+
+            <article>
+                <div class="description">
+                    <h3><a class="hiddenlink" href="/projects/vehicle-pneumatic-(air)-suspension-system/">Vehicle pneumatic (air) suspension system</a></h3>
+
+
+<i class="tag">automotive</i>
+
+<i class="tag">electronics</i>
+
+<i class="tag">embedded</i>
+
+<i class="tag">open source</i>
+
+                    <p>Mechanic system design and install. Custom-designed pneumatic controller from firmware to PCB. Much more affordable and programmable than competing products, while meeting safety standards.</p>
+                    <a class="callToAction" href="/projects/vehicle-pneumatic-(air)-suspension-system/">View Project</a>
+                </div>
+
+                <a class="hiddenlink" href="/projects/vehicle-pneumatic-(air)-suspension-system/"><picture><source type="image/avif" srcset="/img/9dbfb8c1-300.avif 300w, /img/9dbfb8c1-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/9dbfb8c1-300.webp 300w, /img/9dbfb8c1-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/9dbfb8c1-300.jpeg 300w, /img/9dbfb8c1-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/9dbfb8c1-300.jpeg" width="600" height="450"></picture></a>
+            </article>
+
+            <article>
+                <div class="description">
+                    <h3><a class="hiddenlink" href="/projects/network-attached-stage-laser-projector-dac-(controller)/">Network-attached stage Laser Projector DAC (controller)</a></h3>
+
+
+<i class="tag">lighting design</i>
+
+<i class="tag">electronics</i>
+
+<i class="tag">embedded</i>
+
+<i class="tag">laser</i>
+
+                    <p>Design of a state-of-the-art safe laser projector controller. System watchdogs, multi-processor architecture, fully-monitored and with a custom network protocol.</p>
+                    <a class="callToAction" href="/projects/network-attached-stage-laser-projector-dac-(controller)/">View Project</a>
+                </div>
+
+                <a class="hiddenlink" href="/projects/network-attached-stage-laser-projector-dac-(controller)/"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
+            </article>
+
+            <article>
+                <div class="description">
+                    <h3><a class="hiddenlink" href="/projects/in-vehicle-360-degree-camera-system/">In-vehicle 360-degree camera system</a></h3>
+
+
+<i class="tag">automotive</i>
+
+<i class="tag">embedded</i>
+
+<i class="tag">open source</i>
+
+                    <p>Design and programming of a 360-degree "backup-camera" system based on a Raspberry Pi 4.</p>
+                    <a class="callToAction" href="/projects/in-vehicle-360-degree-camera-system/">View Project</a>
+                </div>
+
+                <a class="hiddenlink" href="/projects/in-vehicle-360-degree-camera-system/"><picture><source type="image/avif" srcset="/img/e0eec840-300.avif 300w, /img/e0eec840-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/e0eec840-300.webp 300w, /img/e0eec840-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/e0eec840-300.jpeg 300w, /img/e0eec840-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/e0eec840-300.jpeg" width="600" height="450"></picture></a>
+            </article>
+
+
+            <div class="center">
+                <div class="readerblock" style="text-align: center;">
+                    <a href="/">View more projects</a> or <a href="/">consult my journal entries</a> for more of my works.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="dark center">
+        <p style="text-align: center;">Gonzalo Ruiz, independent software consultant and Lighting Designer.</p>
+        <p><a href="/contact">Let's have a chat!</a></p>
+    </footer>
+
+<script src="js/main.js" type="text/javascript"></script>
+<script src="js/components/header.js" type="text/javascript"></script>
+
+<script>
+document.getElementById("dayNightToggle").checked = false
+
+document.getElementById("dayNightToggle").addEventListener('change', (event) => {
+    document.getElementsByTagName("section")[0].classList.toggle("night");
+    /*
+    document.getElementsByTagName("section")[0].classList.toggle("light");
+
+    document.getElementsByTagName("header")[0].classList.toggle("dark");
+    document.getElementsByTagName("header")[0].classList.toggle("light");
+    */
+    document.querySelector(".mainbg").classList.toggle("night");
+})
+
+window.addEventListener('load', () => {
+    document.getElementById("bgimg").src = "img/garage_lowres.jpg"
+    document.getElementById("bgimgSaturated").src = "img/garage_lowres.jpg"
+    document.querySelector(".mainbg").classList.toggle("loaded");
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them | rgon.es</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="/logo/favicon.svg">
+    <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.css">
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css">
+
+<style>
+.pageTitle {
+    font-size: 2em;
+}
+.titleSection {
+    min-height: 500px;
+    position: relative;
+}
+.infoblock {
+    /* position: absolute; */
+    bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* *********** */
+header .currentIndex {
+    padding: 1em;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+header.expanded .currentIndex {
+    display: none;
+}
+header .currentIndex h3 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    --lh: 1rem;
+    line-height: var(--lh);
+    --max-lines: 4;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+    position: relative;
+}
+header .currentIndex h3:after {
+    /* Pure css multiline clamp! */
+    content: "...";
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 1.5em;
+    position: absolute;
+    top: calc(var(--lh) * calc(var(--max-lines) - 1));
+    right: 0;
+    width: 5em;
+    height: var(--lh);
+    background: linear-gradient(to right, transparent, var(--bg-color) 50%);
+}
+
+@media only screen and (min-width: 650px) {
+    .currentIndex {
+        display: none;
+    }
+}
+/* ***************** */
+@media only screen and (max-width: 400px) {
+    header > .hero {
+        font-size: .7em;
+    }
+}
+
+aside .expandIndex {
+    float: right;
+    margin-top: 6px;
+}
+</style>
+</head>
+<body>
+    <header class="dark isfirst sticking">
+        <div class="hero">
+            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
+        
+            <h2>Gonzalo Ruiz</h2>
+        </div>
+
+        <div class="currentIndex">
+            <h3 id="readingIndex"></h3>
+            <!-- And some shitcode for your pleasure with a very very very long section name -->
+        </div>
+
+        <!-- main header title etc -->
+        <ul class="viewport">
+            <li><a class="stealth" href="/">Journal</a></li>
+            <li><a class="stealth" href="/">Projects</a></li>
+            <!-- <li><a href="#">Open Source</a></li> -->
+            <li><a class="stealth" href="/">Curriculum Vitae</a></li>
+            <li><a class="stealth" href="/">Contact</a></li>
+        </ul>
+        
+        <button class="expand" id="expandHeader"></button>
+    </header>
+
+    <section class="fullpage center dark titleSection">
+        <div class="viewport">
+            <h1 class="pageTitle">Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them
+
+
+                <a href="/" class="tag">automotive</a>
+
+                <a href="/" class="tag">reverse engineering</a>
+
+                <a href="/" class="tag">open source</a>
+</h1>
+        </div>
+            <div class="viewport infoblock">
+            <span>Gonzalo's Journal</span>
+            <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
+
+            <b>2021-08-31</b>
+        </div>
+    </section>
+
+    <section class="light center">
+        <aside class="tableofcontents">
+            <!--<h2>Index <button class="expandIndex">expand</button></h2>-->
+            <h2>Index</h2>
+            <nav class="toc">
+        <ol><li><a href="#the-code">The code</a></li><li><a href="#and-some-shitcode-for-your-pleasure">And some shitcode for your pleasure</a><ol><li><a href="#code-review">Code review</a></li></ol></li><li><a href="#the-veredict">The Veredict</a></li><li><a href="#for-your-viewing-pleasure">For your viewing pleasure</a></li></ol></nav>
+            <hr/>
+        </aside>
+        <article class="readerblock">
+        <p>En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.</p>
+<p>Editar tode.</p>
+<h2 id="the-code" tabindex="-1">The code <a class="direct-link" href="#the-code">#</a></h2>
+<pre class="language-log"><code class="language-log"><span class="highlight-line">Copied <span class="token number">21</span> files <span class="token operator">/</span> Wrote <span class="token number">4</span> files in <span class="token number">0.14</span> seconds <span class="token operator">(</span><span class="token number">v0.12.1</span><span class="token operator">)</span></span><br><span class="highlight-line">Watching…</span><br><span class="highlight-line"><span class="token punctuation">[</span>Browsersync<span class="token punctuation">]</span> Reloading Browsers<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span><br><span class="highlight-line"><span class="token property">File changed:</span> src<span class="token operator">/</span>_includes<span class="token operator">/</span>blogpost<span class="token punctuation">.</span>liquid</span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>README<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/README.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>post2<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/post2.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>post3<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/post3.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/index.liquid.</span></span><br><span class="highlight-line">Copied <span class="token number">21</span> files <span class="token operator">/</span> Wrote <span class="token number">4</span> files in <span class="token number">0.12</span> seconds <span class="token operator">(</span><span class="token number">v0.12.1</span><span class="token operator">)</span></span><br><span class="highlight-line">Watching…</span><br><span class="highlight-line"><span class="token punctuation">[</span>Browsersync<span class="token punctuation">]</span> Reloading Browsers<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span><br><span class="highlight-line"><span class="token property">File changed:</span> src<span class="token operator">/</span>_includes<span class="token operator">/</span>blogpost<span class="token punctuation">.</span>liquid</span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>README<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/README.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>post3<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/post3.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>post2<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/post2.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/index.liquid.</span></span><br><span class="highlight-line">Copied <span class="token number">21</span> files <span class="token operator">/</span> Wrote <span class="token number">4</span> files in <span class="token number">0.14</span> seconds <span class="token operator">(</span><span class="token number">v0.12.1</span><span class="token operator">)</span></span><br><span class="highlight-line">Watching…</span><br><span class="highlight-line"><span class="token punctuation">[</span>Browsersync<span class="token punctuation">]</span> Reloading Browsers<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span><br><span class="highlight-line"><span class="token property">File changed:</span> src<span class="token operator">/</span>_includes<span class="token operator">/</span>blogpost<span class="token punctuation">.</span>liquid</span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>README<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/README.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>post2<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/post2.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>posts<span class="token operator">/</span>post3<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/posts/post3.md.</span></span><br><span class="highlight-line">Writing dist<span class="token operator">/</span>index<span class="token punctuation">.</span>html from <span class="token file-path string">./src/index.liquid.</span></span><br><span class="highlight-line">Copied <span class="token number">21</span> files <span class="token operator">/</span> Wrote <span class="token number">4</span> files in <span class="token number">0.14</span> seconds <span class="token operator">(</span><span class="token number">v0.12.1</span><span class="token operator">)</span></span><br><span class="highlight-line">Watching…</span></code></pre>
+<h2 id="and-some-shitcode-for-your-pleasure" tabindex="-1">And some shitcode for your pleasure <a class="direct-link" href="#and-some-shitcode-for-your-pleasure">#</a></h2>
+<pre class="language-js"><code class="language-js"><span class="highlight-line"><span class="token comment">//Calculates x² of an integer up to ±1 million</span></span><br><span class="highlight-line"><span class="token keyword">var</span> square <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">	<span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">"if(A==B){return C;}"</span><span class="token punctuation">;</span></span><br><span class="highlight-line">	<span class="token keyword">var</span> func <span class="token operator">=</span> <span class="token string">"var A=Math.abs(D|0);"</span><span class="token punctuation">;</span></span><br><span class="highlight-line">	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">1000000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">		func <span class="token operator">+=</span> s<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">B</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">C</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> i <span class="token operator">*</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">	<span class="token punctuation">}</span></span><br><span class="highlight-line">	<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"D"</span><span class="token punctuation">,</span> func <span class="token operator">+</span> <span class="token string">"return Infinity;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h3 id="code-review" tabindex="-1">Code review <a class="direct-link" href="#code-review">#</a></h3>
+<p>This code has been extracted from <a href="https://shitcode.net">shitcode</a>.</p>
+<h2 id="the-veredict" tabindex="-1">The Veredict <a class="direct-link" href="#the-veredict">#</a></h2>
+<p>El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que deste caso escriben; aunque por conjeturas verosímiles se deja entender que se llamaba Quijana. Pero esto importa poco a nuestro cuento: basta que en la narración dél no se salga un punto de la verdad.</p>
+<h2 id="for-your-viewing-pleasure" tabindex="-1">For your viewing pleasure <a class="direct-link" href="#for-your-viewing-pleasure">#</a></h2>
+<p><picture><source type="image/avif" srcset="/img/e0eec840-300.avif 300w, /img/e0eec840-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/e0eec840-300.webp 300w, /img/e0eec840-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/e0eec840-300.jpeg 300w, /img/e0eec840-600.jpeg 600w" sizes="100vw"><img alt="Don Quixote" loading="lazy" decoding="async" src="/img/e0eec840-300.jpeg" width="600" height="450"></picture></p>
+
+        </article>
+    </section>
+
+    <footer class="dark center">
+        <p style="text-align: center;"><a class="hiddenlink" href="/">Gonzalo Ruiz,</a> independent software consultant and Lighting Designer.</p>
+        <p><a href="/contact">Let's have a chat!</a></p>
+    </footer>
+<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/components/header.js" type="text/javascript"></script>
+<script>
+for (let elem of document.getElementsByClassName('direct-link')) {
+    detectScroll(elem.parentNode, (e) => {
+        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+    })
+}
+</script>
+</body>
+</html>

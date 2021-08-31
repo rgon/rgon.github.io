@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Reverse-engineering and controlling a Martin M-touch using Python | rgon.es</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="/logo/favicon.svg">
+    <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.css">
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css">
+
+<style>
+.pageTitle {
+    font-size: 2em;
+}
+.titleSection {
+    min-height: 500px;
+    position: relative;
+}
+.infoblock {
+    /* position: absolute; */
+    bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* *********** */
+header .currentIndex {
+    padding: 1em;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+header.expanded .currentIndex {
+    display: none;
+}
+header .currentIndex h3 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    --lh: 1rem;
+    line-height: var(--lh);
+    --max-lines: 4;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+    position: relative;
+}
+header .currentIndex h3:after {
+    /* Pure css multiline clamp! */
+    content: "...";
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 1.5em;
+    position: absolute;
+    top: calc(var(--lh) * calc(var(--max-lines) - 1));
+    right: 0;
+    width: 5em;
+    height: var(--lh);
+    background: linear-gradient(to right, transparent, var(--bg-color) 50%);
+}
+
+@media only screen and (min-width: 650px) {
+    .currentIndex {
+        display: none;
+    }
+}
+/* ***************** */
+@media only screen and (max-width: 400px) {
+    header > .hero {
+        font-size: .7em;
+    }
+}
+
+aside .expandIndex {
+    float: right;
+    margin-top: 6px;
+}
+</style>
+</head>
+<body>
+    <header class="dark isfirst sticking">
+        <div class="hero">
+            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
+        
+            <h2>Gonzalo Ruiz</h2>
+        </div>
+
+        <div class="currentIndex">
+            <h3 id="readingIndex"></h3>
+            <!-- And some shitcode for your pleasure with a very very very long section name -->
+        </div>
+
+        <!-- main header title etc -->
+        <ul class="viewport">
+            <li><a class="stealth" href="/">Journal</a></li>
+            <li><a class="stealth" href="/">Projects</a></li>
+            <!-- <li><a href="#">Open Source</a></li> -->
+            <li><a class="stealth" href="/">Curriculum Vitae</a></li>
+            <li><a class="stealth" href="/">Contact</a></li>
+        </ul>
+        
+        <button class="expand" id="expandHeader"></button>
+    </header>
+
+    <section class="fullpage center dark titleSection">
+        <div class="viewport">
+            <h1 class="pageTitle">Reverse-engineering and controlling a Martin M-touch using Python
+
+</h1>
+        </div>
+            <div class="viewport infoblock">
+            <span>Gonzalo's Journal</span>
+            <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
+
+            <b>2021-08-31</b>
+        </div>
+    </section>
+
+    <section class="light center">
+        <aside class="tableofcontents">
+            <!--<h2>Index <button class="expandIndex">expand</button></h2>-->
+            <h2>Index</h2>
+            <nav class="toc">
+        <ol><li><a href="#no-content-whatsoever">No content whatsoever</a></li></ol></nav>
+            <hr/>
+        </aside>
+        <article class="readerblock">
+        <h2 id="no-content-whatsoever" tabindex="-1">No content whatsoever <a class="direct-link" href="#no-content-whatsoever">#</a></h2>
+<p>What did you expect tho</p>
+
+        </article>
+    </section>
+
+    <footer class="dark center">
+        <p style="text-align: center;"><a class="hiddenlink" href="/">Gonzalo Ruiz,</a> independent software consultant and Lighting Designer.</p>
+        <p><a href="/contact">Let's have a chat!</a></p>
+    </footer>
+<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/components/header.js" type="text/javascript"></script>
+<script>
+for (let elem of document.getElementsByClassName('direct-link')) {
+    detectScroll(elem.parentNode, (e) => {
+        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+    })
+}
+</script>
+</body>
+</html>
