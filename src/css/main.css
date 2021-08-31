@@ -5,6 +5,7 @@
     src: url('fonts/lmroman10-regular-webfont.woff2') format('woff');
     /* url('fonts/lmroman10-regular-webfont.woff') format('woff'); */
     /* local('LMRoman10'), */
+    font-display: swap;
 }
 html {
     --bg-dark: #030303;
