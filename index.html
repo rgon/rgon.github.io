@@ -16,7 +16,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     <meta name="viewport" content="width=device-width" />
 
     <meta charset="UTF-8" />
-    <meta name="description" content="Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. Open source fanboy, and electronics hobbyist the rest of the time. This is my portfolio and journal." />
+    <meta name="description" content="Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. Open source fanboy, and electronics hobbyist the..." />
     <meta name="keywords" content="Journal, Portfolio, Lighting Design, Software Development, Electronics" />
     <meta name="author" content="Gonzalo Ruiz" />
     
@@ -24,17 +24,18 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     <meta property="og:site_name" content="rgon.es" />
     <meta property="og:title" content="rgon.es" />
     <meta property="og:url" content="" />
-    <meta property="og:description" content="Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. Open source fanboy, and electronics hobbyist the rest of the time. This is my portfolio and journal." />
+    <meta property="og:description" content="Gonzalo Ruiz, software developer by day, lighting designer..." />
     <meta property="og:image" content="/img/profilepic.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content="rgon.es" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109011141"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109011141" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109011533"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109011533" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109011141" />
-
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109011533" />
+    
+    <link rel="canonical" href="/"/>
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -81,12 +82,6 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
 }
 
 /* ************ */
-@media only screen and (max-height: 800px) {
-    #recentPosts {
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-}
 .postList {
     padding-left: 1em;
 }
@@ -98,6 +93,19 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     content: "</>";
     vertical-align: 2px;
     font-size: .8em;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: .3em;
+}
+.postList li a {
+  border-bottom: none;
+}
+.postList li a:hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+.postList li a:hover h3 {
+  text-decoration: underline;
 }
 .postList li h3 {
     display: inline-block;
@@ -105,7 +113,6 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     max-width: calc(100% - 40px);
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
     vertical-align: bottom;
 }
 .postList li em {
@@ -137,8 +144,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     transition: height 999999s;
     position: fixed;
     top: 0;
-    bottom: 0;
-    will-change: transform;
+    left: 0;
 }
 .mainbg > img {
     position: absolute;
@@ -151,6 +157,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     transition: opacity 1s;
     filter: saturate(0) blur(10px) contrast(50%);
     z-index: 0;
+    will-change: opacity;
 }
 .mainbg > img.saturated {
     filter: blur(10px);
@@ -214,15 +221,43 @@ section, header {
 }
 #recentPosts .hiddenportfolio {
     position: absolute;
-    top: 0;
+    top: 2em;
     left: 2em;
     right: 2em;
     opacity: 0;
     pointer-events: none;
 }
+@media only screen and (max-width: 450px) { /* Sync with .viewport/.readerblock */
+  #recentPosts .hiddenportfolio {
+    left: 0;
+    right: 0;
+  }
+}
+@media only screen and (max-height: 800px) {
+    #recentPosts {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    #recentPosts .hiddenportfolio {
+      top: 0;
+    }
+}
 .night #recentPosts .hiddenportfolio {
     opacity: 1;
     pointer-events: all;
+}
+
+/* **************** */
+.knackered {
+  font-family: monospace;
+  user-select: none;
+  will-change: contents;
+}
+.postList li::before { /* Because it's knackered with monospace, override. */
+  margin-top: -.2em;
+}
+.hiddenportfolio h3 {
+  font-family: monospace;
 }
 </style>
 </head>
@@ -235,7 +270,7 @@ section, header {
     <section class="fullpage center dark" style="min-height: calc(100vh - 150px); background-color: transparent;">
         <div class="horizontalflex viewport">
             <div class="hero" style="margin-top: 2em;">
-                <h1><a class="hiddenlink" href="/" style="padding: 0;"></a></h1>
+                <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
             
                 <h2>Gonzalo Ruiz</h2>
                 <div class="horizontalflex socialLinks">
@@ -259,18 +294,15 @@ section, header {
 
         <section class="readerblock" style="margin-top: 2em;" id="recentPosts">
             <div class="mainportfolio">
-              <h3>Recent Journal Posts:</h3>
-              <ul class="postList">
-                <li><a href="/posts/reverse-engineering-rf-tpms-sensors-and-developing-a-linux-client-to-analyze-them/">
-                  <h3>Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them</h3>
+              <h3 class="knackered">Recent Journal Posts:</h3>
+              <ul class="postList"><li><a href="/posts/reverse-engineering-and-controlling-a-martin-m-touch-using-python/" title="Reverse-engineering and controlling a Martin M-touch using Python">
+                  <h3 class="knackered">Reverse-engineering and controlling a Martin M-touch using Python</h3>
                   <em>- 2021-09-01</em></a>
-                </li>
-                <li><a href="/posts/furby-turns-on-the-lights-for-me/">
-                  <h3>Furby turns on the lights for me</h3>
+                </li><li><a href="/posts/furby-turns-on-the-lights-for-me/" title="Furby turns on the lights for me">
+                  <h3 class="knackered">Furby turns on the lights for me</h3>
                   <em>- 2021-09-01</em></a>
-                </li>
-                <li><a href="/posts/reverse-engineering-and-controlling-a-martin-m-touch-using-python/">
-                  <h3>Reverse-engineering and controlling a Martin M-touch using Python</h3>
+                </li><li><a href="/posts/reverse-engineering-rf-tpms-sensors-and-developing-a-linux-client-to-analyze-them/" title="Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them">
+                  <h3 class="knackered">Reverse-engineering RF TPMS sensors and developing a Linux client to analyze...</h3>
                   <em>- 2021-09-01</em></a>
                 </li>
               </ul>
@@ -287,7 +319,7 @@ section, header {
 
     <header class="dark">
         <div class="hero">
-            <h1><a class="hiddenlink" href="/" style="padding: 0;"></a></h1>
+            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
         
             <h2>Gonzalo Ruiz</h2>
         </div>
@@ -301,7 +333,7 @@ section, header {
             <li><a class="stealth" href="/">Contact</a></li>
         </ul>
         
-        <button class="expand" id="expandHeader"></button>
+        <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
     </header>
 
     <div class="scrollClue dark"></div>
@@ -322,10 +354,10 @@ section, header {
             <article>
                 <div class="description">
                     <h3><a class="hiddenlink" href="/projects/vehicle-pneumatic-(air)-suspension-system/">Vehicle pneumatic (air) suspension system</a></h3>
-                    <i class="tag">automotive</i>
-                    <i class="tag">electronics</i>
-                    <i class="tag">embedded</i>
-                    <i class="tag">open source</i>
+                    <i class="tag" title="View posts tagged with 'automotive'">automotive</i>
+                    <i class="tag" title="View posts tagged with 'electronics'">electronics</i>
+                    <i class="tag" title="View posts tagged with 'embedded'">embedded</i>
+                    <i class="tag" title="View posts tagged with 'open source'">open source</i>
                     <p>Mechanic system design and install. Custom-designed pneumatic controller from firmware to PCB. Much more affordable and programmable than competing products, while meeting safety standards.</p>
                     <a class="callToAction" href="/projects/vehicle-pneumatic-(air)-suspension-system/">View Project</a>
                 </div>
@@ -335,10 +367,10 @@ section, header {
             <article>
                 <div class="description">
                     <h3><a class="hiddenlink" href="/projects/network-attached-stage-laser-projector-dac-(controller)/">Network-attached stage Laser Projector DAC (controller)</a></h3>
-                    <i class="tag">lighting design</i>
-                    <i class="tag">electronics</i>
-                    <i class="tag">embedded</i>
-                    <i class="tag">laser</i>
+                    <i class="tag" title="View posts tagged with 'lighting design'">lighting design</i>
+                    <i class="tag" title="View posts tagged with 'electronics'">electronics</i>
+                    <i class="tag" title="View posts tagged with 'embedded'">embedded</i>
+                    <i class="tag" title="View posts tagged with 'laser'">laser</i>
                     <p>Design of a state-of-the-art safe laser projector controller. System watchdogs, multi-processor architecture, fully-monitored and with a custom network protocol.</p>
                     <a class="callToAction" href="/projects/network-attached-stage-laser-projector-dac-(controller)/">View Project</a>
                 </div>
@@ -348,9 +380,9 @@ section, header {
             <article>
                 <div class="description">
                     <h3><a class="hiddenlink" href="/projects/in-vehicle-360-degree-camera-system/">In-vehicle 360-degree camera system</a></h3>
-                    <i class="tag">automotive</i>
-                    <i class="tag">embedded</i>
-                    <i class="tag">open source</i>
+                    <i class="tag" title="View posts tagged with 'automotive'">automotive</i>
+                    <i class="tag" title="View posts tagged with 'embedded'">embedded</i>
+                    <i class="tag" title="View posts tagged with 'open source'">open source</i>
                     <p>Design and programming of a 360-degree "backup-camera" system based on a Raspberry Pi 4.</p>
                     <a class="callToAction" href="/projects/in-vehicle-360-degree-camera-system/">View Project</a>
                 </div>
@@ -389,9 +421,30 @@ document.getElementById("dayNightToggle").addEventListener('change', (event) => 
 })
 
 window.addEventListener('load', () => {
-    document.getElementById("bgimg").src = "img/garage_lowres.jpg"
-    document.getElementById("bgimgSaturated").src = "img/garage_lowres.jpg"
-    document.querySelector(".mainbg").classList.toggle("loaded");
+  document.querySelector(".mainbg").style.height = window.innerHeight + 'px' // avoid jump on mobile
+  console.log(document.querySelector(".mainbg").style)
+  document.getElementById("bgimg").src = "img/garage_lowres.jpg"
+  document.getElementById("bgimgSaturated").src = "img/garage_lowres.jpg"
+  document.querySelector(".mainbg").classList.toggle("loaded")
+
+  // -- knackered text animation
+  for (let elem of document.getElementsByClassName('knackered')) {
+    if (!elem.getAttribute('aria-label')) {
+      elem.setAttribute('aria-label', elem.innerHTML)
+    }
+  }
+
+  const knackChars = "$&[{}(=*)+]!#/@_-?^|%"
+  window.setInterval(() => {
+    for (let elem of document.getElementsByClassName('knackered')) {
+      let content = elem.getAttribute('aria-label')
+      rndIdx = Math.floor(Math.random() * (content.length -1))
+      if (content[rndIdx] === " ") rndIdx++ // Changing spaces causes reflows
+
+      content[Math.floor(Math.random() * content.length)] = knackChars[Math.floor(Math.random() * knackChars.length)]
+      elem.innerHTML = content.substring(0, rndIdx) + knackChars[Math.floor(Math.random() * knackChars.length)] + content.substring(rndIdx + 1)
+    }
+  }, 200)
 })
 </script>
 </body>

@@ -37,8 +37,22 @@ code .highlight-line:before {
   */
 }
 
-.direct-link { /* Links to sections */
+a.header-anchor {
+    border-bottom-color: transparent;
+}
+h2[id] { /* anchor link offset for header. Also works for intersectionobserver! */
+    padding-top: 100px; margin-top: -100px;
+}
+a.header-anchor:hover {
+    border-bottom-style: dotted;
+}
+.header-anchor::after {
+    content: "🔗";
+    margin-left: .5em;
     font-size: .8rem;
-    vertical-align: .2rem;
+    vertical-align: .1em;
     opacity: .6;
+}
+.header-anchor:hover::after {
+    opacity: 1;
 }

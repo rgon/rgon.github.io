@@ -9,13 +9,10 @@
     width: var(--width);
     display: inline-block;
     cursor: pointer;
-    border: 1px solid var(--background-color);
+    border: 1px dotted var(--background-color);
     border-radius: 1px;
     box-sizing: content-box;
     user-select: none;
-}
-.dark .toggle {
-    border: 1px solid #6c6c6c;
 }
 .toggle > .toggleFill {
     position: relative;
@@ -35,9 +32,15 @@
     left: 0;
     height: var(--height);
     width: var(--handle-size);
-    background: var(--background-color);
+    /* background-color: var(--background-color); 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    */
     transition: transform var(--transition-duration), background-color var(--transition-duration);
+
+    opacity: 0.5;
+    --bg-linewidth: 1px;
+    --bg-linespace: 8px;
+    background: repeating-linear-gradient( -45deg, var(--background-color), var(--background-color) var(--bg-linewidth), transparent var(--bg-linewidth), transparent var(--bg-linespace) );
 }
 
 .toggle > input:checked ~ .toggleFill {
@@ -66,7 +69,7 @@
     font-size: 1em;
     font-weight: bold;
     line-height: 90%;
-    color: var(--text-color);
+    color: var(--text-dark);
 
     transition: opacity calc(var(--transition-duration) / 2);
     /* transition-delay: calc(var(--transition-duration) / 2); */
