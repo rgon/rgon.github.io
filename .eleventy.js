@@ -60,7 +60,10 @@ module.exports = function(eleventyConfig) {
 		linkify: true
 	})
 	.use(markdownItAnchor, {
-		permalink: true,
+		permalink: markdownItAnchor.permalink.linkAfterHeader({
+      style: 'aria-label',
+      assistiveText: title => `Permalink to “${title}”`
+    }),  
 		slugify: markdownItSlugify,
 		permalinkBefore: false,
 		permalinkClass: "direct-link",
