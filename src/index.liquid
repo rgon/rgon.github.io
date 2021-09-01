@@ -44,7 +44,8 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     <link rel="mask-icon" href="{{ unchachedFavicon }}" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="apple-touch-icon" href="{{unchachedFavicon}}" />
-
+    
+    <link rel="canonical" href="{{ canonicalBase }}{{ page.url }}"/>
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -91,12 +92,6 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
 }
 
 /* ************ */
-@media only screen and (max-height: 800px) {
-    #recentPosts {
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-}
 .postList {
     padding-left: 1em;
 }
@@ -159,8 +154,8 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     transition: height 999999s;
     position: fixed;
     top: 0;
-    bottom: 0;
-    will-change: transform;
+    left: 0;
+    will-change: opacity;
 }
 .mainbg > img {
     position: absolute;
@@ -236,15 +231,43 @@ section, header {
 }
 #recentPosts .hiddenportfolio {
     position: absolute;
-    top: 0;
+    top: 2em;
     left: 2em;
     right: 2em;
     opacity: 0;
     pointer-events: none;
 }
+@media only screen and (max-width: 450px) { /* Sync with .viewport/.readerblock */
+  #recentPosts .hiddenportfolio {
+    left: 0;
+    right: 0;
+  }
+}
+@media only screen and (max-height: 800px) {
+    #recentPosts {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    #recentPosts .hiddenportfolio {
+      top: 0;
+    }
+}
 .night #recentPosts .hiddenportfolio {
     opacity: 1;
     pointer-events: all;
+}
+
+/* **************** */
+.knackered {
+  font-family: monospace;
+  user-select: none;
+  will-change: contents;
+}
+.postList li::before { /* Because it's knackered with monospace, override. */
+  margin-top: -.2em;
+}
+.hiddenportfolio h3 {
+  font-family: monospace;
 }
 </style>
 </head>
@@ -281,11 +304,11 @@ section, header {
 
         <section class="readerblock" style="margin-top: 2em;" id="recentPosts">
             <div class="mainportfolio">
-              <h3>Recent Journal Posts:</h3>
+              <h3 class="knackered">Recent Journal Posts:</h3>
               <ul class="postList">
 {%- for post in collections.posts %}
                 <li><a href="{{ post.url }}" title="{{ post.data.pageTitle }}">
-                  <h3>{{ post.data.pageTitle | trimString: 60 }}</h3>
+                  <h3 class="knackered">{{ post.data.pageTitle | trimString: 80 }}</h3>
                   <em>- {{ post.date | date: "%Y-%m-%d" }}</em></a>
                 </li>
 {%- endfor %}
@@ -317,7 +340,7 @@ section, header {
             <li><a class="stealth" href="/">Contact</a></li>
         </ul>
         
-        <button class="expand" id="expandHeader"></button>
+        <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
     </header>
 
     <div class="scrollClue dark"></div>
@@ -333,7 +356,7 @@ section, header {
                     <h3><a class="hiddenlink" href="{{post.url}}">{{ post.data.pageTitle }}</a></h3>
 {%- assign visibleTags = post.data.tags | filterTags %}
 {%- for tag in visibleTags %}
-                    <i class="tag">{{tag}}</i>
+                    <i class="tag" title="View posts tagged with '{{ tag }}'">{{tag}}</i>
 {%- endfor %}
                     <p>{{ post.data.description }}</p>
                     <a class="callToAction" href="{{ post.url }}">View Project</a>
@@ -374,9 +397,30 @@ document.getElementById("dayNightToggle").addEventListener('change', (event) => 
 })
 
 window.addEventListener('load', () => {
-    document.getElementById("bgimg").src = "img/garage_lowres.jpg"
-    document.getElementById("bgimgSaturated").src = "img/garage_lowres.jpg"
-    document.querySelector(".mainbg").classList.toggle("loaded");
+  document.querySelector(".mainbg").style.height = window.innerHeight + 'px' // avoid jump on mobile
+  console.log(document.querySelector(".mainbg").style)
+  document.getElementById("bgimg").src = "img/garage_lowres.jpg"
+  document.getElementById("bgimgSaturated").src = "img/garage_lowres.jpg"
+  document.querySelector(".mainbg").classList.toggle("loaded")
+
+  // -- knackered text animation
+  for (let elem of document.getElementsByClassName('knackered')) {
+    if (!elem.getAttribute('aria-label')) {
+      elem.setAttribute('aria-label', elem.innerHTML)
+    }
+  }
+
+  const knackChars = "$&[{}(=*)+]!#/@_-?^|%"
+  window.setInterval(() => {
+    for (let elem of document.getElementsByClassName('knackered')) {
+      let content = elem.getAttribute('aria-label')
+      rndIdx = Math.floor(Math.random() * (content.length -1))
+      if (content[rndIdx] === " ") rndIdx++ // Changing spaces causes reflows
+
+      content[Math.floor(Math.random() * content.length)] = knackChars[Math.floor(Math.random() * knackChars.length)]
+      elem.innerHTML = content.substring(0, rndIdx) + knackChars[Math.floor(Math.random() * knackChars.length)] + content.substring(rndIdx + 1)
+    }
+  }, 200)
 })
 </script>
 </body>

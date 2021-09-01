@@ -59,6 +59,10 @@
     line-height: .9;
     font-size: .8em;
     cursor: pointer;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
 }
 .articleList article i:hover, 
 .tag:hover { /* .tag */

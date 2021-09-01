@@ -40,6 +40,9 @@ code .highlight-line:before {
 a.header-anchor {
     border-bottom-color: transparent;
 }
+a.header-anchor:hover {
+    border-bottom-style: dotted;
+}
 .header-anchor::after {
     content: "🔗";
     margin-left: .5em;
