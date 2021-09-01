@@ -37,8 +37,16 @@ code .highlight-line:before {
   */
 }
 
-.direct-link { /* Links to sections */
+a.header-anchor {
+    border-bottom-color: transparent;
+}
+.header-anchor::after {
+    content: "🔗";
+    margin-left: .5em;
     font-size: .8rem;
-    vertical-align: .2rem;
+    vertical-align: .1em;
     opacity: .6;
+}
+.header-anchor:hover::after {
+    opacity: 1;
 }
