@@ -13,22 +13,34 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
 <html lang="en">
 <head>
     <title>rgon.es</title>
-    <meta name="viewport" content="width=device-width">
-    <meta charset="UTF-8">
-    <meta name="description" content="Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. Open source fanboy, and electronics hobbyist the rest of the time. This is my portfolio and journal.">
-    <meta name="keywords" content="Journal, Portfolio, Lighting Design, Software Development, Electronics">
-    <meta name="author" content="Gonzalo Ruiz">
+    <meta name="viewport" content="width=device-width" />
 
-    <link rel="icon" href="/logo/favicon.svg">
-    <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
-    <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8" />
+    <meta name="description" content="Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. Open source fanboy, and electronics hobbyist the rest of the time. This is my portfolio and journal." />
+    <meta name="keywords" content="Journal, Portfolio, Lighting Design, Software Development, Electronics" />
+    <meta name="author" content="Gonzalo Ruiz" />
+    
+    <!-- openGraph -->
+    <meta property="og:site_name" content="rgon.es" />
+    <meta property="og:title" content="rgon.es" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. Open source fanboy, and electronics hobbyist the rest of the time. This is my portfolio and journal." />
+    <meta property="og:image" content="/img/profilepic.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="rgon.es" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109011137"  type="image/svg+xml" sizes="any" />
+    <link rel=”mask-icon” href=/logo/favicon.svg?cache=202109011137” color="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109011137" />
 
-    <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
 
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
-    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css">
-    <link rel="stylesheet" type="text/css" href="/css/components/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
 <style>
 .hero {
     box-sizing: border-box;
@@ -223,7 +235,7 @@ section, header {
     <section class="fullpage center dark" style="min-height: calc(100vh - 150px); background-color: transparent;">
         <div class="horizontalflex viewport">
             <div class="hero" style="margin-top: 2em;">
-                <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
+                <h1><a class="hiddenlink" href="/" style="padding: 0;"></a></h1>
             
                 <h2>Gonzalo Ruiz</h2>
                 <div class="horizontalflex socialLinks">
@@ -249,22 +261,18 @@ section, header {
             <div class="mainportfolio">
               <h3>Recent Journal Posts:</h3>
               <ul class="postList">
-
-<li><a href="/posts/reverse-engineering-rf-tpms-sensors-and-developing-a-linux-client-to-analyze-them/">
-  <h3>Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them</h3>
-  <em>- 2021-08-31</em></a>
-</li>
-
-<li><a href="/posts/furby-turns-on-the-lights-for-me/">
-  <h3>Furby turns on the lights for me</h3>
-  <em>- 2021-08-31</em></a>
-</li>
-
-<li><a href="/posts/reverse-engineering-and-controlling-a-martin-m-touch-using-python/">
-  <h3>Reverse-engineering and controlling a Martin M-touch using Python</h3>
-  <em>- 2021-08-31</em></a>
-</li>
-
+                <li><a href="/posts/reverse-engineering-rf-tpms-sensors-and-developing-a-linux-client-to-analyze-them/">
+                  <h3>Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them</h3>
+                  <em>- 2021-09-01</em></a>
+                </li>
+                <li><a href="/posts/furby-turns-on-the-lights-for-me/">
+                  <h3>Furby turns on the lights for me</h3>
+                  <em>- 2021-09-01</em></a>
+                </li>
+                <li><a href="/posts/reverse-engineering-and-controlling-a-martin-m-touch-using-python/">
+                  <h3>Reverse-engineering and controlling a Martin M-touch using Python</h3>
+                  <em>- 2021-09-01</em></a>
+                </li>
               </ul>
             </div>
 
@@ -279,7 +287,7 @@ section, header {
 
     <header class="dark">
         <div class="hero">
-            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
+            <h1><a class="hiddenlink" href="/" style="padding: 0;"></a></h1>
         
             <h2>Gonzalo Ruiz</h2>
         </div>
@@ -302,78 +310,53 @@ section, header {
     <section class="light fullpage center">
         <div class="viewport articleList">
             <h2>Project Showcase:</h2>
-
-
             <article>
                 <div class="description">
                     <h3><a class="hiddenlink" href="/projects/affordable-cellular-off-site-cameras/">Affordable cellular off-site cameras</a></h3>
-
-
-                    <p>Developing and installing custom firmware & drivers for GSM/LTE modems. Using cheap security cameras to remotely surveil areas for around 30 dollars. Includes cellular plan cost analysis.</p>
+                    <p>Developing and installing custom firmware & drivers for GSM/LTE modems. Using low-priced security cameras to remotely surveil areas for around 30 dollars. Includes cellular plan cost analysis.</p>
                     <a class="callToAction" href="/projects/affordable-cellular-off-site-cameras/">View Project</a>
                 </div>
 
                 <a class="hiddenlink" href="/projects/affordable-cellular-off-site-cameras/"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
             </article>
-
             <article>
                 <div class="description">
                     <h3><a class="hiddenlink" href="/projects/vehicle-pneumatic-(air)-suspension-system/">Vehicle pneumatic (air) suspension system</a></h3>
-
-
-<i class="tag">automotive</i>
-
-<i class="tag">electronics</i>
-
-<i class="tag">embedded</i>
-
-<i class="tag">open source</i>
-
+                    <i class="tag">automotive</i>
+                    <i class="tag">electronics</i>
+                    <i class="tag">embedded</i>
+                    <i class="tag">open source</i>
                     <p>Mechanic system design and install. Custom-designed pneumatic controller from firmware to PCB. Much more affordable and programmable than competing products, while meeting safety standards.</p>
                     <a class="callToAction" href="/projects/vehicle-pneumatic-(air)-suspension-system/">View Project</a>
                 </div>
 
                 <a class="hiddenlink" href="/projects/vehicle-pneumatic-(air)-suspension-system/"><picture><source type="image/avif" srcset="/img/9dbfb8c1-300.avif 300w, /img/9dbfb8c1-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/9dbfb8c1-300.webp 300w, /img/9dbfb8c1-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/9dbfb8c1-300.jpeg 300w, /img/9dbfb8c1-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/9dbfb8c1-300.jpeg" width="600" height="450"></picture></a>
             </article>
-
             <article>
                 <div class="description">
                     <h3><a class="hiddenlink" href="/projects/network-attached-stage-laser-projector-dac-(controller)/">Network-attached stage Laser Projector DAC (controller)</a></h3>
-
-
-<i class="tag">lighting design</i>
-
-<i class="tag">electronics</i>
-
-<i class="tag">embedded</i>
-
-<i class="tag">laser</i>
-
+                    <i class="tag">lighting design</i>
+                    <i class="tag">electronics</i>
+                    <i class="tag">embedded</i>
+                    <i class="tag">laser</i>
                     <p>Design of a state-of-the-art safe laser projector controller. System watchdogs, multi-processor architecture, fully-monitored and with a custom network protocol.</p>
                     <a class="callToAction" href="/projects/network-attached-stage-laser-projector-dac-(controller)/">View Project</a>
                 </div>
 
                 <a class="hiddenlink" href="/projects/network-attached-stage-laser-projector-dac-(controller)/"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
             </article>
-
             <article>
                 <div class="description">
                     <h3><a class="hiddenlink" href="/projects/in-vehicle-360-degree-camera-system/">In-vehicle 360-degree camera system</a></h3>
-
-
-<i class="tag">automotive</i>
-
-<i class="tag">embedded</i>
-
-<i class="tag">open source</i>
-
+                    <i class="tag">automotive</i>
+                    <i class="tag">embedded</i>
+                    <i class="tag">open source</i>
                     <p>Design and programming of a 360-degree "backup-camera" system based on a Raspberry Pi 4.</p>
                     <a class="callToAction" href="/projects/in-vehicle-360-degree-camera-system/">View Project</a>
                 </div>
 
                 <a class="hiddenlink" href="/projects/in-vehicle-360-degree-camera-system/"><picture><source type="image/avif" srcset="/img/e0eec840-300.avif 300w, /img/e0eec840-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/e0eec840-300.webp 300w, /img/e0eec840-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/e0eec840-300.jpeg 300w, /img/e0eec840-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/e0eec840-300.jpeg" width="600" height="450"></picture></a>
             </article>
-
 
             <div class="center">
                 <div class="readerblock" style="text-align: center;">
