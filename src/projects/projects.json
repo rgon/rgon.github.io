@@ -1,5 +1,7 @@
 {
     "layout": "blogpost.liquid",
     "tags": ["projects"],
-    "permalink": "/projects/{{ pageTitle | slug }}/"
+    "permalink": "/projects/{{ pageTitle | slug }}/",
+    "coverImage": "img/profilepic.jpg"
+
 }

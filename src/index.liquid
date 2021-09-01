@@ -1,5 +1,4 @@
 ---
-title: rgon.es
 subTitle: Gonzalo Ruiz
 ---
 <!DOCTYPE html>
@@ -16,23 +15,43 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
 -->
 <html lang="en">
 <head>
-    <title>{{ title }}</title>
-    <meta name="viewport" content="width=device-width">
-    <meta charset="UTF-8">
-    <meta name="description" content="Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. Open source fanboy, and electronics hobbyist the rest of the time. This is my portfolio and journal.">
-    <meta name="keywords" content="Journal, Portfolio, Lighting Design, Software Development, Electronics">
-    <meta name="author" content="Gonzalo Ruiz">
+{%- assign fullTitle = site.name %}
+    <title>{{ fullTitle | trimString: 65 }}</title>
+    <meta name="viewport" content="width=device-width" />
 
-    <link rel="icon" href="/logo/favicon.svg">
-    <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
-    <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8" />
+    <meta name="description" content="{{ site.description | trimString 155 }}" />
+    <meta name="keywords" content="{{ site.keywords }}" />
+    <meta name="author" content="{{ site.author }}" />
+    
+    <!-- openGraph -->
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta property="og:title" content="{{ fullTitle | trimString: 35 }}" />
+    <meta property="og:url" content="{{ url }}" />
+    <meta property="og:description" content="{{ site.description | trimString 65 }}" />
+    <meta property="og:image" content="{{ site.coverImage }}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="{{ fullTitle | trimString 65}}" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+{%- if coverVideo != undefined %}
+    <meta property="og:video" content="{{ coverVideo }}" />
+    <meta property="og:video:height" content="{{ coverVideoHeight }}" />
+    <meta property="og:video:width" content="{{ coverVideoWidth }}" />
+{% endif %}
 
-    <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
+{%- capture unchachedFavicon %}{{ site.favicon }}?cache={{ "now" | date: "%Y%m%d%H%M" }}{% endcapture %}
+    <link rel="shortcut icon" href="{{unchachedFavicon}}"  type="image/svg+xml" sizes="any" />
+    <link rel=”mask-icon” href={{ unchachedFavicon }}” color="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" href="{{unchachedFavicon}}" />
 
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
-    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css">
-    <link rel="stylesheet" type="text/css" href="/css/components/header.css">
+    <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
 <style>
 .hero {
     box-sizing: border-box;
@@ -253,12 +272,12 @@ section, header {
             <div class="mainportfolio">
               <h3>Recent Journal Posts:</h3>
               <ul class="postList">
-{% for post in collections.posts %}
-<li><a href="{{ post.url }}">
-  <h3>{{ post.data.pageTitle }}</h3>
-  <em>- {{ post.date | date: "%Y-%m-%d" }}</em></a>
-</li>
-{% endfor %}
+{%- for post in collections.posts %}
+                <li><a href="{{ post.url }}">
+                  <h3>{{ post.data.pageTitle }}</h3>
+                  <em>- {{ post.date | date: "%Y-%m-%d" }}</em></a>
+                </li>
+{%- endfor %}
               </ul>
             </div>
 
@@ -297,21 +316,21 @@ section, header {
         <div class="viewport articleList">
             <h2>Project Showcase:</h2>
 
-{% for post in collections.projects %}
+{%- for post in collections.projects %}
             <article>
                 <div class="description">
                     <h3><a class="hiddenlink" href="{{post.url}}">{{ post.data.pageTitle }}</a></h3>
-{% assign visibleTags = post.data.tags | filterTags %}
-{% for tag in visibleTags %}
-<i class="tag">{{tag}}</i>
-{% endfor %}
+{%- assign visibleTags = post.data.tags | filterTags %}
+{%- for tag in visibleTags %}
+                    <i class="tag">{{tag}}</i>
+{%- endfor %}
                     <p>{{ post.data.description }}</p>
                     <a class="callToAction" href="{{ post.url }}">View Project</a>
                 </div>
 
                 <a class="hiddenlink" href="{{post.url}}">{% image post.data.coverImage, "project image" %}</a>
             </article>
-{% endfor %}
+{%- endfor %}
 
             <div class="center">
                 <div class="readerblock" style="text-align: center;">

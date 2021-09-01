@@ -1,24 +1,43 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>{{ pageTitle }} | rgon.es</title>
-    <meta name="viewport" content="width=device-width">
+{%- capture fullTitle %}{{ pageTitle }} | {{ site.name }}{% endcapture %}
+    <title>{{ fullTitle | trimString: 65 }}</title>
+    <meta name="viewport" content="width=device-width" />
 
-    <meta charset="UTF-8">
-    <meta name="description" content="{{ description }}">
-    <meta name="keywords" content="{{ tags | arrayToString }}">
-    <meta name="author" content="Gonzalo Ruiz">
+    <meta charset="UTF-8" />
+    <meta name="description" content="{{ description | trimString 155 }}" />
+    <meta name="keywords" content="{{ tags | arrayToString }}" />
+    <meta name="author" content="{{ site.author }}" />
+    
+    <!-- openGraph -->
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta property="og:title" content="{{ fullTitle | trimString: 35 }}" />
+    <meta property="og:url" content="{{ url }}" />
+    <meta property="og:description" content="{{ description | trimString 65 }}" />
+    <meta property="og:image" content="{{ coverImage }}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="{{ pageTitle | trimString 65}}" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+{%- if coverVideo != undefined %}
+    <meta property="og:video" content="{{ coverVideo }}" />
+    <meta property="og:video:height" content="{{ coverVideoHeight }}" />
+    <meta property="og:video:width" content="{{ coverVideoWidth }}" />
+{% endif %}
 
-    <link rel="icon" href="/logo/favicon.svg">
-    <link rel=”mask-icon” href=/logo/favicon.svg” color=”#000000">
-    <meta name="theme-color" content="#ffffff">
+{%- capture unchachedFavicon %}{{ site.favicon }}?cache={{ "now" | date: "%Y%m%d%H%M" }}{% endcapture %}
+    <link rel="shortcut icon" href="{{unchachedFavicon}}"  type="image/svg+xml" sizes="any" />
+    <link rel=”mask-icon” href={{ unchachedFavicon }}” color="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" href="{{unchachedFavicon}}" />
 
-    <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
 
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/css/articlelist.css">
-    <link rel="stylesheet" type="text/css" href="/css/articlepost.css">
-    <link rel="stylesheet" type="text/css" href="/css/components/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
 
 <style>
 .pageTitle {
@@ -93,8 +112,7 @@ aside .expandIndex {
 <body>
     <header class="dark isfirst sticking">
         <div class="hero">
-            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
-        
+            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1> 
             <h2>Gonzalo Ruiz</h2>
         </div>
 
@@ -118,10 +136,11 @@ aside .expandIndex {
     <section class="fullpage center dark titleSection">
         <div class="viewport">
             <h1 class="pageTitle">{{ pageTitle }}
-{% assign visibleTags = tags | filterTags %}
-{% for mtag in visibleTags %}
+{%- assign visibleTags = tags | filterTags %}
+{%- for mtag in visibleTags %}
                 <a href="/" class="tag">{{ mtag }}</a>
-{% endfor %}</h1>
+{%- endfor %}
+            </h1>
         </div>
             <div class="viewport infoblock">
             <span>Gonzalo's Journal</span>
@@ -139,7 +158,7 @@ aside .expandIndex {
             <hr/>
         </aside>
         <article class="readerblock">
-        {{ content }}
+            {{ content }}
         </article>
     </section>
 

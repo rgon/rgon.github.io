@@ -90,6 +90,36 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLiquidShortcode("image", imageShortcode);
   eleventyConfig.addJavaScriptFunction("image", imageShortcode);
 
+  // -- convenience filters
+  eleventyConfig.addFilter("trimString", function (str, len) { // Used to generate <title> and <meta name="description">, amongst others
+    str = str.trimRight() // Remove trailing spaces
+
+    if (str.length > len) {
+      if (len > 7) { // Minimum length, if not the ellipsis would take up most of the characters
+        let foundWordEnd = -1
+        // Find latest word end up until -n chars (in case an extremely long word appears)
+        // This way, words will not be broken down when trimmed
+        for (let i = 0; i < 7; i++) {
+          if (str[len - 4 - i] === " ") { // -1 for index, -3 for ellipsis
+            foundWordEnd = (len - 4 - i)
+            break
+          }
+        }
+        if (foundWordEnd != -1) {
+          // Trim word and add ellipsis
+          str = str.substring(0, foundWordEnd) + '...'
+        } else {
+          // If last word not found or too long, just
+          str = str.substring(0, len-3) + '...'
+        }
+      } else {
+        str = str.substring(0, len)
+      }
+    } // else return string
+
+    return str
+  });
+
   eleventyConfig.addFilter("filterTags", function(tags) {
     if (tags) return tags.filter(tag => !(tag in HIDDENTAGS))
   });
@@ -106,11 +136,11 @@ module.exports = function(eleventyConfig) {
     return "";
   });
 
-  // Return your Object options:
+  // -- eleventy run
   return {
     dir: {
       input: "src",
-      output: OUTPUTDIR
+      output: OUTPUTDIR,
     }
   }
 };

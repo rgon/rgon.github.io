@@ -2,5 +2,8 @@
     "layout": "blogpost.liquid",
     "tags": ["posts"],
     "permalink": "/posts/{{ pageTitle | slug }}/",
-    "description": "Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. This is my journal."
+    "description": "Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. This is my journal.",
+    "coverImage": "img/profilepic.jpg",
+    "coverVideoHeight": 1080,
+    "coverVideoWidth": 1920
 }
