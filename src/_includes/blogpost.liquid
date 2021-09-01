@@ -112,8 +112,8 @@ aside .expandIndex {
 <body>
     <header class="dark isfirst sticking">
         <div class="hero">
-            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1> 
-            <h2>Gonzalo Ruiz</h2>
+            <h1><a class="hiddenlink" href="/" style="padding: 0;">{{ site.name }}</a></h1> 
+            <h2>{{ site.subTitle }}</h2>
         </div>
 
         <div class="currentIndex">
@@ -138,7 +138,7 @@ aside .expandIndex {
             <h1 class="pageTitle">{{ pageTitle }}
 {%- assign visibleTags = tags | filterTags %}
 {%- for mtag in visibleTags %}
-                <a href="/" class="tag">{{ mtag }}</a>
+                <a href="/" class="tag" title="View posts tagged with '{{ mtag }}'">{{ mtag }}</a>
 {%- endfor %}
             </h1>
         </div>
