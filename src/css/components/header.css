@@ -62,7 +62,7 @@ header h1, header h2 {
 
 header.sticking {
     background-color: var(--bg-color);
-    height: auto;
+    /*height: auto;*/
     min-height: 100px;
     /* position: fixed; 
     top: 0;
@@ -88,6 +88,9 @@ header.sticking > ul li {
 }
 header.sticking > .hero {
     display: flex;
+}
+header.expanded {
+    height: auto;
 }
 header.expanded > .hero {
     display: none;

@@ -33,8 +33,9 @@ function detectScroll(stickyElem, callBack=undefined, threshold=1) { // threshol
         // position: sticky detection: adds .sticking when sticking
         const observer = new IntersectionObserver(
             ([e]) => {
+                console.log(e.target.getBoundingClientRect().y, e.target.innerHTML)
                 // If we don't check here, elements intersecting with the bottom of the screen will also trigger the observer
-                if (e.target.getBoundingClientRect().y <= (window.innerHeight - e.target.getBoundingClientRect().height - 10)) {
+                if (e.target.getBoundingClientRect().y <= (window.innerHeight / 2)) {
                     if (callBack) callBack(e)
                 }
             },

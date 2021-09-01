@@ -125,14 +125,16 @@ aside .expandIndex {
 .relatedPosts article p {
     margin: 0;
 }
-.relatedPosts article > picture {
+.relatedPosts article > a {
+    flex-shrink: 0;
+    align-self: center;
     height: 64px;
     width: 64px;
     position: relative;
-    flex-shrink: 0;
-    align-self: center;
+    margin-left: 2em;
 }
-.relatedPosts article > picture img {
+/* .relatedPosts article picture {} */
+.relatedPosts article picture img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -203,10 +205,10 @@ aside .expandIndex {
 {% for x in (1..3) %}
                 <article>
                     <div>
-                        <h4>Related post 1</h4>
+                        <h4><a href="/" class="hiddenlink">Related post 1</a></h4>
                         <p>Quick and simple description of a nonexistant project, because this website is unfinished TODO</p>
                     </div>
-                    {% image 'img/stallman1.jpg', "related post image" %}
+                    <a href="" class="hiddenlink">{% image 'img/stallman1.jpg', "related post image" %}</a>
                 </article>
 {% endfor %}
             </div>

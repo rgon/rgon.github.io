@@ -155,7 +155,6 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     position: fixed;
     top: 0;
     left: 0;
-    will-change: opacity;
 }
 .mainbg > img {
     position: absolute;
@@ -168,6 +167,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     transition: opacity 1s;
     filter: saturate(0) blur(10px) contrast(50%);
     z-index: 0;
+    will-change: opacity;
 }
 .mainbg > img.saturated {
     filter: blur(10px);
@@ -306,7 +306,7 @@ section, header {
             <div class="mainportfolio">
               <h3 class="knackered">Recent Journal Posts:</h3>
               <ul class="postList">
-{%- for post in collections.posts %}
+{%- for post in collections.posts reversed -%}
                 <li><a href="{{ post.url }}" title="{{ post.data.pageTitle }}">
                   <h3 class="knackered">{{ post.data.pageTitle | trimString: 80 }}</h3>
                   <em>- {{ post.date | date: "%Y-%m-%d" }}</em></a>
