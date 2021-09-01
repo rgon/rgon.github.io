@@ -92,7 +92,9 @@ module.exports = function(eleventyConfig) {
 
   // -- convenience filters
   eleventyConfig.addFilter("trimString", function (str, len) { // Used to generate <title> and <meta name="description">, amongst others
-    str = str.trimRight() // Remove trailing spaces
+    str = String(str).trimRight() // Remove trailing spaces
+
+    console.log(str, len, str.length)
 
     if (str.length > len) {
       if (len > 7) { // Minimum length, if not the ellipsis would take up most of the characters

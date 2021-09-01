@@ -20,7 +20,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     <meta name="viewport" content="width=device-width" />
 
     <meta charset="UTF-8" />
-    <meta name="description" content="{{ site.description | trimString 155 }}" />
+    <meta name="description" content="{{ site.description | trimString: 155 }}" />
     <meta name="keywords" content="{{ site.keywords }}" />
     <meta name="author" content="{{ site.author }}" />
     
@@ -28,10 +28,10 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     <meta property="og:site_name" content="{{ site.name }}" />
     <meta property="og:title" content="{{ fullTitle | trimString: 35 }}" />
     <meta property="og:url" content="{{ url }}" />
-    <meta property="og:description" content="{{ site.description | trimString 65 }}" />
+    <meta property="og:description" content="{{ site.description | trimString: 65 }}" />
     <meta property="og:image" content="{{ site.coverImage }}" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="{{ fullTitle | trimString 65}}" />
+    <meta property="og:image:alt" content="{{ fullTitle | trimString: 65}}" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
 {%- if coverVideo != undefined %}
@@ -273,8 +273,8 @@ section, header {
               <h3>Recent Journal Posts:</h3>
               <ul class="postList">
 {%- for post in collections.posts %}
-                <li><a href="{{ post.url }}">
-                  <h3>{{ post.data.pageTitle }}</h3>
+                <li><a href="{{ post.url }}" title="{{ post.data.pageTitle }}">
+                  <h3>{{ post.data.pageTitle | trimString: 60 }}</h3>
                   <em>- {{ post.date | date: "%Y-%m-%d" }}</em></a>
                 </li>
 {%- endfor %}

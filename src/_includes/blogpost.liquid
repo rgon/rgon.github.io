@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width" />
 
     <meta charset="UTF-8" />
-    <meta name="description" content="{{ description | trimString 155 }}" />
+    <meta name="description" content="{{ description | trimString: 155 }}" />
     <meta name="keywords" content="{{ tags | arrayToString }}" />
     <meta name="author" content="{{ site.author }}" />
     
@@ -14,10 +14,10 @@
     <meta property="og:site_name" content="{{ site.name }}" />
     <meta property="og:title" content="{{ fullTitle | trimString: 35 }}" />
     <meta property="og:url" content="{{ url }}" />
-    <meta property="og:description" content="{{ description | trimString 65 }}" />
+    <meta property="og:description" content="{{ description | trimString: 65 }}" />
     <meta property="og:image" content="{{ coverImage }}" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="{{ pageTitle | trimString 65}}" />
+    <meta property="og:image:alt" content="{{ pageTitle | trimString: 65}}" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
 {%- if coverVideo != undefined %}
