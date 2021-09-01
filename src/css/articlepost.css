@@ -40,7 +40,7 @@ code .highlight-line:before {
 a.header-anchor {
     border-bottom-color: transparent;
 }
-h2[id] { /* anchor link offset for header. Also works for intersectionobserver! */
+article h1[id], article h2[id],article h3[id],article h4[id], article h5[id] { /* anchor link offset for header. Also works for intersectionobserver! */
     padding-top: 100px; margin-top: -100px;
 }
 a.header-anchor:hover {
