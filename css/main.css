@@ -227,3 +227,45 @@ footer {
     border-bottom-color: transparent;
     text-decoration: underline;
 }
+
+/* ********************** */
+/* CSS-Based max text lines for element 
+USAGE: <elem class="trimLines" style="--max-lines: 4;">
+NOTE: Only works with a SINGLE paragraph or all inline elements! Not for multiple paragraphs.
+*/
+.trimLines {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    --lh: 1rem;
+    line-height: var(--lh);
+    --max-lines: 4;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+    position: relative;
+}
+.trimLines::before {
+    /* Pure css multiline clamp! */
+    content: "...";
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 1.5em;
+    position: absolute;
+    top: calc(var(--lh) * calc(var(--max-lines) - 1));
+    right: 0;
+    width: 5em;
+    height: var(--lh);
+    display: inline-block;
+    background: linear-gradient(to right, transparent, var(--bg-color) 50%);
+}
+.trimLines::after { /* Cover ellipsis if line not cut, since we cannot display: float and bottom. */
+    content: "";
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 1.5em;
+    width: 5em;
+    height: var(--lh);
+    position: relative;
+    float: right;
+    background-color: var(--bg-color);
+}

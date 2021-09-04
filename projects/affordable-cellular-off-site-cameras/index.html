@@ -19,10 +19,10 @@
     <meta property="og:image:alt" content="Affordable cellular off-site cameras" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109011537"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109011537" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109041421"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109041421" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109011537" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109041421" />
 
     <link rel="canonical" href="https://www.rgon.es/projects/affordable-cellular-off-site-cameras/"/>
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
@@ -55,45 +55,10 @@ header .currentIndex {
     padding: 1em;
     box-sizing: border-box;
     flex-grow: 1;
+    max-width: 50%;
 }
 header.expanded .currentIndex {
     display: none;
-}
-header .currentIndex h3 {
-    font-size: 1rem;
-    margin: 0;
-    padding: 0;
-    --lh: 1rem;
-    line-height: var(--lh);
-    --max-lines: 4;
-    max-height: calc(var(--lh) * var(--max-lines));
-    overflow: hidden;
-    position: relative;
-}
-header .currentIndex h3:after {
-    /* Pure css multiline clamp! */
-    content: "...";
-    text-align: left;
-    box-sizing: border-box;
-    padding-left: 1.5em;
-    position: absolute;
-    top: calc(var(--lh) * calc(var(--max-lines) - 1));
-    right: 0;
-    width: 5em;
-    height: var(--lh);
-    background: linear-gradient(to right, transparent, var(--bg-color) 50%);
-}
-
-@media only screen and (min-width: 650px) {
-    .currentIndex {
-        display: none;
-    }
-}
-/* ***************** */
-@media only screen and (max-width: 400px) {
-    header > .hero {
-        font-size: .7em;
-    }
 }
 
 aside .expandIndex {
@@ -123,13 +88,28 @@ aside .expandIndex {
     height: 64px;
     width: 64px;
     position: relative;
-    margin-left: 2em;
+    margin-left: 1em;
 }
 /* .relatedPosts article picture {} */
 .relatedPosts article picture img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@media only screen and (min-width: 650px) {
+    .currentIndex {
+        display: none;
+    }
+    .relatedPosts article > a {
+        margin-left: 2em;
+    }
+}
+/* ***************** */
+@media only screen and (max-width: 400px) {
+    header > .hero {
+        font-size: .7em;
+    }
 }
 </style>
 </head>
@@ -141,7 +121,7 @@ aside .expandIndex {
         </div>
 
         <div class="currentIndex">
-            <h3 id="readingIndex"></h3>
+            <h3 id="readingIndex" class="trimLines" style="--max-lines: 4;"></h3>
             <!-- And some shitcode for your pleasure with a very very very long section name -->
         </div>
 
@@ -166,7 +146,7 @@ aside .expandIndex {
             <span></span>
             <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
 
-            <b>2021-09-01</b>
+            <b>2021-09-04</b>
         </div>
     </section>
 
@@ -204,7 +184,9 @@ aside .expandIndex {
                 <article>
                     <div>
                         <h4><a href="/" class="hiddenlink">Related post 1</a></h4>
-                        <p>Quick and simple description of a nonexistant project, because this website is unfinished TODO</p>
+                        <p class="trimLines" style="--max-lines: 3;">Quick and simple description of a nonexistant project, because this website is unfinished TODO
+                        <!-- <br/><a href="/">View post</a> -->
+                        </p>
                     </div>
                     <a href="" class="hiddenlink"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="related post image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
                 </article>
@@ -212,7 +194,9 @@ aside .expandIndex {
                 <article>
                     <div>
                         <h4><a href="/" class="hiddenlink">Related post 1</a></h4>
-                        <p>Quick and simple description of a nonexistant project, because this website is unfinished TODO</p>
+                        <p class="trimLines" style="--max-lines: 3;">Quick and simple description of a nonexistant project, because this website is unfinished TODO
+                        <!-- <br/><a href="/">View post</a> -->
+                        </p>
                     </div>
                     <a href="" class="hiddenlink"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="related post image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
                 </article>
@@ -220,7 +204,9 @@ aside .expandIndex {
                 <article>
                     <div>
                         <h4><a href="/" class="hiddenlink">Related post 1</a></h4>
-                        <p>Quick and simple description of a nonexistant project, because this website is unfinished TODO</p>
+                        <p class="trimLines" style="--max-lines: 3;">Quick and simple description of a nonexistant project, because this website is unfinished TODO
+                        <!-- <br/><a href="/">View post</a> -->
+                        </p>
                     </div>
                     <a href="" class="hiddenlink"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="related post image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
                 </article>
