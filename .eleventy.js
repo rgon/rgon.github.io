@@ -7,6 +7,7 @@ const pluginTOC = require('eleventy-plugin-toc')
 const markdownItAnchor = require("markdown-it-anchor")
 const markdownIt = require("markdown-it")
 
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const OUTPUTDIR = './docs'
 const HIDDENTAGS = {'posts': 0, 'projects': 0}
 
@@ -30,6 +31,7 @@ async function imageShortcode(src, alt, sizes) {
 
 module.exports = function(eleventyConfig) {
   // -- asset bundling
+  eleventyConfig.addPassthroughCopy( { "src/robots.txt": "" } );
   eleventyConfig.addPassthroughCopy( { "src/js": "js" } );
   eleventyConfig.addPassthroughCopy( { "src/css": "css" } );
   // eleventyConfig.addPassthroughCopy( { "src/**/*.jpg": "img" } );
@@ -90,6 +92,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLiquidShortcode("image", imageShortcode);
   eleventyConfig.addJavaScriptFunction("image", imageShortcode);
 
+  // -- sitemap generation https://www.npmjs.com/package/@quasibit/eleventy-plugin-sitemap
+  eleventyConfig.addPlugin(sitemap, {
+    lastModifiedProperty: "modified",
+    sitemap: {
+      hostname: "https://rgon.es",
+    },
+  })
   // -- convenience filters
   eleventyConfig.addFilter("trimString", function (str, len) { // Used to generate <title> and <meta name="description">, amongst others
     str = String(str).trimRight() // Remove trailing spaces
