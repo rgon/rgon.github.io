@@ -19,10 +19,10 @@
     <meta property="og:image:alt" content="In-vehicle 360-degree camera system" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109112125"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109112125" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109112137"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109112137" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109112125" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109112137" />
 
     <link rel="canonical" href="https://www.rgon.es/projects/in-vehicle-360-degree-camera-system/"/>
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
@@ -132,8 +132,10 @@ article.mainPost {
     position: sticky;
     top: 115px;
     margin-top: 1.5em;
-    height: 300px;
+    max-height: 300px;
+    height: calc(100% - 30px);
     width: 100%;
+    overflow: hidden; /* if placed on parent, sticky breaks */
 }
 .indexPane > .stickContainer > h3[id] {
     /* Rotate from top left corner (not default) */
@@ -176,6 +178,9 @@ article.mainPost {
     text-transform: uppercase;
 
     line-height: 95%;
+}
+.tableofcontents .toc {
+    min-height: 100px; /* Prevent title overflow with small toc */
 }
 </style>
 </head>

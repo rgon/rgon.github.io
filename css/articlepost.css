@@ -41,7 +41,7 @@ a.header-anchor {
     border-bottom-color: transparent;
 }
 article h1[id], article h2[id],article h3[id],article h4[id], article h5[id] { /* anchor link offset for header. Also works for intersectionobserver! */
-    padding-top: 100px; margin-top: -100px;
+    padding-top: 115px; margin-top: -100px;
 }
 a.header-anchor:hover {
     border-bottom-style: dotted;
