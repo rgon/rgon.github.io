@@ -119,6 +119,72 @@ aside .expandIndex {
         font-size: .7em;
     }
 }
+
+/* **************** */
+
+article.mainPost {
+    --indexpane-width: 50px;
+    position: relative;
+    overflow: visible;
+    padding-left: var(--indexpane-width);
+    box-sizing: border-box;
+}
+.indexPane {
+    position: absolute;
+    width: var(--indexpane-width);
+    height: 100%;
+    top: 0;
+    left: -15px;
+}
+.indexPane > .stickContainer {
+    position: sticky;
+    top: 115px;
+    margin-top: 1.5em;
+    height: 300px;
+    width: 100%;
+}
+.indexPane > .stickContainer > h3[id] {
+    /* Rotate from top left corner (not default) */
+    opacity: .2;
+    position: absolute;
+    top: 0;
+    left: var(--indexpane-width);
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    width: 300px;
+    height: var(--indexpane-width);
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+
+    line-height: 95%;
+}
+@media only screen and (max-width: 650px) {
+    article.mainPost {
+        --indexpane-width: 0px;
+    }
+    .indexPane {
+        display: none;
+    }
+}
+.tableofcontents {
+    padding-left: 50px !important; /* So the 450px readerblock media query doesn't collapse it */
+}
+.tableofcontents h2 {
+    position: absolute;
+    width: 50%;
+    left: 50px;
+    top: 4px;
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+    text-transform: uppercase;
+
+    line-height: 95%;
+}
 </style>
 </head>
 <body>
@@ -170,7 +236,12 @@ aside .expandIndex {
             <hr/>
         </aside>
 
-        <article class="readerblock">
+        <article class="readerblock mainPost">
+            <aside class="indexPane">
+                <div class="stickContainer">
+                    <h3 id="readingIndexDesktop">intro</h3>
+                </div>
+            </aside>
             {{ content }}
         </article>
 
@@ -207,10 +278,12 @@ aside .expandIndex {
 for (let elem of document.getElementsByClassName('header-anchor')) {
     detectScroll(elem.parentNode, (e) => {
         document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+        document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
     })
 }
 detectScroll(document.querySelector('.readingIndexClear'), (e) => {
     document.getElementById('readingIndex').innerHTML = ''
+    document.getElementById('readingIndexDesktop').innerHTML = 'intro'
 })
 
 </script>
