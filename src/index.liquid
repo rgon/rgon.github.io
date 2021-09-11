@@ -101,18 +101,16 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
 }
 .postList li::before {
     content: "</>";
-    vertical-align: 2px;
     font-size: .8em;
-    vertical-align: top;
     display: inline-block;
     margin-top: .3em;
+    vertical-align: top;
 }
 .postList li a {
   border-bottom: none;
 }
 .postList li a:hover {
   border-bottom: none;
-  text-decoration: underline;
 }
 .postList li a:hover h3 {
   text-decoration: underline;
@@ -123,11 +121,13 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     max-width: calc(100% - 40px);
     text-overflow: ellipsis;
     overflow: hidden;
-    vertical-align: bottom;
+    vertical-align: top;
 }
 .postList li em {
     white-space: nowrap;
-    vertical-align: 2px;
+    /*vertical-align: top; Not effective since siblings are at top */
+    display: inline-block;
+    transform: translateY(-5px); /* "Vertical-align" */
 }
 
 .scrollClue {
