@@ -140,8 +140,10 @@ article.mainPost {
     position: sticky;
     top: 115px;
     margin-top: 1.5em;
-    height: 300px;
+    max-height: 300px;
+    height: calc(100% - 30px);
     width: 100%;
+    overflow: hidden; /* if placed on parent, sticky breaks */
 }
 .indexPane > .stickContainer > h3[id] {
     /* Rotate from top left corner (not default) */
@@ -184,6 +186,9 @@ article.mainPost {
     text-transform: uppercase;
 
     line-height: 95%;
+}
+.tableofcontents .toc {
+    min-height: 100px; /* Prevent title overflow with small toc */
 }
 </style>
 </head>
