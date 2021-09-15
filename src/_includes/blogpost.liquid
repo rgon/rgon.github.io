@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
 
 <style>
-.pageTitle {
+#pageTitle {
     font-size: 2em;
 }
 .titleSection {
@@ -190,6 +190,15 @@ article.mainPost {
 .tableofcontents .toc {
     min-height: 100px; /* Prevent title overflow with small toc */
 }
+
+/* Cleaner header */
+header:not(.expanded) ul li a:not(:hover, :active), header button:not(:hover, :active) {
+    opacity: .5;
+    transition: .7s opacity;
+}
+header.titleScrolled ul li a, header.titleScrolled button {
+    opacity: 1;
+}
 </style>
 </head>
 <body>
@@ -218,7 +227,7 @@ article.mainPost {
 
     <section class="fullpage center dark titleSection">
         <div class="viewport">
-            <h1 class="pageTitle">{{ pageTitle }}
+            <h1 id="pageTitle">{{ pageTitle }}
 {%- assign visibleTags = tags | filterTags %}
 {%- for mtag in visibleTags %}
                 <a href="/" class="tag" title="View posts tagged with '{{ mtag }}'">{{ mtag }}</a>
@@ -289,6 +298,16 @@ for (let elem of document.getElementsByClassName('header-anchor')) {
 detectScroll(document.querySelector('.readingIndexClear'), (e) => {
     document.getElementById('readingIndex').innerHTML = ''
     document.getElementById('readingIndexDesktop').innerHTML = 'intro'
+})
+
+// Header items get the classed titlescrolled if the title has been scrolled past
+detectScroll(document.querySelector('#pageTitle'), (e) => {
+    document.getElementsByTagName('header')[0].classList.toggle('titleScrolled')
+})
+
+// Ensure it's normal while reading the article, in case some scroll wasn't triggered
+detectScroll(document.querySelector('.tableofcontents'), (e) => {
+    document.getElementsByTagName('header')[0].classList.add('titleScrolled')
 })
 
 </script>

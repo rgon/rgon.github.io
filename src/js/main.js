@@ -28,24 +28,23 @@ function detectSticky(stickyElem, callBack=undefined) {
     }
 }
 
-function detectScroll(stickyElem, callBack=undefined, threshold=1) { // threshold: percentage of the element that has to be scrolled
-    if (stickyElem) {
-        // position: sticky detection: adds .sticking when sticking
+function detectScroll(elem, callBack=undefined, threshold=1, callbackAtStart=true) { // threshold: percentage of the element that has to be scrolled past
+    if (elem) {
         const observer = new IntersectionObserver(
             ([e]) => {
                 console.log(e.target.getBoundingClientRect().y, e.target.innerHTML)
                 // If we don't check here, elements intersecting with the bottom of the screen will also trigger the observer
-                if (e.target.getBoundingClientRect().y <= (window.innerHeight / 2)) {
+                if (e.target.getBoundingClientRect().y <= (window.innerHeight / 4)) {
                     if (callBack) callBack(e)
                 }
             },
             {threshold: [threshold]}
         );
-        // Check now if the element is sticking (on load): prevents href="#"/coming dack to the tab bug
-        if (stickyElem.getBoundingClientRect().y <= 0) {
-            if (callBack) callBack({target: stickyElem})
+        // Check now if the element is scrolled by (on load): prevents href="#"/coming dack to the tab bug
+        if (elem.getBoundingClientRect().y <= 0 && callbackAtStart) {
+            if (callBack) callBack({target: elem})
         }
     
-        observer.observe(stickyElem)
+        observer.observe(elem)
     }
 }
