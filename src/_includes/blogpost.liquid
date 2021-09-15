@@ -175,6 +175,8 @@ article.mainPost {
 }
 .tableofcontents {
     padding-left: 50px !important; /* So the 450px readerblock media query doesn't collapse it */
+    box-sizing: border-box;
+    margin-left: -50px;
 }
 .tableofcontents h2 {
     position: absolute;
@@ -192,12 +194,12 @@ article.mainPost {
 }
 
 /* Cleaner header */
-header:not(.expanded) ul li a:not(:hover, :active), header button:not(:hover, :active) {
+header:not(.expanded) ul li a:not(:hover), header button:not(:hover, :active) {
     opacity: .5;
     transition: .7s opacity;
 }
 header.titleScrolled ul li a, header.titleScrolled button {
-    opacity: 1;
+    opacity: 1!important;
 }
 </style>
 </head>
