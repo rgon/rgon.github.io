@@ -19,10 +19,10 @@
     <meta property="og:image:alt" content="Furby turns on the lights for me" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109112137"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109112137" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109160022"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109160022" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109112137" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109160022" />
 
     <link rel="canonical" href="https://www.rgon.es/posts/furby-turns-on-the-lights-for-me/"/>
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
 
 <style>
-.pageTitle {
+#pageTitle {
     font-size: 2em;
 }
 .titleSection {
@@ -74,7 +74,11 @@ aside .expandIndex {
     position: relative;
     display: flex;
     flex-direction: row;
-
+}
+.relatedPosts article > div {
+    box-sizing: border-box;
+    padding: 1em;
+    transition: .4s transform;
 }
 .relatedPosts article h4 {
     margin: 0;
@@ -95,6 +99,21 @@ aside .expandIndex {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.relatedPosts article::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .7s opacity;
+    opacity: 0;
+}
+.relatedPosts article:hover::before {
+    opacity: 1;
+}
+.relatedPosts article:hover div {
+    transform: translateX(1em);
 }
 
 @media only screen and (min-width: 650px) {
@@ -167,6 +186,8 @@ article.mainPost {
 }
 .tableofcontents {
     padding-left: 50px !important; /* So the 450px readerblock media query doesn't collapse it */
+    box-sizing: border-box;
+    margin-left: -50px;
 }
 .tableofcontents h2 {
     position: absolute;
@@ -177,10 +198,19 @@ article.mainPost {
     transform: rotate(90deg);
     text-transform: uppercase;
 
-    line-height: 95%;
+    margin-left: .17em;
 }
 .tableofcontents .toc {
     min-height: 100px; /* Prevent title overflow with small toc */
+}
+
+/* Cleaner header */
+header:not(.expanded) ul li a:not(:hover), header button:not(:hover, :active) {
+    opacity: .5;
+    transition: .7s opacity;
+}
+header.titleScrolled ul li a, header.titleScrolled button {
+    opacity: 1!important;
 }
 </style>
 </head>
@@ -210,7 +240,7 @@ article.mainPost {
 
     <section class="fullpage center dark titleSection">
         <div class="viewport">
-            <h1 class="pageTitle">Furby turns on the lights for me
+            <h1 id="pageTitle">Furby turns on the lights for me
                 <a href="/" class="tag" title="View posts tagged with 'reverse engineering'">reverse engineering</a>
                 <a href="/" class="tag" title="View posts tagged with 'home automation'">home automation</a>
                 <a href="/" class="tag" title="View posts tagged with 'robotics'">robotics</a>
@@ -220,7 +250,7 @@ article.mainPost {
             <span></span>
             <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
 
-            <b>2021-09-11</b>
+            <b>2021-09-16</b>
         </div>
     </section>
 
@@ -230,10 +260,10 @@ article.mainPost {
             <h2>Index</h2>
             <nav class="toc">
         <ol><li><a href="#page-subheader">Page subheader</a></li></ol></nav>
-            <hr/>
         </aside>
 
         <article class="readerblock mainPost">
+            <hr/>
             <aside class="indexPane">
                 <div class="stickContainer">
                     <h3 id="readingIndexDesktop">intro</h3>
@@ -246,7 +276,7 @@ article.mainPost {
         </article>
 
         <div class="readerblock">
-            <hr>
+            <hr/>
             <div class style="text-align: center;">
                 <a href="/">Consult other journal entries</a> for more content.
             </div>
@@ -304,6 +334,16 @@ for (let elem of document.getElementsByClassName('header-anchor')) {
 detectScroll(document.querySelector('.readingIndexClear'), (e) => {
     document.getElementById('readingIndex').innerHTML = ''
     document.getElementById('readingIndexDesktop').innerHTML = 'intro'
+})
+
+// Header items get the classed titlescrolled if the title has been scrolled past
+detectScroll(document.querySelector('#pageTitle'), (e) => {
+    document.getElementsByTagName('header')[0].classList.toggle('titleScrolled')
+})
+
+// Ensure it's normal while reading the article, in case some scroll wasn't triggered
+detectScroll(document.querySelector('.tableofcontents'), (e) => {
+    document.getElementsByTagName('header')[0].classList.add('titleScrolled')
 })
 
 </script>
