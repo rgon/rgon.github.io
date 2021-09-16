@@ -257,16 +257,25 @@ NOTE: Only works with a SINGLE paragraph or all inline elements! Not for multipl
     width: 5em;
     height: var(--lh);
     display: inline-block;
-    background: linear-gradient(to right, transparent, var(--bg-color) 50%);
+    background: linear-gradient(to right, transparent, var(--bg-color) 30%);
 }
 .trimLines::after { /* Cover ellipsis if line not cut, since we cannot display: float and bottom. */
     content: "";
     text-align: left;
     box-sizing: border-box;
-    padding-left: 1.5em;
     width: 5em;
     height: var(--lh);
-    position: absolute;
+    position: relative;
     float: right;
+    z-index: 3;
     background-color: var(--bg-color);
+}
+.trimLines.criticalHeight::after {
+    /*
+    For vertically aligned or other items with critical height. The height of the ellipisis won't be computed.
+    Example:
+        dummy strintg hello yt world
+        on a trimmeng        ... <--------- dots at end
+    */
+    position: absolute;
 }
