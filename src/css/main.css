@@ -117,6 +117,7 @@ h3 {
 hr {
     border-style: dashed;
     max-width: 100px;
+    width: 33%;
 }
 hr::after, hr::before {
     content: "";
