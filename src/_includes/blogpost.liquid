@@ -260,7 +260,7 @@ header.titleScrolled ul li a, header.titleScrolled button {
             <span></span>
             <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
 
-            <b>{{ page.date | date: "%Y-%m-%d" }}</b>
+            <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%Y-%m-%d" }}</time>
         </div>
     </section>
 
