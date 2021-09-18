@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" moznomarginboxes mozdisallowselectionprint>
 <head>
 {%- capture fullTitle %}{{ pageTitle }} | {{ site.name }}{% endcapture %}
     <title>{{ fullTitle | trimString: 65 }}</title>
@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
     <link rel="stylesheet" type="text/css" href="/css/articlepost.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.print.css" media="print" />
     <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
 
 <style>
@@ -283,7 +284,7 @@ header.titleScrolled ul li a, header.titleScrolled button {
 
         <div class="readerblock">
             <hr/>
-            <div class style="text-align: center;">
+            <div class="callToAction noPrint" style="text-align: center;">
                 <a href="/">Consult other journal entries</a> for more content.
             </div>
             <div class="relatedPosts readingIndexClear">
