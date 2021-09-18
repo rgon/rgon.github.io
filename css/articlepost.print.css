@@ -1,0 +1,12 @@
+/* 
+* Stylesheet for print view
+*/
+
+@media print {
+    .titleSection {
+        page-break-after: always; 
+    }
+    .relatedPosts {
+        page-break-before: always; 
+    }
+}
