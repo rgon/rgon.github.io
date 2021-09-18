@@ -3,34 +3,10 @@
 */
 
 @media print {
-    @page { 
-        margin: 0;
-        size: A4;
-        margin: 1.6cm;
-
-        margin-bottom: 0mm; /* Remove bottom page index */
-    }
-
-    @page :first {
-        margin-top: 0%;
-    }
-
     .titleSection {
         page-break-after: always; 
     }
-    .noPrint, nav {
-        display: none;
-    }
-    .tag {
-        opacity: 0.5;
-    }
     .relatedPosts {
         page-break-before: always; 
-    }
-    footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
     }
 }
