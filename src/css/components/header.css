@@ -13,7 +13,10 @@ header {
 
     font-size: 16px; /* header-wide asolute font sizing to prevent increased fonts from breaking the layout */
 }
-header > ul {
+header > nav.viewport {
+    margin: 0;
+}
+header > nav ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -23,7 +26,7 @@ header > ul {
     margin: 0;
     line-height: 180%;
 }
-header > ul li {
+header > nav ul li {
     margin-right: 2em;
     /* margin-bottom: 2em; Using line-height  trick for better sticky reflow */
     list-style: none;
@@ -79,11 +82,11 @@ header.sticking > * {
     Cannot do it in <header> because it causes a loop.
     */
 }
-header.sticking > ul {
+header.sticking > nav.viewport {
     padding-top: .5em;
     padding-bottom: .5em;
 }
-header.sticking > ul li {
+header.sticking > nav ul li {
     margin-bottom: 0;
 }
 header.sticking > .hero {
@@ -116,7 +119,7 @@ header.expanded > .expand::after {
 }
 
 @media only screen and (max-width: 650px) {
-    header.sticking:not(.expanded) > ul {
+    header.sticking:not(.expanded) > nav {
         display: none;
     }
     header.sticking > .expand {
