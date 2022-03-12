@@ -320,13 +320,19 @@ for (let elem of document.getElementsByClassName('header-anchor')) {
     })
 }
 detectScroll(document.querySelector('.readingIndexClear'), (e) => {
-    document.getElementById('readingIndex').innerHTML = ''
-    document.getElementById('readingIndexDesktop').innerHTML = 'intro'
+    if (e.scrolled) {
+        document.getElementById('readingIndex').innerHTML = ''
+        document.getElementById('readingIndexDesktop').innerHTML = 'intro'
+    }
 })
 
 // Header items get the classed titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#pageTitle'), (e) => {
-    document.getElementsByTagName('header')[0].classList.toggle('titleScrolled')
+    if (e.scrolled) {
+        document.getElementsByTagName('header')[0].classList.add('titleScrolled')
+    } else {
+        document.getElementsByTagName('header')[0].classList.remove('titleScrolled')
+    }
 })
 
 // Ensure it's normal while reading the article, in case some scroll wasn't triggered
