@@ -19,10 +19,10 @@
     <meta property="og:image:alt" content="Affordable cellular off-site cameras" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202109182129"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202109182129" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202203121810"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202203121810" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202109182129" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202203121810" />
 
     <link rel="canonical" href="https://www.rgon.es/projects/affordable-cellular-off-site-cameras/"/>
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
@@ -250,7 +250,7 @@ header.titleScrolled ul li a, header.titleScrolled button {
             <span></span>
             <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
 
-            <time datetime="2021-09-18">2021-09-18</time>
+            <time datetime="2022-03-12">2022-03-12</time>
         </div>
     </section>
 
@@ -338,13 +338,19 @@ for (let elem of document.getElementsByClassName('header-anchor')) {
     })
 }
 detectScroll(document.querySelector('.readingIndexClear'), (e) => {
-    document.getElementById('readingIndex').innerHTML = ''
-    document.getElementById('readingIndexDesktop').innerHTML = 'intro'
+    if (e.scrolled) {
+        document.getElementById('readingIndex').innerHTML = ''
+        document.getElementById('readingIndexDesktop').innerHTML = 'intro'
+    }
 })
 
 // Header items get the classed titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#pageTitle'), (e) => {
-    document.getElementsByTagName('header')[0].classList.toggle('titleScrolled')
+    if (e.scrolled) {
+        document.getElementsByTagName('header')[0].classList.add('titleScrolled')
+    } else {
+        document.getElementsByTagName('header')[0].classList.remove('titleScrolled')
+    }
 })
 
 // Ensure it's normal while reading the article, in case some scroll wasn't triggered
