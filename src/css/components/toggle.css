@@ -80,11 +80,11 @@
 }
 .toggle span:last-child {
     right: 0;
-    opacity: 0;
+    opacity: 0.3;
 }
 
 .toggle > input:checked ~ .toggleFill > span:first-child {
-    opacity: 0;
+    opacity: 0.3;
 }
 
 .toggle > input:checked ~ .toggleFill > span:last-child {
