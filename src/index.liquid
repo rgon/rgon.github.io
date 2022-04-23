@@ -3,18 +3,16 @@
 <!DOCTYPE html>
 <!--
 Page TODO:
+    + contact page
     + fix scroll bump issue
     + proper project site
-
-blog stle
-https://tracxn.com/d/companies/hriman.com
 
 project individual view
 https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/header-and-nav
 -->
 <html lang="en">
 <head>
-{%- assign fullTitle = site.name + site.subTitle %}
+    {%- capture fullTitle %}{{ site.name }} | {{ site.subTitle }}{% endcapture %}
     <title>{{ fullTitle | trimString: 65 }}</title>
     <meta name="viewport" content="width=device-width" />
 
@@ -80,6 +78,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
 }
 .profilepic {
     height: 200px;
+    width: 200px;
     opacity: 0.75;
     border-radius: 50%;
 }
@@ -168,7 +167,7 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     transition: opacity 1s;
     filter: saturate(0) blur(10px) contrast(50%);
     z-index: 0;
-    will-change: transform, opacity;
+    /*will-change: transform, opacity;*/
 }
 .mainbg > img.saturated {
     filter: blur(10px);
@@ -291,7 +290,7 @@ section, header {
             </div>
 
             <div class="profilewrapper">
-                <img class="profilepic" src="img/profilepic.jpg" alt="profile picture" />
+                {% image "img/profilepic.jpg", "profile picture", "profilepic" %}
 
                 <label class="toggle" for="dayNightToggle" style="margin-top: 1.5em;">
                     <input name="" type="checkbox" id="dayNightToggle">
@@ -401,8 +400,8 @@ document.getElementById("dayNightToggle").addEventListener('change', (event) => 
 window.addEventListener('load', () => {
   document.querySelector(".mainbg").style.height = window.innerHeight + 'px' // avoid jump on mobile
   console.log(document.querySelector(".mainbg").style)
-  document.getElementById("bgimg").src = "img/garage_lowres.jpg"
-  document.getElementById("bgimgSaturated").src = "img/garage_lowres.jpg"
+  document.getElementById("bgimg").src = "img/bg_garage_lowres.jpg"
+  document.getElementById("bgimgSaturated").src = document.getElementById("bgimg").src
   document.querySelector(".mainbg").classList.toggle("loaded")
 
   // -- knackered text animation

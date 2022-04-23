@@ -1,6 +1,6 @@
 ---
 pageTitle: Affordable cellular off-site cameras
-coverImage: img/stallman1.jpg
+coverImage: img/wip.svg
 description: 'Developing and installing custom firmware & drivers for GSM/LTE modems. Using low-priced security cameras to remotely surveil areas for around 30 dollars. Includes cellular plan cost analysis.'
 ---
 ## Prólogo
