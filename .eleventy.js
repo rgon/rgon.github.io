@@ -11,21 +11,23 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const OUTPUTDIR = './docs'
 const HIDDENTAGS = {'posts': 0, 'projects': 0}
 
-async function imageShortcode(src, alt, sizes) {
+async function imageShortcode(src, alt, _class, sizes) {
   let metadata = await Image('src' + (src[0] === '/' ? '' : '/') + src, {
     widths: [300, 600],
     outputDir: OUTPUTDIR + "/img/",
     formats: ["avif", "webp", "jpeg"]
   });
 
+  console.log(src, alt, sizes)
+
   let imageAttributes = {
-    alt,
-    sizes: sizes ? sizes : "100vw",
+    class: (_class ? _class : ''),
+    alt: (alt ? alt : ''),
+    sizes: sizes ? sizes : "(min-width: 1024px) 100vw, 50vw",
     loading: "lazy",
     decoding: "async",
   };
 
-  // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
   return Image.generateHTML(metadata, imageAttributes);
 }
 
@@ -34,7 +36,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy( { "src/robots.txt": "" } );
   eleventyConfig.addPassthroughCopy( { "src/js": "js" } );
   eleventyConfig.addPassthroughCopy( { "src/css": "css" } );
-  // eleventyConfig.addPassthroughCopy( { "src/**/*.jpg": "img" } );
+  eleventyConfig.addPassthroughCopy( { "src/imgPassthrough/**/*.jpg": "img" } );
   eleventyConfig.addPassthroughCopy( { "src/**/*.svg": "logo" } );
 
   // -- syntax highlighting
@@ -52,10 +54,10 @@ module.exports = function(eleventyConfig) {
 		return newStr;
 	}
 
+  // -- slugify and Table of Contents
 	function markdownItSlugify(s) {
     return slugify(removeExtraText(s), { lower: true, remove: /[:’'`,]/g });
   }
-
 	let mdIt = markdownIt({
 		html: true,
 		breaks: true,
@@ -69,19 +71,6 @@ module.exports = function(eleventyConfig) {
 		permalinkSymbol: "#",
 		level: [1,2,3,4]
 	})
-  /*
-	.use(markdownItToc, {
-		includeLevel: [2, 3],
-		slugify: markdownItSlugify,
-		format: function(heading) {
-			return removeExtraText(heading);
-		},
-		transformLink: function(link) {
-			// remove backticks from markdown code
-			return link.replace(/\%60/g, "");
-		}
-	}); */
-
 	// mdIt.linkify.tlds('.io', false);
 	eleventyConfig.setLibrary("md", mdIt)
   // If you're using Nunjucks, include the safe filter:
@@ -99,6 +88,7 @@ module.exports = function(eleventyConfig) {
       hostname: "https://rgon.es",
     },
   })
+
   // -- convenience filters
   eleventyConfig.addFilter("trimString", function (str, len) { // Used to generate <title> and <meta name="description">, amongst others
     str = String(str).trimRight() // Remove trailing spaces
@@ -129,14 +119,17 @@ module.exports = function(eleventyConfig) {
     return str
   });
 
+  // -- convenience filters
   eleventyConfig.addFilter("filterTags", function(tags) {
     if (tags) return tags.filter(tag => !(tag in HIDDENTAGS))
   });
 
+  // -- convenience filters
   eleventyConfig.addFilter("arrayToString", function(arr) {
     if (arr) return arr.join(", ")
   });
 
+  // -- convenience filters
   eleventyConfig.addFilter("filesize", function(path) {
     let stat = fs.statSync('src/img/' + path);
     if (stat) {
