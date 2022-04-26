@@ -58,13 +58,13 @@ for (let dtsElem of document.getElementsByClassName('dragToScroll')) {
     dtsElem.addEventListener('mousedown', mouseDownHandler)
 
     for (let directChild of document.querySelectorAll('.dragToScroll a')) {
-        console.log(directChild)
         // Prevent dragging links
         directChild.addEventListener('dragstart', (e) => {
             e.preventDefault()
         })
 
         // Prevent mouse clicks when grabbing, allow if clean click
+        /*
         directChild.addEventListener('mouseup', (e) => {
             console.log(e.target.closest('a'))
             console.log(e.target.closest('.dragToScroll'))
@@ -76,6 +76,7 @@ for (let dtsElem of document.getElementsByClassName('dragToScroll')) {
             }
             return false
         })
+        */
     }
 }
 
