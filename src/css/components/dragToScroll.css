@@ -1,0 +1,9 @@
+/*
+Complements dragToScroll.js
+*/
+.dragToScroll {
+    cursor: grab;
+}
+.dragging {
+    cursor: grabbing;
+}

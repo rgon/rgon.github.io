@@ -1,0 +1,80 @@
+/* Use Firefox DevTools’ Grid Inspector */
+.collage {
+    --collage-height: 400px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(var(--collage-height) *1);
+    /*grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );*/
+    grid-template-rows: repeat(2, 50%);
+    grid-gap: 0px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: var(--collage-height);
+    width: 100%;
+}
+.collage .item {
+    box-sizing: border-box;
+    position: relative;
+    background-color: white;
+    overflow: hidden;
+}
+.collage .item img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    z-index: 4;
+    opacity: 1;
+    transition: .3s opacity;
+    pointer-events: none;
+}
+
+/* Description reveal on hover */
+.collage .item .description {
+    opacity: 1;
+    z-index: 1;
+    transition: .3s opacity;
+    top: 50%;
+    transform: translateY(-50%);
+    left:0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    display: block;
+    text-align: center;
+    padding: 0 2em;
+    box-sizing: border-box;
+    pointer-events: none;
+    user-select: none;
+}
+.collage .item .description a {
+    cursor: pointer;
+    pointer-events: all;
+}
+.collage:not(.dragging) .item:hover img {
+    opacity: .2;
+}
+
+/* Custom grid element sizing */
+.collage .item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+    background-color: red;
+}
+.collage .item:nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 2;
+    background-color: green;
+}
+.collage .item:nth-child(5) {
+    grid-column: span 2;
+    background-color: yellow;
+}
+.collage .item:nth-child(8) {
+    grid-row: span 2;
+    background-color: blue;
+}
