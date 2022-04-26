@@ -65,19 +65,16 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     position: relative;
     user-select: none;
 }
-.hero h1 {
+.hero h2 {
     font-size: 3em;
     margin-top: .5em;
     margin-bottom: 0;
 }
-.hero h2 {
+.hero h3 {
     margin-top: 0;
     font-size: 1.57em;
 }
 
-.githublogo {
-    vertical-align: middle;
-}
 .profilepic {
     height: 200px;
     width: 200px;
@@ -286,8 +283,8 @@ section, header {
             
                 <h2>{{ site.subTitle }}</h2>
                 <div class="horizontalflex socialLinks">
-                    <a class="stealth" href="https://github.com/rgon"><img class="githublogo" src="logo/github.svg" alt="github logo">github.com/rgon</a>
-                    <a class="stealth" href="https://instagram.com/gonruizp" target="_blank"><img class="iglogo" src="logo/instagram.svg" alt="instagram logo">instagr.am/gonruizp</a>
+                    <a class="stealth" href="https://github.com/rgon"><img class="githublogo" src="/logo/github.svg" alt="github logo">github.com/rgon</a>
+                    <a class="stealth" href="https://instagram.com/gonruizp" target="_blank"><img class="iglogo" src="/logo/instagram.svg" alt="instagram logo">instagr.am/gonruizp</a>
                 </div>
             </div>
 
@@ -327,10 +324,10 @@ section, header {
     </section>
 
     <header class="dark">
-        <div class="hero">
-            <h1><a class="hiddenlink" href="/" style="padding: 0;">{{ site.name }}</a></h1>
+        <div class="hero" aria-hidden="true">
+            <h2><a class="hiddenlink" href="/" style="padding: 0;">{{ site.name }}</a></h2>
         
-            <h2>{{ site.subTitle }}</h2>
+            <h3>{{ site.subTitle }}</h3>
         </div>
 
         <!-- main header title etc -->
@@ -340,7 +337,7 @@ section, header {
             <li><a class="stealth" href="/">Projects</a></li>
             <!-- <li><a href="#">Open Source</a></li> -->
             <li><a class="stealth" href="/">Curriculum Vitae</a></li>
-            <li><a class="stealth" href="/">Contact</a></li>
+            <li><a class="stealth" href="/contact/">Contact</a></li>
         </ul></nav>
         
         <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
@@ -393,13 +390,13 @@ section, header {
 
     <footer class="dark center">
         <p style="text-align: center;">Gonzalo Ruiz, independent Software Developer and Lighting Designer.</p>
-        <p><a href="/contact">Let's have a chat!</a></p>
+        <p><a href="/contact/">Let's have a chat!</a></p>
     </footer>
 
-<script src="js/main.js" type="text/javascript"></script>
-<script src="js/components/header.js" type="text/javascript"></script>
-<script src="js/components/dragToScroll.js" type="text/javascript"></script>
-<script src="js/components/horizontalMouseScroll.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/components/header.js" type="text/javascript"></script>
+<script src="/js/components/dragToScroll.js" type="text/javascript"></script>
+<script src="/js/components/horizontalMouseScroll.js" type="text/javascript"></script>
 
 <script>
 document.getElementById("dayNightToggle").checked = false

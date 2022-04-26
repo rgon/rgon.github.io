@@ -45,17 +45,17 @@ header > .hero {
         
     display: none;
 }
-header > .hero h1, header > .hero h2 {
+header > .hero h2, header > .hero h3 {
     margin: 0;
 }
-header > .hero h1 {
+header > .hero h2 {
     line-height: 80%;
     font-size: 3em;
     margin-top: 0;
     margin-bottom: 0;
 
 }
-header h1, header h2 {
+header h2, header h3 {
     white-space: nowrap;
     text-overflow: clip;
     margin-top: 0;
