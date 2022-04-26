@@ -4,6 +4,8 @@ In touch devices, only prevents dragging of child elements (but not drag-to-scro
 
 Non-destructive if noscript is enabled.
 */
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+
 let pos = { top: 0, left: 0, x: 0, y: 0 }
 var currentlyDraggedElement = undefined
 
@@ -76,3 +78,5 @@ for (let dtsElem of document.getElementsByClassName('dragToScroll')) {
         })
     }
 }
+
+// @license-end
