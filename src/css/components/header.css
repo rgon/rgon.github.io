@@ -27,11 +27,13 @@ header > nav ul {
     line-height: 180%;
 }
 header > nav ul li {
-    margin-right: 2em;
     /* margin-bottom: 2em; Using line-height  trick for better sticky reflow */
     list-style: none;
     text-transform: uppercase;
     font-weight: bold;
+}
+header > nav ul li:not(:last-child) {
+    margin-right: 2em;
 }
 header > .hero {
     box-sizing: border-box;
@@ -91,6 +93,7 @@ header.sticking > nav ul li {
 }
 header.sticking > .hero {
     display: flex;
+    margin-right: 2em;
 }
 header.expanded {
     height: auto;
