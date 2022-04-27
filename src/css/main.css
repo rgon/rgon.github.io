@@ -283,3 +283,21 @@ NOTE: Only works with a SINGLE paragraph or all inline elements! Not for multipl
         text-decoration: underline;
     }
 }
+
+/****************** ScrollClue ******************/
+.scrollClue {
+    overflow: visible;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrollClue::after {
+    display: none;
+    content: ">";
+    position: absolute;
+    transform: rotate(90deg);
+    font-size: 20px;
+    color: var(--text-color);
+}

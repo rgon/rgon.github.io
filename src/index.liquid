@@ -12,50 +12,11 @@ canonical: null
     {%- capture fullTitle %}{{ site.name }} | {{ site.subTitle }}{% endcapture %}
     {% include "components/head" %}
     <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/hero.css" />
     <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
     <link rel="stylesheet" type="text/css" href="/css/components/collage.css" />
     <link rel="stylesheet" type="text/css" href="/css/components/dragToScroll.css" />
     <style>
-        .hero {
-            box-sizing: border-box;
-            /* min-width: 450px;*/
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            flex-grow: 100;
-
-            position: relative;
-            user-select: none;
-        }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-top: .5em;
-            margin-bottom: 0;
-        }
-
-        .hero h2 {
-            margin-top: 0;
-            font-size: 1.57em;
-        }
-
-        .profilepic {
-            height: 200px;
-            width: 200px;
-            opacity: 0.75;
-            border-radius: 50%;
-        }
-
-        .profilewrapper {
-            align-self: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* ************ */
         .postList {
             padding-left: 1em;
         }
@@ -65,7 +26,6 @@ canonical: null
             padding: 10px 0;
             /* Lighthouse perfect score */
         }
-
         .postList li::before {
             content: "</>";
             font-size: .8em;
@@ -77,11 +37,9 @@ canonical: null
         .postList li a {
             border-bottom: none;
         }
-
         .postList li a:hover {
             border-bottom: none;
         }
-
         .postList li a:hover h3 {
             text-decoration: underline;
         }
@@ -101,23 +59,6 @@ canonical: null
             display: inline-block;
             transform: translateY(-5px);
             /* "Vertical-align" */
-        }
-
-        .scrollClue {
-            overflow: visible;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .scrollClue::after {
-            display: none;
-            content: ">";
-            position: absolute;
-            transform: rotate(90deg);
-            font-size: 20px;
-            color: var(--text-color);
         }
 
         /* ************ */
@@ -203,7 +144,6 @@ canonical: null
         header {
             transition: color .5s;
         }
-
         .night {
             --text-dark: #c45018;
         }
@@ -211,7 +151,6 @@ canonical: null
         #frontpageFeatured {
             position: relative;
         }
-
         .night #frontpageFeatured .mainportfolio {
             opacity: 0;
             pointer-events: none;
@@ -227,7 +166,6 @@ canonical: null
         }
 
         @media only screen and (max-width: 450px) {
-
             /* Sync with .viewport/.readerblock */
             #frontpageFeatured .hiddenportfolio {
                 left: 0;
