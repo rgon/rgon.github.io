@@ -352,8 +352,9 @@ header.nocontact li:last-child {
 
 <script src="/js/main.js" type="text/javascript"></script>
 <script src="/js/components/header.js" type="text/javascript"></script>
-<script src="/js/components/dragToScroll.js" type="text/javascript"></script>
 <script src="/js/components/collage.js" type="text/javascript"></script>
+<script src="/js/components/knackeredText.js" type="text/javascript"></script>
+<script src="/js/components/dragToScroll.js" type="text/javascript"></script>
 <script src="/js/components/horizontalMouseScroll.js" type="text/javascript"></script>
 
 <script>
@@ -377,30 +378,12 @@ window.addEventListener('load', () => {
   document.getElementById("bgimgSaturated").src = document.getElementById("bgimg").src
   document.querySelector(".mainbg").classList.toggle("loaded")
 
-  // -- auto check night mode
+  // -- auto enable night mode
   setTimeout(() => {
     document.getElementById("dayNightToggle").click()
   }, 500);
 
-
-  // -- knackered text animation
-  for (let elem of document.getElementsByClassName('knackered')) {
-    if (!elem.getAttribute('aria-label')) {
-      elem.setAttribute('aria-label', elem.innerHTML)
-    }
-  }
-
-  const knackChars = "$&[{}(=*)+]!#/@_-?^|%"
-  window.setInterval(() => {
-    for (let elem of document.getElementsByClassName('knackered')) {
-      let content = elem.getAttribute('aria-label')
-      rndIdx = Math.floor(Math.random() * (content.length -1))
-      if (content[rndIdx] === " ") rndIdx++ // Changing spaces causes reflows
-
-      content[Math.floor(Math.random() * content.length)] = knackChars[Math.floor(Math.random() * knackChars.length)]
-      elem.innerHTML = content.substring(0, rndIdx) + knackChars[Math.floor(Math.random() * knackChars.length)] + content.substring(rndIdx + 1)
-    }
-  }, 200)
+  knackeredTextBegin()
 })
 </script>
 </body>
