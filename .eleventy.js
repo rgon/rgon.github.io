@@ -11,9 +11,14 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const OUTPUTDIR = './docs'
 const HIDDENTAGS = {'posts': 0, 'projects': 0}
 
+const ImageWidths = {
+  ORIGINAL: null,
+  PLACEHOLDER: 24,
+};
+
 async function imageShortcode(src, alt, _class, sizes) {
   let metadata = await Image('src' + (src[0] === '/' ? '' : '/') + src, {
-    widths: [300, 600],
+    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 600, 1280],
     outputDir: OUTPUTDIR + "/img/",
     formats: ["avif", "webp", "jpeg"]
   });
