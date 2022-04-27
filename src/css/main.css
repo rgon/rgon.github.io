@@ -268,12 +268,7 @@ NOTE: Only works with a SINGLE paragraph or all inline elements! Not for multipl
 }
 
 /****************** Hover effects ******************/
-@media (hover: hover) and (pointer: fine) {
-    .socialLinks a:hover {
-        border-color: transparent;
-        border-bottom-color: transparent;
-        text-decoration: underline;
-    }
+@media (hover: hover) {
     a:not(.hiddenlink):hover {
         border-color: #a0a0a0;
         border-bottom-style: solid;
@@ -281,5 +276,10 @@ NOTE: Only works with a SINGLE paragraph or all inline elements! Not for multipl
     .light a:not(.hiddenlink):hover {
         border-color: black; /* TODO */
         border-bottom-style: solid;
+    }
+    .socialLinks a:hover {
+        border-color: transparent;
+        border-bottom-color: transparent;
+        text-decoration: underline;
     }
 }
