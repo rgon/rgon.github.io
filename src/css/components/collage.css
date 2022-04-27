@@ -11,7 +11,13 @@
     overflow-x: auto;
     overflow-y: hidden;
     height: var(--collage-height);
-    width: 100%;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    /* So it can be centered when there aren't enough items */
+    width: auto;
+    max-width: 100%;
 }
 .collage .item {
     box-sizing: border-box;
