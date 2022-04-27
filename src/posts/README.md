@@ -5,6 +5,7 @@ tags:
   - reverse engineering
   - open source
 pageTitle: Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them
+description: Disassembling an Android app provided by the chinese vendor of TPMS sensors revealed they communicate with a USB-Serial protocol and simple commands. The binary file included pressure and temperature coefficients which would've been difficult to get otherwise.
 # coverVideo: /vid/vid3.mp4
 ---
 

@@ -65,12 +65,12 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     position: relative;
     user-select: none;
 }
-.hero h2 {
+.hero h1 {
     font-size: 3em;
     margin-top: .5em;
     margin-bottom: 0;
 }
-.hero h3 {
+.hero h2 {
     margin-top: 0;
     font-size: 1.57em;
 }
@@ -279,7 +279,7 @@ section, header {
     <section class="fullpage center dark" style="min-height: calc(100vh - 150px); background-color: transparent;">
         <div class="horizontalflex viewport">
             <div class="hero" style="margin-top: 2em;">
-                <h1><a class="hiddenlink" href="/" style="padding: 0;">{{ site.name }}</a></h1>
+                <h1><a class="hiddenlink" href="/" style="padding: 0;" tabindex="-1">{{ site.name }}</a></h1>
             
                 <h2>{{ site.subTitle }}</h2>
                 <div class="horizontalflex socialLinks">
@@ -333,10 +333,10 @@ section, header {
         <!-- main header title etc -->
         <nav class="viewport">
         <ul>
-            <li><a class="stealth" href="/">Journal</a></li>
-            <li><a class="stealth" href="/">Projects</a></li>
+            <li><a class="stealth" href="/posts/">Journal</a></li>
+            <li><a class="stealth" href="/projects/">Projects</a></li>
             <!-- <li><a href="#">Open Source</a></li> -->
-            <li><a class="stealth" href="/">Curriculum Vitae</a></li>
+            <li><a class="stealth" href="/projects/ld/">Lighting</a></li>
             <li><a class="stealth" href="/contact/">Contact</a></li>
         </ul></nav>
         
@@ -368,12 +368,29 @@ section, header {
 
             <div class="center">
                 <div class="readerblock" style="text-align: center;">
-                    <a href="/">View more projects</a> or <a href="/">consult my journal entries</a> for more of my works.
+                    <a href="/projects/">View more projects</a> or <a href="/posts/">consult my journal entries</a> for more of my works.
                 </div>
             </div>
         </div>
     </section>
 
+    <style>
+        /* Custom grid element sizing */
+        .collage .item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .collage .item:nth-child(4) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .collage .item:nth-child(5) {
+            grid-column: span 2;
+        }
+        .collage .item:nth-child(8) {
+            grid-row: span 2;
+        }
+    </style>
     <section class="light" style="padding:0;">
         <div class="collage dragToScroll horizontalMouseScroll">
 {%- for i in (1..12) %}

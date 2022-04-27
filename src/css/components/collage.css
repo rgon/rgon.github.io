@@ -16,7 +16,7 @@
 .collage .item {
     box-sizing: border-box;
     position: relative;
-    background-color: white;
+    background-color: var(--bg-color);
     overflow: hidden;
 }
 .collage .item img {
@@ -60,21 +60,19 @@
 }
 
 /* Custom grid element sizing */
+/*
 .collage .item:first-child {
     grid-column: span 2;
     grid-row: span 2;
-    background-color: red;
 }
 .collage .item:nth-child(4) {
     grid-column: span 2;
     grid-row: span 2;
-    background-color: green;
 }
 .collage .item:nth-child(5) {
     grid-column: span 2;
-    background-color: yellow;
 }
 .collage .item:nth-child(8) {
     grid-row: span 2;
-    background-color: blue;
 }
+*/
