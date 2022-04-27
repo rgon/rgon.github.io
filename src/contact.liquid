@@ -259,9 +259,6 @@ section, header {
 .frontpageFeatured li h3 {
   font-family: monospace;
 }
-header.nocontact li:last-child {
-    display: none;
-}
 </style>
 </head>
 <body>
@@ -319,7 +316,7 @@ header.nocontact li:last-child {
         </section>
     </section>
 
-    {% include "components/header", classes:"fixed nostick nocontact" %}
+    {% include "components/header", classes:"fixed nostick", contact: false %}
     
     <style>
         /* Custom grid element sizing */
