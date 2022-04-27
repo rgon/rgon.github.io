@@ -215,17 +215,17 @@ article.mainPost {
 }
 
 /* Cleaner header */
-header:not(.expanded) ul li a:not(:hover), header button:not(:hover, :active) {
+header.navOpacityOnScroll:not(.expanded) ul li a:not(:hover), header.navOpacityOnScroll button:not(:hover, :active) {
     opacity: .5;
     transition: .7s opacity;
 }
-header.titleScrolled ul li a, header.titleScrolled button {
+header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.titleScrolled button {
     opacity: 1!important;
 }
 </style>
 </head>
 <body>
-    <header class="dark isfirst sticking">
+    <header class="dark isfirst sticking navOpacityOnScroll">
         <div class="hero">
             <h2><a class="hiddenlink" href="/" style="padding: 0;">{{ site.name }}</a></h2> 
             <h3>{{ site.subTitle }}</h3>
@@ -233,16 +233,15 @@ header.titleScrolled ul li a, header.titleScrolled button {
 
         <div class="currentIndex">
             <h3 id="readingIndex" class="trimLines criticalHeight" style="--max-lines: 4;"></h3>
-            <!-- And some shitcode for your pleasure with a very very very long section name -->
         </div>
 
         <!-- main header title etc -->
         <nav class="viewport">
         <ul>
-            <li><a class="stealth" href="/">Journal</a></li>
-            <li><a class="stealth" href="/">Projects</a></li>
+            <li><a class="stealth" href="/posts/">Journal</a></li>
+            <li><a class="stealth" href="/projects/">Projects</a></li>
             <!-- <li><a href="#">Open Source</a></li> -->
-            <li><a class="stealth" href="/">Curriculum Vitae</a></li>
+            <li><a class="stealth" href="/lighting/">Lighting</a></li>
             <li><a class="stealth" href="/contact/">Contact</a></li>
         </ul></nav>
         
@@ -324,7 +323,7 @@ detectScroll(document.querySelector('.readingIndexClear'), (e) => {
     document.getElementById('readingIndexDesktop').innerHTML = 'intro'
 })
 
-// Header items get the classed titlescrolled if the title has been scrolled past
+// Header items get the class titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#pageTitle'), (e) => {
     document.getElementsByTagName('header')[0].classList.toggle('titleScrolled')
 })

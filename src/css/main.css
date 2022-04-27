@@ -204,7 +204,7 @@ footer {
     justify-content: space-between;
     width: 100%;
 
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     overflow: hidden;
 }
 

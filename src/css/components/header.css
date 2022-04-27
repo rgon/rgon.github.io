@@ -129,3 +129,6 @@ header.expanded > .expand::after {
         display: flex;
     }
 }
+header.nostick {
+    position: relative;
+}
