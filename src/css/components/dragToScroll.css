@@ -3,6 +3,7 @@ Complements dragToScroll.js
 */
 .dragToScroll {
     cursor: grab;
+    user-select: none;
 }
 .dragging {
     cursor: grabbing;

@@ -55,7 +55,12 @@
     cursor: pointer;
     pointer-events: all;
 }
-.collage:not(.dragging) .item:hover img {
+@media (hover: hover) and (pointer: fine) {
+    .collage:not(.dragging) .item:hover img {
+        opacity: .2;
+    }
+}
+.collage:not(.dragging) .item.active img {
     opacity: .2;
 }
 
