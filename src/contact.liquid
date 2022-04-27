@@ -297,7 +297,7 @@ header.nocontact li:last-child {
                         <li><h3><s>Fixing your printer</s></h3></li>
                     </ul>
                 </div>
-                <a class="stealth mailLink" data-mail="" href="mailto:mailme@example.com">nospam@rgon.es</a>
+                <a class="stealth mailLink encMail" href="mailto:mailme@example.com?Subject=%C2%A1Hola Gonzalo!">uhehgqg@jzfb.wl</a>
 
                 <div class="purpose">
                     <h3>Light up my life:</h3>
@@ -309,7 +309,7 @@ header.nocontact li:last-child {
                         <li><h3><s>Holding a flashlight</s></h3></li>
                     </ul>
                 </div>
-                <a class="stealth mailLink" data-mail="" href="mailto:mailme@example.com">nospam@rgon.es</a>
+                <a class="stealth mailLink encMail" href="mailto:mailme@example.com?Subject=%C2%A1Hola Gonzalo!">dbxvzwau@jzfb.wl</a>
             </div>
 
             <div class="purpose" style="width: 100%;">
@@ -352,6 +352,7 @@ header.nocontact li:last-child {
 
     <script src="/js/scrollTools.js" type="text/javascript"></script>
     <script src="/js/dragToScroll.js" type="text/javascript"></script>
+    <script src="/js/decryptMail.js" type="text/javascript"></script>
     <script src="/js/horizontalMouseScroll.js" type="text/javascript"></script>
     <script src="/js/components/header.js" type="text/javascript"></script>
     <script src="/js/components/collage.js" type="text/javascript"></script>
@@ -369,6 +370,7 @@ document.getElementById("dayNightToggle").addEventListener('change', (event) => 
     document.getElementsByTagName("header")[0].classList.toggle("light");
     */
     document.querySelector(".mainbg").classList.toggle("night");
+    decryptAllAddressesOnPage('strogonoff')
 })
 
 window.addEventListener('load', () => {
