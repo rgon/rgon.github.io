@@ -208,16 +208,16 @@ canonical: null
             --text-dark: #c45018;
         }
 
-        #recentPosts {
+        #frontpageFeatured {
             position: relative;
         }
 
-        .night #recentPosts .mainportfolio {
+        .night #frontpageFeatured .mainportfolio {
             opacity: 0;
             pointer-events: none;
         }
 
-        #recentPosts .hiddenportfolio {
+        #frontpageFeatured .hiddenportfolio {
             position: absolute;
             top: 2em;
             left: 2em;
@@ -229,24 +229,24 @@ canonical: null
         @media only screen and (max-width: 450px) {
 
             /* Sync with .viewport/.readerblock */
-            #recentPosts .hiddenportfolio {
+            #frontpageFeatured .hiddenportfolio {
                 left: 0;
                 right: 0;
             }
         }
 
         @media only screen and (max-height: 800px) {
-            #recentPosts {
+            #frontpageFeatured {
                 padding-top: 0;
                 padding-bottom: 0;
             }
 
-            #recentPosts .hiddenportfolio {
+            #frontpageFeatured .hiddenportfolio {
                 top: 0;
             }
         }
 
-        .night #recentPosts .hiddenportfolio {
+        .night #frontpageFeatured .hiddenportfolio {
             opacity: 1;
             pointer-events: all;
         }
@@ -296,15 +296,14 @@ canonical: null
             </div>
         </div>
 
-        <section class="readerblock" style="margin-top: 2em;" id="recentPosts">
+        <section class="readerblock" style="margin-top: 2em;" id="frontpageFeatured">
             <div class="mainportfolio">
-                <h2>About me:</h2>
+                <h2 style="margin-top: 0;">About me:</h2>
                 <h3 class="knackered">
                     Discovering my passion for electronics thanks to music since age 10, and building my own devices,
                     instruments and speakers with microcontrollers led me to my current field: software development and
                     architecture.
-                    From mechanics work to PCB design and, solving complex problems "magically" with lines of code is
-                    what drives my day.
+                    From mechanics work to PCB design, solving complex problems "magically" with lines of code or engineering practices drives my day.
                 </h3>
                 <h3 class="knackered">
                     And don't forget to mix music somewhere in between, nothing transmits feelings better than it does!

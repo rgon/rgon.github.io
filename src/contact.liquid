@@ -172,12 +172,12 @@ section, header {
     margin-right: 0;
     margin-left: 1em;
 }
-.recentPosts {
+.frontpageFeatured {
     width: 100%;
     max-width: 1000px;
     position: relative;
 }
-.recentPostsGrid {
+.frontpageFeaturedGrid {
     width: 100%;
     display: grid;
     --auto-grid-min-size: 350px;
@@ -189,13 +189,13 @@ section, header {
 }
 
 @media only screen and (max-width: 600px) {
-    .recentPostsGrid {
+    .frontpageFeaturedGrid {
         --auto-grid-min-size: 300px;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .recentPosts {
+    .frontpageFeatured {
         padding: 0;
     }
 }
@@ -218,7 +218,7 @@ section, header {
   }
 }
 
-.recentPosts ul {
+.frontpageFeatured ul {
     --revealingTexts-windowHeight: 2em;
     --revealingText-elements: 5;
 
@@ -226,7 +226,7 @@ section, header {
     overflow: hidden;
     user-select: none;
 }
-.recentPosts ul li {
+.frontpageFeatured ul li {
     height: 1em;
     margin-bottom: 2em;
     padding-top: 0;
@@ -237,7 +237,7 @@ section, header {
     animation-timing-function: linear;
     transform: translateY(2em);
 }
-.recentPosts .postList:nth-child(2) li{
+.frontpageFeatured .postList:nth-child(2) li{
     animation-delay: .5s;
 }
 
@@ -256,7 +256,7 @@ section, header {
 .postList li::before { /* Because it's knackered with monospace, override. */
   margin-top: -.2em;
 }
-.recentPosts li h3 {
+.frontpageFeatured li h3 {
   font-family: monospace;
 }
 header.nocontact li:last-child {
@@ -285,8 +285,8 @@ header.nocontact li:last-child {
             </div>
         </div>
 
-        <section class="recentPosts">
-            <div class="recentPostsGrid">
+        <section class="frontpageFeatured">
+            <div class="frontpageFeaturedGrid">
                 <div class="purpose">
                     <h3 class="">Code my way to valhalla:</h3>
                     <ul class="postList">
