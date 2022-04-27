@@ -1,0 +1,26 @@
+<header class="dark {{ classes }}">
+    <div class="hero" aria-hidden="true">
+        <h2><a class="hiddenlink" href="/" style="padding: 0;">{{ site.name }}</a></h2>
+    
+        <h3>{{ site.subTitle }}</h3>
+    </div>
+
+{%- if readingIndex %}
+    <div class="currentIndex">
+        <h3 id="readingIndex" class="trimLines criticalHeight" style="--max-lines: 4;"></h3>
+        <!-- And some shitcode for your pleasure with a very very very long section name -->
+    </div>
+{% endif %}
+
+    <!-- main header title etc -->
+    <nav class="viewport">
+    <ul>
+        <li><a class="stealth" href="/posts/">Journal</a></li>
+        <li><a class="stealth" href="/projects/">Projects</a></li>
+        <!-- <li><a href="#">Open Source</a></li> -->
+        <li><a class="stealth" href="/projects/ld/">Lighting</a></li>
+        <li><a class="stealth" href="/contact/">Contact</a></li>
+    </ul></nav>
+    
+    <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
+</header>

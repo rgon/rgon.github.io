@@ -132,3 +132,6 @@ header.expanded > .expand::after {
 header.nostick {
     position: relative;
 }
+header.fixed {
+    top: 0px;
+}

@@ -5,7 +5,7 @@ tags:
   - electronics
   - embedded
   - open source
-pageTitle: Vehicle pneumatic (air) suspension system
+title: Vehicle pneumatic (air) suspension system
 coverImage: img/wip.svg
 description: 'Mechanic system design and install. Custom-designed pneumatic controller from firmware to PCB. Much more affordable and programmable than competing products, while meeting safety standards.'
 ---

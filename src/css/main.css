@@ -73,14 +73,6 @@ a.stealth, a.hiddenlink {
     border-color: transparent;
     border-bottom-style: solid;
 }
-a:not(.hiddenlink):hover {
-    border-color: #a0a0a0;
-    border-bottom-style: solid;
-}
-.light a:not(.hiddenlink):hover {
-    border-color: black; /* TODO */
-    border-bottom-style: solid;
-}
 
 /* Page overrides */
 head, body {
@@ -223,11 +215,6 @@ footer {
     height: 35px;
     margin-right: 10px;
 }
-.socialLinks a:hover {
-    border-color: transparent;
-    border-bottom-color: transparent;
-    text-decoration: underline;
-}
 
 /* ********************** */
 /* CSS-Based max text lines for element 
@@ -278,4 +265,21 @@ NOTE: Only works with a SINGLE paragraph or all inline elements! Not for multipl
         on a trimmeng        ... <--------- dots at end
     */
     position: absolute;
+}
+
+/****************** Hover effects ******************/
+@media (hover: hover) and (pointer: fine) {
+    .socialLinks a:hover {
+        border-color: transparent;
+        border-bottom-color: transparent;
+        text-decoration: underline;
+    }
+    a:not(.hiddenlink):hover {
+        border-color: #a0a0a0;
+        border-bottom-style: solid;
+    }
+    .light a:not(.hiddenlink):hover {
+        border-color: black; /* TODO */
+        border-bottom-style: solid;
+    }
 }
