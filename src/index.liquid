@@ -281,12 +281,7 @@ canonical: null
                 <h1><a class="hiddenlink" href="/" style="padding: 0;" tabindex="-1">{{ site.name }}</a></h1>
 
                 <h2>{{ site.subTitle }}</h2>
-                <div class="horizontalflex socialLinks">
-                    <a class="stealth" href="https://github.com/rgon"><img src="/logo/github.svg"
-                            alt="" aria-hidden="true">github.com/rgon</a>
-                    <a class="stealth" href="https://instagram.com/gonruizp" target="_blank"><img
-                            src="/logo/instagram.svg" alt="" aria-hidden="true">instagr.am/gonruizp</a>
-                </div>
+                {% include "components/socialLinks", linkedin: false %}
             </div>
 
             <div class="profilewrapper">
