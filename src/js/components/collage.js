@@ -32,6 +32,12 @@ for (let itemInCollage of document.querySelectorAll('.collage .item')) {
         itemInCollage.classList.add('active')
     })
 }
+for (let aInCollage of document.querySelectorAll('.collage a')) {
+    aInCollage.addEventListener('dragstart', (e) => {
+        e.preventDefault()
+    })
+}
+
 
 document.querySelector('.collage').addEventListener('scroll', function(e) {
     if (activeElementsExist) scrollCallback()
