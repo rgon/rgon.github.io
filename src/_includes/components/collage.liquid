@@ -11,6 +11,6 @@
 </div>
 {% if noCallToAction != true %}
 <div class="collageCallToAction">
-    <a class="dark stealth" href="/gallery/">View lighting design gallery -></a>
+    <a class="dark stealth" href="/gallery/">{{ customCallToAction | default: 'View lighting design gallery ->'}}</a>
 </div>
 {% endif %}

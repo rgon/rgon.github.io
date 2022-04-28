@@ -143,10 +143,6 @@ button {
     font-family: unset;
     margin: unset;
 }
-button:hover {
-    background-color: rgba(100,100,100, 0.3);
-}
-
 .viewport {
     width: 100%;
     max-width: 1000px;
@@ -270,6 +266,10 @@ NOTE: Only works with a SINGLE paragraph or all inline elements! Not for multipl
 
 /****************** Hover effects ******************/
 @media (hover: hover) {
+    button:hover {
+        background-color: rgba(100,100,100, 0.3);
+    }
+    
     a:not(.hiddenlink):hover {
         border-color: #a0a0a0;
         border-bottom-style: solid;

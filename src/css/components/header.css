@@ -24,21 +24,22 @@ header > nav ul {
     flex-wrap: wrap;
     padding: 0;
     margin: 0;
-    line-height: 180%;
+    
+    /* Not adding the negative margin workaround since in browsers that don't support it, only for
+    a few resolutions will it be a problem. So low usage, low probability, low importance = not implementing */
+    gap: 0 2em;
 }
 header > nav ul li {
-    /* margin-bottom: 2em; Using line-height  trick for better sticky reflow */
     list-style: none;
     text-transform: uppercase;
     font-weight: bold;
+
+    /* Fix: better nav element sepparation */
+    line-height: 90%;
+    padding-top: .5em;
+    padding-bottom: .5em;
 }
-header > nav ul li:not(:first-child) {
-    margin-left: 2em;
-}
-header.sticking > nav ul li {
-    /* If hero visible, every element should be spaced the same amount */
-    margin-left: 2em;
-}
+
 header > .hero {
     box-sizing: border-box;
     /* min-width: 450px;*/
@@ -105,7 +106,9 @@ header.expanded {
 header.expanded > .hero {
     display: none;
 }
-
+header.expanded .viewport {
+    padding-left: 0;
+}
 header > .expand {
     display: none;
     width: 50px;
