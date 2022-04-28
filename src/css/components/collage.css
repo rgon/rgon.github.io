@@ -70,6 +70,40 @@
     opacity: .2;
 }
 
+.collageCallToAction {
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent, var(--bg-dark));
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2em;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+.collageCallToAction a {
+    pointer-events: all;
+    color: var(--text-dark);
+    font-size: 2em;
+}
+@media screen and (max-width: 720px) {
+    .collage {
+        grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .collage .item .description {
+        display: none;
+    }
+    .collage .item img {
+        opacity: 1 !important; /* Override */
+    }
+    .collageCallToAction {
+        height: 150px;
+    }
+}
 /* Custom grid element sizing */
 /*
 .collage .item:first-child {

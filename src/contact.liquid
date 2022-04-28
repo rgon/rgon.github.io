@@ -284,6 +284,8 @@ section, header {
 
     {% include "components/header", classes:"fixed nostick", contact: false %}
     
+    <div class="scrollClue dark"></div>
+    
     <style>
         /* Custom grid element sizing */
         .collage .item:first-child {
@@ -302,10 +304,8 @@ section, header {
         }
     </style>
     <section class="light center" style="padding:0; background-color: transparent;">
-        {% include "components/collage" %}
+        {% include "components/collage", noCallToAction %}
     </section>
-
-    <div class="scrollClue dark"></div>
 
     {% include "components/footer", message: "Go back to the home page.", messageLink: "/" %}
 
