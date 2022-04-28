@@ -32,8 +32,12 @@ header > nav ul li {
     text-transform: uppercase;
     font-weight: bold;
 }
-header > nav ul li:not(:last-child) {
-    margin-right: 2em;
+header > nav ul li:not(:first-child) {
+    margin-left: 2em;
+}
+header.sticking > nav ul li {
+    /* If hero visible, every element should be spaced the same amount */
+    margin-left: 2em;
 }
 header > .hero {
     box-sizing: border-box;
