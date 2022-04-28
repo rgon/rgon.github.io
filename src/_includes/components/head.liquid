@@ -25,9 +25,9 @@ Optional
     <!-- openGraph -->
     <meta property="og:site_name" content="{{ site.name }}" />
     <meta property="og:title" content="{{ fullTitle | trimString: 35 }}" />
-    <meta property="og:url" content="{{ site.canonicalBase }}{{ page.url }}" />
+    <meta property="og:url" content="{{ page.url | absoluteurl }}" />
     <meta property="og:description" content="{{ description | default: site.description | trimString: 65 }}" />
-    <meta property="og:image" content="{{ site.canonicalBase }}{{ coverImage | default: site.coverImage }}" />
+    <meta property="og:image" content="{{ coverImage | default: site.coverImage | absoluteurl }}" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content="{{ fullTitle | trimString: 65}}" />
     <meta property="og:locale" content="en_US" />
@@ -48,7 +48,7 @@ Optional
 {%- if canonical %}
     <link rel="canonical" href="{{ canonical }}"/>
 {% else %}
-<link rel="canonical" href="{{ site.canonicalBase }}{{ page.url }}"/>
+<link rel="canonical" href="{{ page.url | absoluteurl }}"/>
 {% endif %}
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
 

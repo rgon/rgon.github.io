@@ -1,3 +1,4 @@
+const siteData = require("./src/_data/site.json")
 const fs = require("fs");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const Image = require("@11ty/eleventy-img");
@@ -141,6 +142,18 @@ module.exports = function(eleventyConfig) {
       return (stat.size/1024).toFixed(2) + " KB";
     }
     return "";
+  });
+
+  eleventyConfig.addFilter("absoluteurl", function(page, root=undefined) {
+    if (!root) root = siteData.canonicalBase
+    if (root[root.length-1] != '/') root += '/'
+
+    if (page.startsWith(root)) return page
+    else {
+      if (page.startsWith('/')) page = page.slice(1)
+
+      return root + page
+    }
   });
 
   // -- eleventy run
