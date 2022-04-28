@@ -56,7 +56,7 @@ function decryptStr (str, pass) {
     // Vigenere cypher implementation
     for (let i=0; i<str.length; i++) {
         const passCode = pass[i % pass.length].charCodeAt() - aOffset
-        let decypheredChar = (str[i].charCodeAt() - aOffset - passCode)
+        const decypheredChar = (str[i].charCodeAt() - aOffset - passCode)
         
         // Now that we subtract the passCode, we may get negative numbers. Roll back to the last char in that case
         decString += String.fromCharCode((decypheredChar > 0 ? decypheredChar : decypheredChar + vigenereModulus) % vigenereModulus + aOffset)

@@ -17,15 +17,15 @@ const ImageWidths = {
 };
 
 async function imageShortcode(src, alt, _class, sizes) {
-  let metadata = await Image('src' + (src[0] === '/' ? '' : '/') + src, {
+  const metadata = await Image('src' + (src[0] === '/' ? '' : '/') + src, {
     widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 600, 1280],
     outputDir: OUTPUTDIR + "/img/",
     formats: ["avif", "webp", "jpeg"]
   });
 
-  console.log(src, alt, sizes)
+  // console.log(src, alt, sizes)
 
-  let imageAttributes = {
+  const imageAttributes = {
     class: (_class ? _class : ''),
     alt: (alt ? alt : ''),
     sizes: sizes ? sizes : "(min-width: 1024px) 100vw, 50vw",
@@ -63,7 +63,7 @@ module.exports = function(eleventyConfig) {
 	function markdownItSlugify(s) {
     return slugify(removeExtraText(s), { lower: true, remove: /[:’'`,]/g });
   }
-	let mdIt = markdownIt({
+	const mdIt = markdownIt({
 		html: true,
 		breaks: true,
 		linkify: true
@@ -136,7 +136,7 @@ module.exports = function(eleventyConfig) {
 
   // -- convenience filters
   eleventyConfig.addFilter("filesize", function(path) {
-    let stat = fs.statSync('src/img/' + path);
+    const stat = fs.statSync('src/img/' + path);
     if (stat) {
       return (stat.size/1024).toFixed(2) + " KB";
     }

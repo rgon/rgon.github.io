@@ -13,7 +13,7 @@ function scrollCallback (dragging=true) {
     removeOtherActive()
 }
 
-let observer = new IntersectionObserver(scrollCallback, {
+const observer = new IntersectionObserver(scrollCallback, {
     root: document.querySelector('.collage'),
     rootMargin: '0px',
     threshold: 1.0
