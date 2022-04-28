@@ -34,10 +34,10 @@ Optional
     <meta property="og:image:alt" content="Reverse-engineering and controlling a Martin M-touch using..." />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202204280207"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202204280207" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202204281319"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202204281319" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202204280207" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202204281319" />
 <link rel="canonical" href="https://www.rgon.es/posts/reverse-engineering-and-controlling-a-martin-m-touch-using-python/"/>
 
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
@@ -225,7 +225,7 @@ article.mainPost {
 
 /* ------------ ------------- */
 .bgImg {
-    --header-height: 100px;
+    --header-height: 150px;
     position: absolute;
     top: calc(-1 * var(--header-height));
     bottom: 0;
@@ -381,18 +381,22 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
 <script src="/js/scrollTools.js" type="text/javascript"></script>
 <script src="/js/components/header.js" type="text/javascript"></script>
 <script>
-for (let elem of document.getElementsByClassName('header-anchor')) {
-    detectScroll(elem.parentNode, (e) => {
-        if (e.scrolled) {
-            document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-            document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-        }
-    }, false)
-}
+let anchorElements = []
+document.querySelectorAll('.header-anchor').forEach(elem => anchorElements.push(elem.parentNode))
+detectScroll(anchorElements, (e) => {
+    // If scrolled on top of page
+    if (e.scrolled) {
+        document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+    }
+})
+
 detectScroll(document.querySelector('.readingIndexClear'), (e) => {
     document.getElementById('readingIndexDesktop').innerHTML = 'intro'
     document.getElementById('readingIndex').innerHTML = ''
-}, false)
+}, {
+    threshold: [1]
+})
 
 // Header items get the class titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#title'), (e) => {

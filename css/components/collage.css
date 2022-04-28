@@ -79,15 +79,21 @@
     z-index: 30;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding-left: 2em;
+    align-items: flex-end;
+    padding: 0 2em .8em 2em;
     box-sizing: border-box;
     pointer-events: none;
 }
 .collageCallToAction a {
     pointer-events: all;
     color: var(--text-dark);
-    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2em;
+    opacity: .6;
+}
+.collageCallToAction a:hover {
+    opacity: 1;
 }
 @media screen and (max-width: 720px) {
     .collage {
@@ -101,7 +107,12 @@
         opacity: 1 !important; /* Override */
     }
     .collageCallToAction {
-        height: 150px;
+        height: 100%;
+        background: #00000088;
+        align-items: center;
+    }
+    .collageCallToAction a {
+        opacity: 1;
     }
 }
 /* Custom grid element sizing */
