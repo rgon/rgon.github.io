@@ -135,3 +135,12 @@ header.nostick {
 header.fixed {
     top: 0px;
 }
+
+header.sticking:not(.expanded) {
+    overflow: hidden;
+}
+#readingIndex {
+    font-weight: bold;
+    size: 1rem;
+    display: inline-block;
+}

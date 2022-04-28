@@ -3,6 +3,8 @@
 <head>
     {% include "components/head" %}
     <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.print.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.css" />
     <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
     <link rel="stylesheet" type="text/css" href="/css/components/collage.css" />
     <link rel="stylesheet" type="text/css" href="/css/components/dragToScroll.css" />
@@ -99,7 +101,7 @@ aside .expandIndex {
     }
 }
 /* ***************** */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
     header > .hero {
         font-size: .7em;
     }
@@ -255,14 +257,16 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
 <script>
 for (let elem of document.getElementsByClassName('header-anchor')) {
     detectScroll(elem.parentNode, (e) => {
-        document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-    })
+        if (e.scrolled) {
+            document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+            document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+        }
+    }, false)
 }
 detectScroll(document.querySelector('.readingIndexClear'), (e) => {
     document.getElementById('readingIndexDesktop').innerHTML = 'intro'
     document.getElementById('readingIndex').innerHTML = ''
-})
+}, false)
 
 // Header items get the class titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#title'), (e) => {

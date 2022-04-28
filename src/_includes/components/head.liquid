@@ -15,7 +15,7 @@ Optional
 {%- capture fullTitle %}{{ title }} | {{ site.name }}{% endcapture %}
 {% endif %}
     <title>{{ fullTitle | trimString: 65 }}</title>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta charset="UTF-8" />
     <meta name="description" content="{{ description | default: site.description | trimString: 155 }}" />
