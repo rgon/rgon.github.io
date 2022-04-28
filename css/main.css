@@ -151,7 +151,7 @@ button {
     box-sizing: border-box;
 }
 @media only screen and (max-width: 450px) {
-    section .viewport, ul.viewport {
+    .viewport {
         padding-left: 0;
         padding-right: 0;
     }

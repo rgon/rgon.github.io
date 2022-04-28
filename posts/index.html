@@ -29,15 +29,15 @@ Optional
     <meta property="og:title" content="rgon.es | Gonzalo Ruiz" />
     <meta property="og:url" content="https://www.rgon.es/posts/" />
     <meta property="og:description" content="Writeups of projects and knowledge I want to share back to..." />
-    <meta property="og:image" content="/img/profilepic.jpg" />
+    <meta property="og:image" content="https://www.rgon.es/img/profilepic.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content="rgon.es | Gonzalo Ruiz" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202204281319"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202204281319" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202204281714"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202204281714" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202204281319" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202204281714" />
 <link rel="canonical" href="https://www.rgon.es/posts/"/>
 
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
@@ -54,13 +54,21 @@ Optional
         .articleList:first-child article:last-child {
             padding-bottom: 0;
         }
+        @media screen and (max-width: 600px) {
+            .profilewrapper {
+                display: none;
+            }
+            .hero, h1 {
+                margin-top: 0 !important;
+            }
+        }
     </style>
 </head>
 
 <body>
     <section class="center dark" style="background-color: transparent;">
         <div class="horizontalflex viewport" style="flex-wrap: wrap-reverse;">
-            <div class="hero" style="margin-top: 2em;">
+            <div class="hero">
                 <h1><a class="hiddenlink" href="/" style="padding: 0;" tabindex="-1">rgon.es</a></h1>
 
                 <h2>Gonzalo's Journal</h2>
@@ -107,8 +115,6 @@ Optional
     
     <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
 </header>
-
-    <div class="scrollClue dark"></div>
 
     <section class="light center">
         <div class="viewport articleList">
