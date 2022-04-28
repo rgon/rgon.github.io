@@ -1,3 +1,12 @@
+/*
+Useful scroll detection tools
+For page sections and sticky headers.
+
+April 2022
+by github.com/rgon
+-----
+*/
+
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 // Because the handleIntersection callback is run on the main thread, be careful to only perform logic that is absolutely necessary and keep this logic lean.

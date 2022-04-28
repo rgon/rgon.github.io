@@ -2,6 +2,10 @@
 Implements drag-to-scroll on PC. Also removes the scrollbars on PC for aesthetic reasons.
 In touch devices, only prevents dragging of child elements (but not drag-to-scroll).
 
+April 2022
+by github.com/rgon
+-----
+
 Non-destructive if noscript is enabled.
 */
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later

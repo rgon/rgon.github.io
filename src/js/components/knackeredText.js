@@ -1,3 +1,11 @@
+/*
+Interesting 'glitch'-like text animation.
+Should be used with a monospae font.
+
+April 2022
+by github.com/rgon
+-----
+*/
 function cleanBreak(str) {
     return str
         .replace(/<br >/g, "<br>")

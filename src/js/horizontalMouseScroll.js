@@ -2,6 +2,10 @@
 Captures mousewheel scroll on pc and scrolls horizontally with the mousewheel if possible.
 If not, returns focus to the parent scrolling container.
 
+April 2022
+by github.com/rgon
+-----
+
 Doesn't interfere with horizontally-scrolling mouse wheels.
 Non-destructive if noscript is enabled.
 */
