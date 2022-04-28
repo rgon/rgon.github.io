@@ -27,7 +27,7 @@ Optional
     <meta property="og:title" content="{{ fullTitle | trimString: 35 }}" />
     <meta property="og:url" content="{{ site.canonicalBase }}{{ page.url }}" />
     <meta property="og:description" content="{{ description | default: site.description | trimString: 65 }}" />
-    <meta property="og:image" content="{{ coverImage | default: site.coverImage }}" />
+    <meta property="og:image" content="{{ site.canonicalBase }}{{ coverImage | default: site.coverImage }}" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content="{{ fullTitle | trimString: 65}}" />
     <meta property="og:locale" content="en_US" />
