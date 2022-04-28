@@ -180,6 +180,32 @@ article.mainPost {
     min-height: 100px; /* Prevent title overflow with small toc */
 }
 
+/* ------------ ------------- */
+.bgImg {
+    --header-height: 100px;
+    position: absolute;
+    top: calc(-1 * var(--header-height));
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -2;
+}
+.bgImg img {
+    width: 100%;
+    min-height: 600px;
+    height: 100%;
+    object-fit: cover;
+    background-color: var(--bg-light);
+    opacity: .2;
+}
+header.navOpacityOnScroll:not(.titleScrolled) {
+    background-color: transparent;
+}
+.titleSection {
+    position: relative;
+    background-color: transparent !important;
+}
+
 /* Cleaner header */
 header.navOpacityOnScroll:not(.expanded) ul li a:not(:hover), header.navOpacityOnScroll button:not(:hover, :active) {
     opacity: .5;
@@ -194,6 +220,10 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
     {% include "components/header", classes: "fixed sticking navOpacityOnScroll", readingIndex: true %}
 
     <section class="fullpage center dark titleSection">
+        <div class="bgImg">
+            {% image coverImage, "" %}
+        </div>
+
         <div class="viewport">
             <h1 id="title">{{ title }}
 {%- assign visibleTags = tags | filterTags %}
@@ -270,12 +300,16 @@ detectScroll(document.querySelector('.readingIndexClear'), (e) => {
 
 // Header items get the class titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#title'), (e) => {
-    document.getElementsByTagName('header')[0].classList.toggle('titleScrolled')
+    if (e.scrolled) {
+        document.getElementsByTagName('header')[0].classList.add('titleScrolled')
+    } else {
+        document.getElementsByTagName('header')[0].classList.remove('titleScrolled')
+    }
 })
 
 // Ensure it's normal while reading the article, in case some scroll wasn't triggered
 detectScroll(document.querySelector('.tableofcontents'), (e) => {
-    document.getElementsByTagName('header')[0].classList.add('titleScrolled')
+    if (e.scrolled) document.getElementsByTagName('header')[0].classList.add('titleScrolled')
 })
 
 </script>

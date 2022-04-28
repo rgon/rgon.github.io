@@ -4,8 +4,6 @@ article {
 }
 article img {
     width: 100%;
-}
-article picture {
     max-height: 50vh;
 }
 article picture img {
