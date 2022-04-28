@@ -11,7 +11,7 @@ by github.com/rgon
 
 let activeElementsExist = false
 function removeOtherActive () {
-    for (let activeItem of document.querySelectorAll('.dragToScroll .active')) {
+    for (let activeItem of document.querySelectorAll('.collage .active')) {
         activeItem.classList.remove('active')
     }
 }
@@ -30,6 +30,9 @@ for (let itemInCollage of document.querySelectorAll('.collage .item')) {
         removeOtherActive()
         activeElementsExist = true
         itemInCollage.classList.add('active')
+    })
+    itemInCollage.addEventListener('mousemove', (e) => {
+        removeOtherActive()
     })
 }
 for (let aInCollage of document.querySelectorAll('.collage a')) {
