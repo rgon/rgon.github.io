@@ -1,6 +1,9 @@
 current:
 	1. Lighting Design Project gallery. Mega-scrolling collage grid with borders. Black.
 	2. As with blogpost, custom viewer template. Large 'back to gallery' arrow
+    3. Dummy content as images
+    4. Iterate through images including in carousel
+    5. Proper content and release Beta
 
 ----------
 blogpost:
@@ -142,6 +145,7 @@ main:
 	[] bulb icon on list
 	[] smooth loading screen
 	[] do not optimize svg images
+    [] carousel dragstart prevention (with perf test)
 	
 -----------------------
 
