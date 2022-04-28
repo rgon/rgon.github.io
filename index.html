@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<!--
-Page TODO:
-    + fix scroll bump issue
-    + proper project site
-
-blog stle
-https://tracxn.com/d/companies/hriman.com
-
-project individual view
-https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/header-and-nav
--->
 <html lang="en">
+
 <head>
-    <title>rgon.es</title>
-    <meta name="viewport" content="width=device-width" />
+        
+<!--
+Required:
+    title or fullTitle
+Optional
+    description
+    keywords
+    author
+    coverImage
+    coverVideo
+    canonical
+-->
+
+
+    <title>rgon.es | Gonzalo Ruiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta charset="UTF-8" />
     <meta name="description" content="Gonzalo Ruiz, software developer by day, lighting designer specialized in electronic music by night. Open source fanboy, and electronics hobbyist the..." />
@@ -22,324 +26,435 @@ https://www.codecademy.com/courses/learn-html/lessons/semantic-html/exercises/he
     
     <!-- openGraph -->
     <meta property="og:site_name" content="rgon.es" />
-    <meta property="og:title" content="rgon.es" />
-    <meta property="og:url" content="" />
+    <meta property="og:title" content="rgon.es | Gonzalo Ruiz" />
+    <meta property="og:url" content="https://www.rgon.es/" />
     <meta property="og:description" content="Gonzalo Ruiz, software developer by day, lighting designer..." />
     <meta property="og:image" content="/img/profilepic.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="rgon.es" />
+    <meta property="og:image:alt" content="rgon.es | Gonzalo Ruiz" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202203121810"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202203121810" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202204280207"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202204280207" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202203121810" />
-    
-    <link rel="canonical" href="https://www.rgon.es/"/>
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202204280207" />
+<link rel="canonical" href="https://www.rgon.es/"/>
+
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
-    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
-    <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
     <link rel="stylesheet" type="text/css" href="/css/main.print.css" media="print" />
-<style>
-.hero {
-    box-sizing: border-box;
-    /* min-width: 450px;*/
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-grow: 100;
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/hero.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/collage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/dragToScroll.css" />
+    <style>
+        .postList {
+            padding-left: 1em;
+        }
 
-    position: relative;
-    user-select: none;
-}
-.hero h1 {
-    font-size: 3em;
-    margin-top: .5em;
-    margin-bottom: 0;
-}
-.hero h2 {
-    margin-top: 0;
-    font-size: 1.57em;
-}
+        .postList li {
+            list-style: none;
+            padding: 10px 0;
+            /* Lighthouse perfect score */
+        }
+        .postList li::before {
+            content: "</>";
+            font-size: .8em;
+            display: inline-block;
+            margin-top: .3em;
+            vertical-align: top;
+        }
 
-.githublogo {
-    vertical-align: middle;
-}
-.profilepic {
-    height: 200px;
-    opacity: 0.75;
-    border-radius: 50%;
-}
-.profilewrapper {
-    align-self: center;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
-}
+        .postList li a {
+            border-bottom: none;
+        }
+        .postList li a:hover {
+            border-bottom: none;
+        }
+        .postList li a:hover h3 {
+            text-decoration: underline;
+        }
 
-/* ************ */
-.postList {
-    padding-left: 1em;
-}
-.postList li {
-    list-style: none;
-    padding: 10px 0; /* Lighthouse perfect score */
-}
-.postList li::before {
-    content: "</>";
-    font-size: .8em;
-    display: inline-block;
-    margin-top: .3em;
-    vertical-align: top;
-}
-.postList li a {
-  border-bottom: none;
-}
-.postList li a:hover {
-  border-bottom: none;
-}
-.postList li a:hover h3 {
-  text-decoration: underline;
-}
-.postList li h3 {
-    display: inline-block;
-    margin: 0;
-    max-width: calc(100% - 40px);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    vertical-align: top;
-}
-.postList li em {
-    white-space: nowrap;
-    /*vertical-align: top; Not effective since siblings are at top */
-    display: inline-block;
-    transform: translateY(-5px); /* "Vertical-align" */
-}
+        .postList li h3 {
+            display: inline-block;
+            margin: 0;
+            max-width: calc(100% - 40px);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            vertical-align: top;
+        }
 
-.scrollClue {
-    overflow: visible;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.scrollClue::after {
-    display: none;
-    content: ">";
-    position: absolute;
-    transform: rotate(90deg);
-    font-size: 20px;
-    color: var(--text-color);
-}
-/* ************ */
-.mainbg {
-    /*background-color: black;*/
-    z-index: -100;
-    width: 100%;
-    height: 100vh;
-    transition: height 999999s;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-.mainbg > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-    transition: opacity 1s;
-    filter: saturate(0) blur(10px) contrast(50%);
-    z-index: 0;
-    will-change: transform, opacity;
-}
-.mainbg > img.saturated {
-    filter: blur(10px);
-    opacity: 0;
-    z-index: 2;
-}
-.mainbg::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: opacity .5s ease-in;
-    opacity: 1;
-    background: linear-gradient(140deg, transparent 0%, black 50%, black 100%);
-}
-.mainbg::before { /* Two because gradient transitions don't work */
-    content: "";
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: opacity .5s ease-in;
-    opacity: 0;
-    background: linear-gradient(240deg, transparent 0%, black 60%, black 100%);
-}
-.mainbg.loaded > img:not(.saturated) {
-    opacity: .6;
-}
-/*
+        .postList li em {
+            white-space: nowrap;
+            /*vertical-align: top; Not effective since siblings are at top */
+            display: inline-block;
+            transform: translateY(-5px);
+            /* "Vertical-align" */
+        }
+
+        /* ************ */
+        .mainbg {
+            /*background-color: black;*/
+            z-index: -100;
+            width: 100%;
+            height: 100vh;
+            transition: height 999999s;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .mainbg>img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0;
+            transition: opacity 1s;
+            filter: saturate(0) blur(10px) contrast(50%);
+            z-index: 0;
+            /*will-change: transform, opacity;*/
+        }
+
+        .mainbg>img.saturated {
+            filter: blur(10px);
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .mainbg::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity .5s ease-in;
+            opacity: 1;
+            background: linear-gradient(140deg, transparent 0%, black 50%, black 100%);
+        }
+
+        .mainbg::before {
+            /* Two because gradient transitions don't work */
+            content: "";
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity .5s ease-in;
+            opacity: 0;
+            background: linear-gradient(240deg, transparent 0%, black 60%, black 100%);
+        }
+
+        .mainbg.loaded>img:not(.saturated) {
+            opacity: .6;
+        }
+
+        /*
 .mainbg.night > img:not(.saturated) {
     opacity: 0;
 }
 .mainbg.night::after {
     opacity: 0;
 } */
-.mainbg.night > img.saturated {
-    opacity: 1;
-}
-.mainbg.night::before {
-    opacity: 1;
-}
+        .mainbg.night>img.saturated {
+            opacity: 1;
+        }
 
-/* ************ */
-section, header {
-    transition: color .5s;
-}
-.night {
-    --text-dark: #c45018;
-}
-#recentPosts {
-    position: relative;
-}
-.night #recentPosts .mainportfolio {
-    opacity: 0;
-    pointer-events: none;
-}
-#recentPosts .hiddenportfolio {
-    position: absolute;
-    top: 2em;
-    left: 2em;
-    right: 2em;
-    opacity: 0;
-    pointer-events: none;
-}
-@media only screen and (max-width: 450px) { /* Sync with .viewport/.readerblock */
-  #recentPosts .hiddenportfolio {
-    left: 0;
-    right: 0;
-  }
-}
-@media only screen and (max-height: 800px) {
-    #recentPosts {
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    #recentPosts .hiddenportfolio {
-      top: 0;
-    }
-}
-.night #recentPosts .hiddenportfolio {
-    opacity: 1;
-    pointer-events: all;
-}
+        .mainbg.night::before {
+            opacity: 1;
+        }
 
-/* **************** */
-.knackered {
-  font-family: monospace;
-  user-select: none;
-  will-change: contents;
-}
-.postList li::before { /* Because it's knackered with monospace, override. */
-  margin-top: -.2em;
-}
-.hiddenportfolio h3 {
-  font-family: monospace;
-}
-</style>
+        /* ************ */
+        section,
+        header {
+            transition: color .5s;
+        }
+        .night {
+            --text-dark: #c45018;
+        }
+
+        #frontpageFeatured {
+            position: relative;
+        }
+        .night #frontpageFeatured .mainportfolio {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #frontpageFeatured .hiddenportfolio {
+            position: absolute;
+            top: 2em;
+            left: 2em;
+            right: 2em;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media only screen and (max-width: 450px) {
+            /* Sync with .viewport/.readerblock */
+            #frontpageFeatured .hiddenportfolio {
+                left: 0;
+                right: 0;
+            }
+        }
+
+        @media only screen and (max-height: 800px) {
+            #frontpageFeatured {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            #frontpageFeatured .hiddenportfolio {
+                top: 0;
+            }
+        }
+
+        .night #frontpageFeatured .hiddenportfolio {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* **************** */
+        .knackered {
+            font-family: monospace;
+            user-select: none;
+            will-change: contents;
+        }
+
+        .postList li::before {
+            /* Because it's knackered with monospace, override. */
+            margin-top: -.2em;
+        }
+
+        .hiddenportfolio h3 {
+            font-family: monospace;
+        }
+    </style>
 </head>
+
 <body>
     <div class="mainbg">
-        <img id="bgimg" src="" alt="background image" />
-        <img id="bgimgSaturated" class="saturated" src="" alt="background image, saturated" />
+        <img id="bgimg" src="" alt="" aria-hidden="true" />
+        <img id="bgimgSaturated" class="saturated" src="" alt="" aria-hidden="true" />
     </div>
 
     <section class="fullpage center dark" style="min-height: calc(100vh - 150px); background-color: transparent;">
-        <div class="horizontalflex viewport">
+        <div class="horizontalflex viewport" style="flex-wrap: wrap-reverse;">
             <div class="hero" style="margin-top: 2em;">
-                <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
-            
+                <h1><a class="hiddenlink" href="/" style="padding: 0;" tabindex="-1">rgon.es</a></h1>
+
                 <h2>Gonzalo Ruiz</h2>
                 <div class="horizontalflex socialLinks">
-                    <a class="stealth" href="https://github.com/rgon"><img class="githublogo" src="logo/github.svg" alt="github logo">github.com/rgon</a>
-                    <a class="stealth" href="https://instagram.com/gonruizp" target="_blank"><img class="iglogo" src="logo/instagram.svg" alt="instagram logo">instagr.am/gonruizp</a>
-                </div>
+
+    <a class="stealth" href="https://instagram.com/gonruizp" target="_blank"><img src="/logo/instagram.svg" alt="" aria-hidden="true">instagr.am/gonruizp</a>
+
+
+
+    <a class="stealth" href="https://github.com/rgon"><img src="/logo/github.svg" alt="" aria-hidden="true">github.com/rgon</a>
+
+</div>
             </div>
 
             <div class="profilewrapper">
-                <img class="profilepic" src="img/profilepic.jpg" alt="profile picture" />
+                <picture><source type="image/avif" srcset="/img/cW6Nr0g2-r-24.avif 24w, /img/cW6Nr0g2-r-320.avif 320w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/cW6Nr0g2-r-24.webp 24w, /img/cW6Nr0g2-r-320.webp 320w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/cW6Nr0g2-r-24.jpeg 24w, /img/cW6Nr0g2-r-320.jpeg 320w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="profilepic" alt="" loading="lazy" decoding="async" src="/img/cW6Nr0g2-r-24.jpeg" width="320" height="320"></picture>
 
                 <label class="toggle" for="dayNightToggle" style="margin-top: 1.5em;">
-                    <input name="" type="checkbox" id="dayNightToggle">
-                    <div class="toggleFill">
-                        <span>Day Mode</span>
-                        <span>Night Mode</span>
-                    </div>
-                </label>
+    <input name="" type="checkbox" id="dayNightToggle">
+    <div class="toggleFill">
+        <span>Day Mode</span>
+        <span>Night Mode</span>
+    </div>
+</label>
             </div>
         </div>
 
-        <section class="readerblock" style="margin-top: 2em;" id="recentPosts">
+        <section class="readerblock" style="margin-top: 2em;" id="frontpageFeatured">
             <div class="mainportfolio">
-              <h3 class="knackered">Recent Journal Posts:</h3>
-              <ul class="postList"><li><a href="/posts/reverse-engineering-and-controlling-a-martin-m-touch-using-python/" title="Reverse-engineering and controlling a Martin M-touch using Python">
-                  <h3 class="knackered">Reverse-engineering and controlling a Martin M-touch using Python</h3>
-                  <em>- 2022-03-12</em></a>
-                </li><li><a href="/posts/furby-turns-on-the-lights-for-me/" title="Furby turns on the lights for me">
-                  <h3 class="knackered">Furby turns on the lights for me</h3>
-                  <em>- 2022-03-12</em></a>
-                </li><li><a href="/posts/reverse-engineering-rf-tpms-sensors-and-developing-a-linux-client-to-analyze-them/" title="Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them">
-                  <h3 class="knackered">Reverse-engineering RF TPMS sensors and developing a Linux client to analyze...</h3>
-                  <em>- 2022-03-12</em></a>
-                </li>
-              </ul>
-            </div>
+                <h2 style="margin-top: 0;">About me:</h2>
+                <h3 class="knackered">
+                    Discovering my passion for electronics thanks to music since age 10, and building my own devices,
+                    instruments and speakers with microcontrollers led me to my current field: software development and
+                    architecture.
+                    From mechanics work to PCB design, solving complex problems "magically" with lines of code or engineering practices drives my day.
+                </h3>
+                <h3 class="knackered">
+                    And don't forget to mix music somewhere in between, nothing transmits feelings better than it does!
+                    Feeling and understanding it, sprinkled with tons of artistic inspiration and a deep understanding
+                    of the technologies underlying robotic lighting is what keeps me awake at night (in a good way!).
+                </h3>
 
+                <!--
+              <h3 class="knackered">Recent Journal Posts:</h3>
+              <ul class="postList">
+{-%- for post in collections.posts reversed -%}
+                <li><a href="" title="">
+                  <h3 class="knackered">undefined</h3>
+                  <em>- </em></a>
+                </li>
+{-%- endfor %}
+              </ul>
+            -->
+            </div>
             <div class="hiddenportfolio">
-                <h3>Lighting design works:</h3>
+                <h3>Lighting Design Works:</h3>
                 <ul class="postList">
-                    <li><a href="/"><h3>Busking performance at Momento Marbella, 2021 [video]</h3></a></li>
+                    <li><a href="/">
+                            <h3>Busking performance at Momento Marbella, 2021 [video]</h3>
+                        </a></li>
                 </ul>
             </div>
         </section>
     </section>
 
-    <header class="dark">
-        <div class="hero">
-            <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
-        
-            <h2>Gonzalo Ruiz</h2>
-        </div>
+    <header class="dark ">
+    <div class="hero" aria-hidden="true">
+        <h2><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h2>
+    
+        <h3>Gonzalo Ruiz</h3>
+    </div>
 
-        <!-- main header title etc -->
-        <nav class="viewport">
-        <ul>
-            <li><a class="stealth" href="/">Journal</a></li>
-            <li><a class="stealth" href="/">Projects</a></li>
-            <!-- <li><a href="#">Open Source</a></li> -->
-            <li><a class="stealth" href="/">Curriculum Vitae</a></li>
-            <li><a class="stealth" href="/">Contact</a></li>
-        </ul></nav>
-        
-        <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
-    </header>
+    <!-- main header title etc -->
+    <nav class="viewport">
+    <ul>
+
+
+        <li><a class="stealth" href="/posts/">Journal & Projects</a></li>
+
+
+        <li><a class="stealth" href="/gallery/">Lighting Gallery</a></li>
+
+
+        <li><a class="stealth" href="/contact/">Contact</a></li>
+
+    </ul></nav>
+    
+    <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
+</header>
 
     <div class="scrollClue dark"></div>
 
+    <style>
+        /* Custom grid element sizing */
+        .collage .item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .collage .item:nth-child(4) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .collage .item:nth-child(5) {
+            grid-column: span 2;
+        }
+
+        .collage .item:nth-child(8) {
+            grid-row: span 2;
+        }
+    </style>
+    <section class="light center" style="padding:0; background-color: transparent;">
+        <div class="collage dragToScroll horizontalMouseScroll">
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>1.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>2.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>3.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>4.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>5.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>6.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>7.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>8.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>9.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>10.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>11.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>12.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+</div>
+
+<div class="collageCallToAction">
+    <a class="dark stealth" href="/gallery/">View lighting design gallery -></a>
+</div>
+
+    </section>
 
     <section class="light fullpage center">
         <div class="viewport articleList">
@@ -351,7 +466,7 @@ section, header {
                     <a class="callToAction" href="/projects/affordable-cellular-off-site-cameras/">View Project</a>
                 </div>
 
-                <a class="hiddenlink" href="/projects/affordable-cellular-off-site-cameras/"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
+                <a class="hiddenlink" href="/projects/affordable-cellular-off-site-cameras/"><picture><source type="image/avif" srcset="/img/Hc4RJpeKJA-24.avif 24w, /img/Hc4RJpeKJA-600.avif 600w, /img/Hc4RJpeKJA-1280.avif 1280w, /img/Hc4RJpeKJA-1920.avif 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/Hc4RJpeKJA-24.webp 24w, /img/Hc4RJpeKJA-600.webp 600w, /img/Hc4RJpeKJA-1280.webp 1280w, /img/Hc4RJpeKJA-1920.webp 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/Hc4RJpeKJA-24.jpeg 24w, /img/Hc4RJpeKJA-600.jpeg 600w, /img/Hc4RJpeKJA-1280.jpeg 1280w, /img/Hc4RJpeKJA-1920.jpeg 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="" alt="project image" loading="lazy" decoding="async" src="/img/Hc4RJpeKJA-24.jpeg" width="1920" height="1080"></picture></a>
             </article>
             <article>
                 <div class="description">
@@ -364,7 +479,7 @@ section, header {
                     <a class="callToAction" href="/projects/vehicle-pneumatic-(air)-suspension-system/">View Project</a>
                 </div>
 
-                <a class="hiddenlink" href="/projects/vehicle-pneumatic-(air)-suspension-system/"><picture><source type="image/avif" srcset="/img/9dbfb8c1-300.avif 300w, /img/9dbfb8c1-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/9dbfb8c1-300.webp 300w, /img/9dbfb8c1-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/9dbfb8c1-300.jpeg 300w, /img/9dbfb8c1-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/9dbfb8c1-300.jpeg" width="600" height="450"></picture></a>
+                <a class="hiddenlink" href="/projects/vehicle-pneumatic-(air)-suspension-system/"><picture><source type="image/avif" srcset="/img/Hc4RJpeKJA-24.avif 24w, /img/Hc4RJpeKJA-600.avif 600w, /img/Hc4RJpeKJA-1280.avif 1280w, /img/Hc4RJpeKJA-1920.avif 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/Hc4RJpeKJA-24.webp 24w, /img/Hc4RJpeKJA-600.webp 600w, /img/Hc4RJpeKJA-1280.webp 1280w, /img/Hc4RJpeKJA-1920.webp 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/Hc4RJpeKJA-24.jpeg 24w, /img/Hc4RJpeKJA-600.jpeg 600w, /img/Hc4RJpeKJA-1280.jpeg 1280w, /img/Hc4RJpeKJA-1920.jpeg 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="" alt="project image" loading="lazy" decoding="async" src="/img/Hc4RJpeKJA-24.jpeg" width="1920" height="1080"></picture></a>
             </article>
             <article>
                 <div class="description">
@@ -377,7 +492,7 @@ section, header {
                     <a class="callToAction" href="/projects/network-attached-stage-laser-projector-dac-(controller)/">View Project</a>
                 </div>
 
-                <a class="hiddenlink" href="/projects/network-attached-stage-laser-projector-dac-(controller)/"><picture><source type="image/avif" srcset="/img/261d9642-300.avif 300w, /img/261d9642-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/261d9642-300.webp 300w, /img/261d9642-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/261d9642-300.jpeg 300w, /img/261d9642-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/261d9642-300.jpeg" width="600" height="450"></picture></a>
+                <a class="hiddenlink" href="/projects/network-attached-stage-laser-projector-dac-(controller)/"><picture><source type="image/avif" srcset="/img/Hc4RJpeKJA-24.avif 24w, /img/Hc4RJpeKJA-600.avif 600w, /img/Hc4RJpeKJA-1280.avif 1280w, /img/Hc4RJpeKJA-1920.avif 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/Hc4RJpeKJA-24.webp 24w, /img/Hc4RJpeKJA-600.webp 600w, /img/Hc4RJpeKJA-1280.webp 1280w, /img/Hc4RJpeKJA-1920.webp 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/Hc4RJpeKJA-24.jpeg 24w, /img/Hc4RJpeKJA-600.jpeg 600w, /img/Hc4RJpeKJA-1280.jpeg 1280w, /img/Hc4RJpeKJA-1920.jpeg 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="" alt="project image" loading="lazy" decoding="async" src="/img/Hc4RJpeKJA-24.jpeg" width="1920" height="1080"></picture></a>
             </article>
             <article>
                 <div class="description">
@@ -389,65 +504,54 @@ section, header {
                     <a class="callToAction" href="/projects/in-vehicle-360-degree-camera-system/">View Project</a>
                 </div>
 
-                <a class="hiddenlink" href="/projects/in-vehicle-360-degree-camera-system/"><picture><source type="image/avif" srcset="/img/e0eec840-300.avif 300w, /img/e0eec840-600.avif 600w" sizes="100vw"><source type="image/webp" srcset="/img/e0eec840-300.webp 300w, /img/e0eec840-600.webp 600w" sizes="100vw"><source type="image/jpeg" srcset="/img/e0eec840-300.jpeg 300w, /img/e0eec840-600.jpeg 600w" sizes="100vw"><img alt="project image" loading="lazy" decoding="async" src="/img/e0eec840-300.jpeg" width="600" height="450"></picture></a>
+                <a class="hiddenlink" href="/projects/in-vehicle-360-degree-camera-system/"><picture><source type="image/avif" srcset="/img/Hc4RJpeKJA-24.avif 24w, /img/Hc4RJpeKJA-600.avif 600w, /img/Hc4RJpeKJA-1280.avif 1280w, /img/Hc4RJpeKJA-1920.avif 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/Hc4RJpeKJA-24.webp 24w, /img/Hc4RJpeKJA-600.webp 600w, /img/Hc4RJpeKJA-1280.webp 1280w, /img/Hc4RJpeKJA-1920.webp 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/Hc4RJpeKJA-24.jpeg 24w, /img/Hc4RJpeKJA-600.jpeg 600w, /img/Hc4RJpeKJA-1280.jpeg 1280w, /img/Hc4RJpeKJA-1920.jpeg 1920w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="" alt="project image" loading="lazy" decoding="async" src="/img/Hc4RJpeKJA-24.jpeg" width="1920" height="1080"></picture></a>
             </article>
 
             <div class="center">
                 <div class="readerblock" style="text-align: center;">
-                    <a href="/">View more projects</a> or <a href="/">consult my journal entries</a> for more of my works.
+                    <a href="/projects/">View more projects</a> or <a href="/posts/">consult my journal entries</a> for
+                    more of my works.
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="dark center">
-        <p style="text-align: center;">Gonzalo Ruiz, independent software consultant and Lighting Designer.</p>
-        <p><a href="/contact">Let's have a chat!</a></p>
-    </footer>
+    <footer class="dark center ">
+    <p style="text-align: center;">Gonzalo Ruiz, independent Software Developer and Lighting Designer.</p>
+    <p><a href="/contact/">Let&apos;s have a chat!</a></p>
+</footer>
 
-<script src="js/main.js" type="text/javascript"></script>
-<script src="js/components/header.js" type="text/javascript"></script>
+    <script src="/js/scrollTools.js" type="text/javascript"></script>
+    <script src="/js/dragToScroll.js" type="text/javascript"></script>
+    <script src="/js/horizontalMouseScroll.js" type="text/javascript"></script>
+    <script src="/js/components/header.js" type="text/javascript"></script>
+    <script src="/js/components/collage.js" type="text/javascript"></script>
+    <script src="/js/components/knackeredText.js" type="text/javascript"></script>
 
-<script>
-document.getElementById("dayNightToggle").checked = false
+    <script>
+        document.getElementById("dayNightToggle").checked = false
 
-document.getElementById("dayNightToggle").addEventListener('change', (event) => {
-    document.getElementsByTagName("section")[0].classList.toggle("night");
-    /*
-    document.getElementsByTagName("section")[0].classList.toggle("light");
+        document.getElementById("dayNightToggle").addEventListener('change', (event) => {
+            document.getElementsByTagName("section")[0].classList.toggle("night");
+            /*
+            document.getElementsByTagName("section")[0].classList.toggle("light");
+        
+            document.getElementsByTagName("header")[0].classList.toggle("dark");
+            document.getElementsByTagName("header")[0].classList.toggle("light");
+            */
+            document.querySelector(".mainbg").classList.toggle("night");
+        })
 
-    document.getElementsByTagName("header")[0].classList.toggle("dark");
-    document.getElementsByTagName("header")[0].classList.toggle("light");
-    */
-    document.querySelector(".mainbg").classList.toggle("night");
-})
+        window.addEventListener('load', () => {
+            document.querySelector(".mainbg").style.height = window.innerHeight + 'px' // avoid jump on mobile
+            console.log(document.querySelector(".mainbg").style)
+            document.getElementById("bgimg").src = "img/bg_garage_lowres.jpg"
+            document.getElementById("bgimgSaturated").src = document.getElementById("bgimg").src
+            document.querySelector(".mainbg").classList.toggle("loaded")
 
-window.addEventListener('load', () => {
-  document.querySelector(".mainbg").style.height = window.innerHeight + 'px' // avoid jump on mobile
-  console.log(document.querySelector(".mainbg").style)
-  document.getElementById("bgimg").src = "img/garage_lowres.jpg"
-  document.getElementById("bgimgSaturated").src = "img/garage_lowres.jpg"
-  document.querySelector(".mainbg").classList.toggle("loaded")
-
-  // -- knackered text animation
-  for (let elem of document.getElementsByClassName('knackered')) {
-    if (!elem.getAttribute('aria-label')) {
-      elem.setAttribute('aria-label', elem.innerHTML)
-    }
-  }
-
-  const knackChars = "$&[{}(=*)+]!#/@_-?^|%"
-  window.setInterval(() => {
-    for (let elem of document.getElementsByClassName('knackered')) {
-      let content = elem.getAttribute('aria-label')
-      rndIdx = Math.floor(Math.random() * (content.length -1))
-      if (content[rndIdx] === " ") rndIdx++ // Changing spaces causes reflows
-
-      content[Math.floor(Math.random() * content.length)] = knackChars[Math.floor(Math.random() * knackChars.length)]
-      elem.innerHTML = content.substring(0, rndIdx) + knackChars[Math.floor(Math.random() * knackChars.length)] + content.substring(rndIdx + 1)
-    }
-  }, 200)
-})
-</script>
+            knackeredTextBegin()
+        })
+    </script>
 </body>
+
 </html>

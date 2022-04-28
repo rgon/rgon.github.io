@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        
+<!--
+Required:
+    title or fullTitle
+Optional
+    description
+    keywords
+    author
+    coverImage
+    coverVideo
+    canonical
+-->
+
+
+
+    <title>Contact | rgon.es</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta charset="UTF-8" />
+    <meta name="description" content="Contact me for inquiries regarding Software Development or Lighting Design." />
+    <meta name="keywords" content="Journal, Portfolio, Lighting Design, Software Development, Electronics" />
+    <meta name="author" content="Gonzalo Ruiz" />
+    
+    <!-- openGraph -->
+    <meta property="og:site_name" content="rgon.es" />
+    <meta property="og:title" content="Contact | rgon.es" />
+    <meta property="og:url" content="https://www.rgon.es/contact/" />
+    <meta property="og:description" content="Contact me for inquiries regarding Software Development or..." />
+    <meta property="og:image" content="/img/profilepic.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Contact | rgon.es" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202204280206"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202204280206" color="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202204280206" />
+<link rel="canonical" href="https://www.rgon.es/contact/"/>
+
+    <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="/css/components/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/hero.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/collage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/dragToScroll.css" />
+<style>
+
+/* ************ */
+.postList {
+    padding-left: 1em;
+}
+.postList li {
+    list-style: none;
+    padding: 10px 0; /* Lighthouse perfect score */
+}
+.postList li::before {
+    content: "</>";
+    font-size: .8em;
+    display: inline-block;
+    margin-top: .3em;
+    vertical-align: top;
+}
+.postList li a {
+  border-bottom: none;
+}
+.postList li a:hover {
+  border-bottom: none;
+}
+.postList li a:hover h3 {
+  text-decoration: underline;
+}
+.postList li h3 {
+    display: inline-block;
+    margin: 0;
+    max-width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: top;
+}
+.postList li em {
+    white-space: nowrap;
+    /*vertical-align: top; Not effective since siblings are at top */
+    display: inline-block;
+    transform: translateY(-5px); /* "Vertical-align" */
+}
+
+/* ************ */
+.mainbg {
+    /*background-color: black;*/
+    z-index: -100;
+    width: 100%;
+    height: 100vh;
+    transition: height 999999s;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.mainbg > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 1s;
+    filter: saturate(0) blur(10px) contrast(50%);
+    z-index: 0;
+    /*will-change: transform, opacity;*/
+}
+.mainbg > img.saturated {
+    filter: blur(10px);
+    opacity: 0;
+    z-index: 2;
+}
+.mainbg::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity .5s ease-in;
+    opacity: 1;
+    background: linear-gradient(140deg, transparent 0%, black 50%, black 100%);
+}
+.mainbg::before { /* Two because gradient transitions don't work */
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity .5s ease-in;
+    opacity: 0;
+    background: linear-gradient(240deg, transparent 0%, black 60%, black 100%);
+}
+.mainbg.loaded > img:not(.saturated) {
+    opacity: .6;
+}
+.mainbg.night > img.saturated {
+    opacity: 1;
+}
+.mainbg.night::before {
+    opacity: 1;
+}
+
+/* ************ */
+section, header {
+    transition: color .5s;
+}
+.night {
+    --text-dark: #c45018;
+}
+.night .socialLinks > a {
+    color: var(--text-dark);
+}
+.socialLinks > a > img {
+    transition: filter .5s ease-in;
+}
+.night .socialLinks > a > img {
+    /* Thanks to https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(33%) sepia(96%) saturate(807%) hue-rotate(347deg) brightness(93%) contrast(96%);
+    opacity: 0.75;
+}
+.socialLinks > a {
+    margin-right: 0;
+    margin-left: 1em;
+}
+.frontpageFeatured {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+}
+.frontpageFeaturedGrid {
+    width: 100%;
+    display: grid;
+    --auto-grid-min-size: 350px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .frontpageFeaturedGrid {
+        --auto-grid-min-size: 300px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .frontpageFeatured {
+        padding: 0;
+    }
+}
+
+
+.mailLink {
+    font-size: 48px;
+    width: auto;
+    text-align: center;
+    display: inline-block;
+    flex-grow: 0;
+}
+
+@keyframes revealingText {
+  from {
+      transform: translateY(var(--revealingTexts-windowHeight));
+  }
+  to {
+    transform: translateY(calc(var(--revealingText-elements) * -3em));
+  }
+}
+
+.frontpageFeatured ul {
+    --revealingTexts-windowHeight: 2em;
+    --revealingText-elements: 5;
+
+    height: var(--revealingTexts-windowHeight);
+    overflow: hidden;
+    user-select: none;
+}
+.frontpageFeatured ul li {
+    height: 1em;
+    margin-bottom: 2em;
+    padding-top: 0;
+    padding-bottom: 0;
+    
+    animation: revealingText 10s infinite;
+    animation-direction: normal;
+    animation-timing-function: linear;
+    transform: translateY(2em);
+}
+.frontpageFeatured .postList:nth-child(2) li{
+    animation-delay: .5s;
+}
+
+@media only screen and (max-width: 450px) {
+    .mailLink {
+        font-size: 2em;
+    }
+}
+
+/* **************** */
+.knackered {
+  font-family: monospace;
+  user-select: none;
+  will-change: contents;
+}
+.postList li::before { /* Because it's knackered with monospace, override. */
+  margin-top: -.2em;
+}
+.frontpageFeatured li h3 {
+  font-family: monospace;
+}
+</style>
+</head>
+<body>
+    <div class="mainbg">
+        <img id="bgimg" src="" alt="" aria-hidden="true"/>
+        <img id="bgimgSaturated" class="saturated" src="" alt="" aria-hidden="true" />
+    </div>
+
+    <section class="fullpage center dark" style="min-height: calc(100vh - 500px); background-color: transparent;">
+        <div class="horizontalflex viewport">
+            <div class="hero">
+                <h1><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h1>
+            
+                <h2>I want <span class="knackered">Gonzalo</span> to ...</h2>
+            </div>
+
+            <div class="profilewrapper">
+                <!-- <picture><source type="image/avif" srcset="/img/cW6Nr0g2-r-24.avif 24w, /img/cW6Nr0g2-r-320.avif 320w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/cW6Nr0g2-r-24.webp 24w, /img/cW6Nr0g2-r-320.webp 320w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/cW6Nr0g2-r-24.jpeg 24w, /img/cW6Nr0g2-r-320.jpeg 320w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="profilepic" alt="profile picture" loading="lazy" decoding="async" src="/img/cW6Nr0g2-r-24.jpeg" width="320" height="320"></picture> -->
+
+                <label class="toggle" for="dayNightToggle" style="margin-top: 1.5em;">
+    <input name="" type="checkbox" id="dayNightToggle">
+    <div class="toggleFill">
+        <span>Day Mode</span>
+        <span>Night Mode</span>
+    </div>
+</label>
+            </div>
+        </div>
+
+        <section class="frontpageFeatured">
+            <div class="frontpageFeaturedGrid">
+                <div class="purpose">
+                    <h3 class="">Code my way to valhalla:</h3>
+                    <ul class="postList">
+                        <li><h3>Edge-computing Linux-based solutions</h3></li>
+                        <li><h3>Home/venue automation and control interfaces</h3></li>
+                        <li><h3>Python programs which communicate with the real world</h3></li>
+                        <li><h3>Beautiful frontends written in Vue JS</h3></li>
+                        <li><h3><s>Fixing your printer</s></h3></li>
+                    </ul>
+                </div>
+                <a class="stealth mailLink encMail" href="mailto:mailme_nospam@example.com?Subject=%C2%A1Hola Gonzalo!">u747gq6@9z51.wb</a>
+
+                <div class="purpose">
+                    <h3>Light up my life:</h3>
+                    <ul class="postList">
+                        <li><h3>Club & Event lighting projects</h3></li>
+                        <li><h3>Realistic 3D renders</h3></li>
+                        <li><h3>Console programming</h3></li>
+                        <li><h3>Live show operation</h3></li>
+                        <li><h3><s>Holding a flashlight</s></h3></li>
+                    </ul>
+                </div>
+                <a class="stealth mailLink encMail" href="mailto:mailme_nospam@example.com?Subject=%C2%A1Hola Gonzalo!">31xvzw0u@9z51.wb</a>
+            </div>
+
+            <div class="purpose" style="width: 100%;">
+                <h3>Just gossip!</h3>
+                <div class="horizontalflex socialLinks">
+
+    <a class="stealth" href="https://instagram.com/gonruizp" target="_blank"><img src="/logo/instagram.svg" alt="" aria-hidden="true">instagr.am/gonruizp</a>
+
+
+    <a class="stealth" href="https://www.linkedin.com/in/rgones" target="_blank"><img src="/logo/linkedin.svg" alt="" aria-hidden="true">linkedin.com/in/rgones</a>
+
+
+    <a class="stealth" href="https://github.com/rgon"><img src="/logo/github.svg" alt="" aria-hidden="true">github.com/rgon</a>
+
+</div>
+            </div>
+        </section>
+    </section>
+
+    <header class="dark fixed nostick">
+    <div class="hero" aria-hidden="true">
+        <h2><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h2>
+    
+        <h3>Gonzalo Ruiz</h3>
+    </div>
+
+    <!-- main header title etc -->
+    <nav class="viewport">
+    <ul>
+
+        <li><a class="stealth" href="/">Home</a></li>
+
+
+        <li><a class="stealth" href="/posts/">Journal & Projects</a></li>
+
+
+        <li><a class="stealth" href="/gallery/">Lighting Gallery</a></li>
+
+
+    </ul></nav>
+    
+    <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
+</header>
+    
+    <div class="scrollClue dark"></div>
+
+    <style>
+        /* Custom grid element sizing */
+        .collage .item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .collage .item:nth-child(4) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .collage .item:nth-child(5) {
+            grid-column: span 2;
+        }
+        .collage .item:nth-child(8) {
+            grid-row: span 2;
+        }
+    </style>
+    <section class="light center" style="padding:0; background-color: transparent;">
+        <div class="collage dragToScroll horizontalMouseScroll">
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>1.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>2.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>3.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>4.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>5.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>6.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>7.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>8.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>9.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>10.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>11.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+    <div class="hiddenlink item">
+        <picture><source type="image/avif" srcset="/img/wxP9WZdNP9-24.avif 24w, /img/wxP9WZdNP9-600.avif 600w, /img/wxP9WZdNP9-1280.avif 1280w, /img/wxP9WZdNP9-4096.avif 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/webp" srcset="/img/wxP9WZdNP9-24.webp 24w, /img/wxP9WZdNP9-600.webp 600w, /img/wxP9WZdNP9-1280.webp 1280w, /img/wxP9WZdNP9-4096.webp 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><source type="image/jpeg" srcset="/img/wxP9WZdNP9-24.jpeg 24w, /img/wxP9WZdNP9-600.jpeg 600w, /img/wxP9WZdNP9-1280.jpeg 1280w, /img/wxP9WZdNP9-4096.jpeg 4096w" sizes="(min-width: 1024px) 100vw, 50vw"><img class="projectImage" alt="projectImage" loading="lazy" decoding="async" src="/img/wxP9WZdNP9-24.jpeg" width="4096" height="3072"></picture>
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>12.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+</div>
+
+    </section>
+
+    <footer class="dark center ">
+    <p style="text-align: center;">Gonzalo Ruiz, independent Software Developer and Lighting Designer.</p>
+    <p><a href="/">Go back to the home page.</a></p>
+</footer>
+
+    <script src="/js/scrollTools.js" type="text/javascript"></script>
+    <script src="/js/dragToScroll.js" type="text/javascript"></script>
+    <script src="/js/decryptMail.js" type="text/javascript"></script>
+    <script src="/js/horizontalMouseScroll.js" type="text/javascript"></script>
+    <script src="/js/components/header.js" type="text/javascript"></script>
+    <script src="/js/components/collage.js" type="text/javascript"></script>
+    <script src="/js/components/knackeredText.js" type="text/javascript"></script>
+
+<script>
+document.getElementById("dayNightToggle").checked = false
+
+document.getElementById("dayNightToggle").addEventListener('change', (event) => {
+    document.getElementsByTagName("section")[0].classList.toggle("night");
+    /*
+    document.getElementsByTagName("section")[0].classList.toggle("light");
+
+    document.getElementsByTagName("header")[0].classList.toggle("dark");
+    document.getElementsByTagName("header")[0].classList.toggle("light");
+    */
+    document.querySelector(".mainbg").classList.toggle("night");
+    decryptAllAddressesOnPage('strogonoff')
+})
+
+window.addEventListener('load', () => {
+  document.querySelector(".mainbg").style.height = window.innerHeight + 'px' // avoid jump on mobile
+  console.log(document.querySelector(".mainbg").style)
+  document.getElementById("bgimg").src = "/img/bg_garage_lowres.jpg"
+  document.getElementById("bgimgSaturated").src = document.getElementById("bgimg").src
+  document.querySelector(".mainbg").classList.toggle("loaded")
+
+  // -- auto enable night mode
+  setTimeout(() => {
+    document.getElementById("dayNightToggle").click()
+  }, 500);
+
+  knackeredTextBegin()
+})
+</script>
+</body>
+</html>

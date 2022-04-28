@@ -43,10 +43,6 @@
     background: repeating-linear-gradient( -45deg, var(--background-color), var(--background-color) var(--bg-linewidth), transparent var(--bg-linewidth), transparent var(--bg-linespace) );
 }
 
-.toggle > input:checked ~ .toggleFill {
-    /* background: green; */
-}
-
 .toggle > input:checked ~ .toggleFill::after {
     transform: translateX(calc(var(--width) - var(--handle-size)));
 }
@@ -80,11 +76,11 @@
 }
 .toggle span:last-child {
     right: 0;
-    opacity: 0;
+    opacity: 0.3;
 }
 
 .toggle > input:checked ~ .toggleFill > span:first-child {
-    opacity: 0;
+    opacity: 0.3;
 }
 
 .toggle > input:checked ~ .toggleFill > span:last-child {

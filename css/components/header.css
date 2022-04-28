@@ -27,11 +27,17 @@ header > nav ul {
     line-height: 180%;
 }
 header > nav ul li {
-    margin-right: 2em;
     /* margin-bottom: 2em; Using line-height  trick for better sticky reflow */
     list-style: none;
     text-transform: uppercase;
     font-weight: bold;
+}
+header > nav ul li:not(:first-child) {
+    margin-left: 2em;
+}
+header.sticking > nav ul li {
+    /* If hero visible, every element should be spaced the same amount */
+    margin-left: 2em;
 }
 header > .hero {
     box-sizing: border-box;
@@ -43,17 +49,17 @@ header > .hero {
         
     display: none;
 }
-header > .hero h1, header > .hero h2 {
+header > .hero h2, header > .hero h3 {
     margin: 0;
 }
-header > .hero h1 {
+header > .hero h2 {
     line-height: 80%;
     font-size: 3em;
     margin-top: 0;
     margin-bottom: 0;
 
 }
-header h1, header h2 {
+header h2, header h3 {
     white-space: nowrap;
     text-overflow: clip;
     margin-top: 0;
@@ -91,6 +97,7 @@ header.sticking > nav ul li {
 }
 header.sticking > .hero {
     display: flex;
+    margin-right: 2em;
 }
 header.expanded {
     height: auto;
@@ -125,4 +132,19 @@ header.expanded > .expand::after {
     header.sticking > .expand {
         display: flex;
     }
+}
+header.nostick {
+    position: relative;
+}
+header.fixed {
+    top: 0px;
+}
+
+header.sticking:not(.expanded) {
+    overflow: hidden;
+}
+#readingIndex {
+    font-weight: bold;
+    size: 1rem;
+    display: inline-block;
 }
