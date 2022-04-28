@@ -36,6 +36,7 @@ Optional
     <meta property="og:video" content="{{ coverVideo }}" />
     <meta property="og:video:height" content="{{ coverVideoHeight }}" />
     <meta property="og:video:width" content="{{ coverVideoWidth }}" />
+    <meta property="og:video:type" content="{{ coverVideoType }}" />
 {% endif %}
 
 {%- capture unchachedFavicon %}{{ site.favicon }}?cache={{ "now" | date: "%Y%m%d%H%M" }}{% endcapture %}

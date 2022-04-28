@@ -1,0 +1,97 @@
+---
+title: Journal
+subTitle: Gonzalo's Journal
+permalink: /posts/
+description: Writeups of projects and knowledge I want to share back to the community.
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {%- capture fullTitle %}{{ site.name }} | {{ site.subTitle }}{% endcapture %}
+    {% include "components/head" %}
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/hero.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/collage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/dragToScroll.css" />
+    <style>
+        .articleList:first-child article:last-child {
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="center dark" style="background-color: transparent;">
+        <div class="horizontalflex viewport" style="flex-wrap: wrap-reverse;">
+            <div class="hero" style="margin-top: 2em;">
+                <h1><a class="hiddenlink" href="/" style="padding: 0;" tabindex="-1">{{ site.name }}</a></h1>
+
+                <h2>{{ subTitle }}</h2>
+                {% include "components/socialLinks" %}
+            </div>
+
+            <div class="profilewrapper">
+                {% image "img/profilepic.jpg", "", "profilepic" %}
+            </div>
+        </div>
+    </section>
+
+    {% include "components/header", journal: false %}
+
+    <div class="scrollClue dark"></div>
+
+    <section class="light center">
+        <div class="viewport articleList">
+            <h2>Featured Projects:</h2>
+
+            {%- for post in collections.projects %}
+            <article>
+                <div class="description">
+                    <h3><a class="hiddenlink" href="{{post.url}}">{{ post.data.title }}</a></h3>
+                    {%- assign visibleTags = post.data.tags | filterTags %}
+                    {%- for tag in visibleTags %}
+                    <i class="tag" title="View posts tagged with '{{ tag }}'">{{tag}}</i>
+                    {%- endfor %}
+                    <p>{{ post.data.description }}</p>
+                    <a class="callToAction" href="{{ post.url }}">View Project</a>
+                </div>
+
+                <a class="hiddenlink" href="{{post.url}}">{% image post.data.coverImage, "project image" %}</a>
+            </article>
+            {%- endfor %}
+        </div>
+
+        <hr>
+
+        <div class="viewport articleList">
+            <h2>Latest Writeups:</h2>
+
+            {%- for post in collections.posts %}
+            <article>
+                <div class="description">
+                    <h3><a class="hiddenlink" href="{{post.url}}">{{ post.data.title }}</a></h3>
+                    {%- assign visibleTags = post.data.tags | filterTags %}
+                    {%- for tag in visibleTags %}
+                    <i class="tag" title="View posts tagged with '{{ tag }}'">{{tag}}</i>
+                    {%- endfor %}
+                    <p>{{ post.data.description }}</p>
+                    <a class="callToAction" href="{{ post.url }}">View Project</a>
+                </div>
+
+                <a class="hiddenlink" href="{{post.url}}">{% image post.data.coverImage, "project image" %}</a>
+            </article>
+            {%- endfor %}
+        </div>
+    </section>
+
+    {% include "components/footer" %}
+
+    <script src="/js/scrollTools.js" type="text/javascript"></script>
+    <script src="/js/components/header.js" type="text/javascript"></script>
+
+    <script>
+    </script>
+</body>
+</html>
