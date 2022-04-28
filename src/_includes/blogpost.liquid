@@ -285,18 +285,22 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
 <script src="/js/scrollTools.js" type="text/javascript"></script>
 <script src="/js/components/header.js" type="text/javascript"></script>
 <script>
-for (let elem of document.getElementsByClassName('header-anchor')) {
-    detectScroll(elem.parentNode, (e) => {
-        if (e.scrolled) {
-            document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-            document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-        }
-    }, false)
-}
+let anchorElements = []
+document.querySelectorAll('.header-anchor').forEach(elem => anchorElements.push(elem.parentNode))
+detectScroll(anchorElements, (e) => {
+    // If scrolled on top of page
+    if (e.scrolled) {
+        document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+    }
+})
+
 detectScroll(document.querySelector('.readingIndexClear'), (e) => {
     document.getElementById('readingIndexDesktop').innerHTML = 'intro'
     document.getElementById('readingIndex').innerHTML = ''
-}, false)
+}, {
+    threshold: [1]
+})
 
 // Header items get the class titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#title'), (e) => {
