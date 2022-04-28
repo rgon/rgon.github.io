@@ -1,0 +1,16 @@
+<div class="collage dragToScroll horizontalMouseScroll">
+{%- for i in (1..12) %}
+    <div class="hiddenlink item">
+        {% image "imgPassthrough/bg_garage.jpg", "projectImage", "projectImage" %}
+        <div class="description">
+            <a class="hiddenlink" href="#" draggable="false"><h4>{{i}}.This watever. Very long text showing here, just make sure it fits. ></h4></a>
+            <span>2022-04-22</span>
+        </div>
+    </div>
+{%- endfor %}
+</div>
+{% if noCallToAction != true %}
+<div class="collageCallToAction">
+    <a class="dark stealth" href="/gallery/">View lighting design gallery -></a>
+</div>
+{% endif %}

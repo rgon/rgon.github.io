@@ -1,0 +1,33 @@
+<header class="dark {{ classes }}">
+    <div class="hero" aria-hidden="true">
+        <h2><a class="hiddenlink" href="/" style="padding: 0;">{{ site.name }}</a></h2>
+    
+        <h3>{{ site.subTitle }}</h3>
+    </div>
+
+{%- if readingIndex %}
+    <div class="currentIndex">
+        <span id="readingIndex" class="trimLines criticalHeight" style="--max-lines: 4;"></span>
+        <!-- And some shitcode for your pleasure with a very very very long section name -->
+    </div>
+{% endif %}
+
+    <!-- main header title etc -->
+    <nav class="viewport">
+    <ul>
+{% if home != false %}
+        <li><a class="stealth" href="/">Home</a></li>
+{% endif %}
+{% if journal != false %}
+        <li><a class="stealth" href="/posts/">Journal & Projects</a></li>
+{% endif %}
+{% if lighting != false %}
+        <li><a class="stealth" href="/gallery/">Lighting Gallery</a></li>
+{% endif %}
+{% if contact != false %}
+        <li><a class="stealth" href="/contact/">Contact</a></li>
+{% endif %}
+    </ul></nav>
+    
+    <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
+</header>

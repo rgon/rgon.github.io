@@ -4,7 +4,9 @@ tags:
   - automotive
   - reverse engineering
   - open source
-pageTitle: Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them
+title: Reverse-engineering RF TPMS sensors and developing a Linux client to analyze them
+description: Disassembling an Android app provided by the chinese vendor of TPMS sensors revealed they communicate with a USB-Serial protocol and simple commands. The binary file included pressure and temperature coefficients which would've been difficult to get otherwise.
+coverImage: img/wip.svg
 # coverVideo: /vid/vid3.mp4
 ---
 
@@ -60,4 +62,4 @@ This code has been extracted from [shitcode](https://shitcode.net).
 El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que deste caso escriben; aunque por conjeturas verosímiles se deja entender que se llamaba Quijana. Pero esto importa poco a nuestro cuento: basta que en la narración dél no se salga un punto de la verdad.
 
 ## For your viewing pleasure
-{% image "img/stallman3.jpg", "Don Quixote de la libre mancha" %}
+{% image "img/wip.svg", "Don Quixote de la libre mancha" %}

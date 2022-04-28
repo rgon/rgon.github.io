@@ -73,14 +73,6 @@ a.stealth, a.hiddenlink {
     border-color: transparent;
     border-bottom-style: solid;
 }
-a:not(.hiddenlink):hover {
-    border-color: #a0a0a0;
-    border-bottom-style: solid;
-}
-.light a:not(.hiddenlink):hover {
-    border-color: black; /* TODO */
-    border-bottom-style: solid;
-}
 
 /* Page overrides */
 head, body {
@@ -189,6 +181,7 @@ button:hover {
 section {
     padding: 2em;
     box-sizing: border-box;
+    position: relative;
 }
 
 footer {
@@ -204,7 +197,7 @@ footer {
     justify-content: space-between;
     width: 100%;
 
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     overflow: hidden;
 }
 
@@ -222,11 +215,6 @@ footer {
     opacity: 0.75;
     height: 35px;
     margin-right: 10px;
-}
-.socialLinks a:hover {
-    border-color: transparent;
-    border-bottom-color: transparent;
-    text-decoration: underline;
 }
 
 /* ********************** */
@@ -278,4 +266,39 @@ NOTE: Only works with a SINGLE paragraph or all inline elements! Not for multipl
         on a trimmeng        ... <--------- dots at end
     */
     position: absolute;
+}
+
+/****************** Hover effects ******************/
+@media (hover: hover) {
+    a:not(.hiddenlink):hover {
+        border-color: #a0a0a0;
+        border-bottom-style: solid;
+    }
+    .light a:not(.hiddenlink):hover {
+        border-color: black; /* TODO */
+        border-bottom-style: solid;
+    }
+    .socialLinks a:hover {
+        border-color: transparent;
+        border-bottom-color: transparent;
+        text-decoration: underline;
+    }
+}
+
+/****************** ScrollClue ******************/
+.scrollClue {
+    overflow: visible;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrollClue::after {
+    display: none;
+    content: ">";
+    position: absolute;
+    transform: rotate(90deg);
+    font-size: 20px;
+    color: var(--text-color);
 }

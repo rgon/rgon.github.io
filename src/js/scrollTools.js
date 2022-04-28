@@ -1,3 +1,13 @@
+/*
+Useful scroll detection tools
+For page sections and sticky headers.
+
+April 2022
+by github.com/rgon
+-----
+*/
+
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 
 // Because the handleIntersection callback is run on the main thread, be careful to only perform logic that is absolutely necessary and keep this logic lean.
 function detectSticky(stickyElem, callBack=undefined) {
@@ -31,16 +41,15 @@ function detectSticky(stickyElem, callBack=undefined) {
 function detectScroll(elem, callBack=undefined, threshold=1, callbackAtStart=true) { // threshold: percentage of the element that has to be scrolled past
     if (elem) {
         const observer = new IntersectionObserver(
-            ([e]) => {
-                console.log(e.target.getBoundingClientRect().y, e.target.innerHTML)
-                // If we don't check here, elements intersecting with the bottom of the screen will also trigger the observer
-                if (e.target.getBoundingClientRect().y <= -2) {
-                    if (callBack) callBack(Object.assign(e, {'scrolled': true}))
-                } else if (e.target.getBoundingClientRect().y >= 2) {
-                    if (callBack) callBack(Object.assign(e, {'scrolled': false}))
-                }
-            },
-            {threshold: [threshold]}
+                ([e]) => {
+                    // If we don't check here, elements intersecting with the bottom of the screen will also trigger the observer
+                    if (e.target.getBoundingClientRect().y <= -2) {
+                        if (callBack) callBack(Object.assign(e, {'scrolled': true}))
+                    } else if (e.target.getBoundingClientRect().y >= 2) {
+                        if (callBack) callBack(Object.assign(e, {'scrolled': false}))
+                    }
+                },
+                {threshold: [threshold]}
             );
         
         // Check now if the element is scrolled by (on load): prevents href="#"/coming dack to the tab bug
