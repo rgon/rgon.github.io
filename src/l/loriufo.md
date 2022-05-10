@@ -1,13 +1,17 @@
 ---
 title: Happy birthday!
-description: This is your first surprise for the day.
+description: Achíiiiiiiiiiiiiiiiiiiiiiiiis.
 coverImage: null
 moto: Keep on searching, there's more trolling coming along during the day.
 permalink: l/loriufo/
 ---
 
-## What is this shit, you may ask?
-Don't panic, just a reminder of how many days Gonzalo takes to return your stuff.
+## La alergia tiene graves consecuencias para la calidad de vida de las personas.
+Según WikiHow, nuestra fuente más consultada en 2021, la alergia a los gatos se puede reducir aspirando el aire.
+[!wikihow.jpg]
 
-### Time to return a stupid bottle:
-<script></script>
+## Pero como sé que te da pereza aspirar
+No me queda otra que conseguirte un minion que lo haga solo.
+
+No te preocupes que tiene una torreta de tanque encima para dipararle y un láser delante para ir a por él.
+O para eso creo que está.

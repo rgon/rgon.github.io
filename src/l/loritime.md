@@ -1,6 +1,6 @@
 ---
 title: Happy birthday!
-tags: step 1
+tags: first step
 date: '2022-05-11'
 description: This is your first surprise for the day.
 coverImage: null
