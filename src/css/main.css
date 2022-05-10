@@ -34,10 +34,10 @@ html {
     --bg-color: var(--bg-light);
 }
 
-section.light {
+section.light, body.lightBG, div.lightBG {
     background-color: var(--bg-light);
 }
-section.dark {
+section.dark, body.darkBG, div.darkBG {
     background-color: var(--bg-dark);
 }
 
@@ -211,6 +211,19 @@ footer {
     opacity: 0.75;
     height: 35px;
     margin-right: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    .socialLinks {
+        justify-content: center;
+    }
+    .socialLinks > a {
+        font-size: 0;
+    }
+    .socialLinks > a > img {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
 }
 
 /* ********************** */

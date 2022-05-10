@@ -1,0 +1,7 @@
+{
+    "layout": "blogpostPreview.liquid",
+    "permalink": "/l/{{ title | slug }}/",
+    "description": "A surprise from Gonzalo.",
+    "coverVideoHeight": 1080,
+    "coverVideoWidth": 1920
+}

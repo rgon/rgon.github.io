@@ -33,6 +33,7 @@ header > nav ul li {
     list-style: none;
     text-transform: uppercase;
     font-weight: bold;
+    user-select: none;
 
     /* Fix: better nav element sepparation */
     line-height: 90%;
@@ -70,6 +71,9 @@ header h2, header h3 {
     background-color: transparent;
 } */
 
+header.minimal nav, header.minimal .expand {
+    display: none !important;
+}
 header.sticking {
     background-color: var(--bg-color);
     /*height: auto;*/

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en" moznomarginboxes mozdisallowselectionprint>
+<head>
+    {% include "components/head" %}
+    <link rel="stylesheet" type="text/css" href="/css/articlelist.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.print.css" />
+    <link rel="stylesheet" type="text/css" href="/css/articlepost.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/toggle.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/collage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components/dragToScroll.css" />
+<style>
+#title {
+    font-size: 2em;
+}
+.titleSection {
+    min-height: 200px;
+    position: relative;
+}
+.infoblock {
+    /* position: absolute; */
+    bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* *********** */
+header .currentIndex {
+    padding: 1em;
+    box-sizing: border-box;
+    flex-grow: 1;
+    max-width: 50%;
+}
+header.expanded .currentIndex {
+    display: none;
+}
+
+aside .expandIndex {
+    float: right;
+    margin-top: 6px;
+}
+.tableofcontents {
+    width:100%;
+}
+
+.relatedPosts article {
+    margin-top: 1em;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.relatedPosts article > div {
+    box-sizing: border-box;
+    padding: 1em;
+    transition: .4s transform;
+}
+.relatedPosts article h4 {
+    margin: 0;
+}
+.relatedPosts article p {
+    margin: 0;
+}
+.relatedPosts article > a {
+    flex-shrink: 0;
+    align-self: center;
+    height: 64px;
+    width: 64px;
+    position: relative;
+    margin-left: 1em;
+}
+/* .relatedPosts article picture {} */
+.relatedPosts article picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.relatedPosts article::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .7s opacity;
+    opacity: 0;
+}
+.relatedPosts article:hover::before {
+    opacity: 1;
+}
+.relatedPosts article:hover div {
+    transform: translateX(1em);
+}
+
+@media only screen and (min-width: 650px) {
+    .currentIndex {
+        display: none;
+    }
+    .relatedPosts article > a {
+        margin-left: 2em;
+    }
+}
+/* ***************** */
+@media only screen and (max-width: 450px) {
+    header > .hero {
+        font-size: .7em;
+    }
+}
+
+/* **************** */
+
+article.mainPost {
+    --indexpane-width: 50px;
+    position: relative;
+    overflow: visible;
+    padding-left: var(--indexpane-width);
+    box-sizing: border-box;
+}
+.indexPane {
+    position: absolute;
+    width: var(--indexpane-width);
+    height: 100%;
+    top: 0;
+    left: -15px;
+}
+.indexPane > .stickContainer {
+    position: sticky;
+    top: 115px;
+    margin-top: 1.9em;
+    max-height: 300px;
+    height: calc(100% - 30px);
+    width: 100%;
+    overflow: hidden; /* if placed on parent, sticky breaks */
+}
+.indexPane > .stickContainer > h3[id] {
+    /* Rotate from top left corner (not default) */
+    opacity: .2;
+    position: absolute;
+    top: 0;
+    left: var(--indexpane-width);
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    width: 300px;
+    height: var(--indexpane-width);
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+
+    line-height: 95%;
+}
+@media only screen and (max-width: 650px) {
+    article.mainPost {
+        --indexpane-width: 0px;
+    }
+    .indexPane {
+        display: none;
+    }
+}
+.tableofcontents {
+    padding-left: 50px !important; /* So the 450px readerblock media query doesn't collapse it */
+    box-sizing: border-box;
+    margin-left: -50px;
+}
+.tableofcontents h2 {
+    position: absolute;
+    width: 50%;
+    left: 50px;
+    top: 4px;
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+    text-transform: uppercase;
+
+    margin-left: .17em;
+}
+.tableofcontents .toc {
+    min-height: 100px; /* Prevent title overflow with small toc */
+}
+
+/* ------------ ------------- */
+.bgImg {
+    --header-height: 150px;
+    position: absolute;
+    top: calc(-1 * var(--header-height));
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -2;
+}
+.bgImg img {
+    width: 100%;
+    min-height: 600px;
+    height: 100%;
+    object-fit: cover;
+    background-color: var(--bg-light);
+    opacity: .2;
+}
+header.navOpacityOnScroll:not(.titleScrolled) {
+    background-color: transparent;
+}
+.titleSection {
+    position: relative;
+    background-color: transparent !important;
+}
+
+/* Cleaner header */
+header.navOpacityOnScroll:not(.expanded) ul li a:not(:hover), header.navOpacityOnScroll button:not(:hover, :active) {
+    opacity: .5;
+    transition: .7s opacity;
+}
+header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.titleScrolled button {
+    opacity: 1!important;
+}
+</style>
+</head>
+<body class="lightBG">
+    {% include "components/header", classes: "dark fixed sticking navOpacityOnScroll minimal", readingIndex: false %}
+
+    <section class="center dark titleSection">
+        <div class="bgImg dark darkBG">
+            {% if coverImage %}
+            {% image coverImage, "" %}
+            {% endif %}
+        </div>
+
+        <div class="viewport">
+            <h1 id="title">{{ title }}
+{%- assign visibleTags = tags | filterTags %}
+{%- for mtag in visibleTags %}
+                <a href="/" class="tag" title="View posts tagged with '{{ mtag }}'">{{ mtag }}</a>
+{%- endfor %}
+            </h1>
+            <h2>{{description}}</h2>
+        </div>
+            <div class="viewport infoblock">
+            <span></span>
+            <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
+
+            <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+        </div>
+    </section>
+
+    <section class="fullPage light center">
+        <article class="readerblock mainPost">
+            {{ content }}
+        </article>
+    </section>
+
+    <hr>
+
+    {% include "components/footer", classes: "light", message: "Go home ->", messageLink: "/" %}
+
+<script src="/js/scrollTools.js" type="text/javascript"></script>
+<script src="/js/components/header.js" type="text/javascript"></script>
+<script>
+let anchorElements = []
+document.querySelectorAll('.header-anchor').forEach(elem => anchorElements.push(elem.parentNode))
+detectScroll(anchorElements, (e) => {
+    // If scrolled on top of page
+    if (e.scrolled) {
+        document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
+    }
+})
+
+detectScroll(document.querySelector('.readingIndexClear'), (e) => {
+    document.getElementById('readingIndexDesktop').innerHTML = 'intro'
+    document.getElementById('readingIndex').innerHTML = ''
+}, {
+    threshold: [1]
+})
+
+// Header items get the class titlescrolled if the title has been scrolled past
+detectScroll(document.querySelector('#title'), (e) => {
+    if (e.scrolled) {
+        document.getElementsByTagName('header')[0].classList.add('titleScrolled')
+    } else {
+        document.getElementsByTagName('header')[0].classList.remove('titleScrolled')
+    }
+})
+
+// Ensure it's normal while reading the article, in case some scroll wasn't triggered
+detectScroll(document.querySelector('.tableofcontents'), (e) => {
+    if (e.scrolled) document.getElementsByTagName('header')[0].classList.add('titleScrolled')
+})
+
+</script>
+</body>
+</html>
