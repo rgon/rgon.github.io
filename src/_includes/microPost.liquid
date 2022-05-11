@@ -217,33 +217,19 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
 </style>
 </head>
 <body class="lightBG">
-    {% include "components/header", classes: "dark fixed sticking navOpacityOnScroll minimal", readingIndex: false %}
-
-    <section class="center dark titleSection">
-        <div class="bgImg dark darkBG">
-            {% if coverImage %}
-            {% image coverImage, "" %}
-            {% endif %}
-        </div>
-
-        <div class="viewport">
-            <h1 id="title">{{ title }}
-{%- assign visibleTags = tags | filterTags %}
-{%- for mtag in visibleTags %}
-                <a href="/" class="tag" title="View posts tagged with '{{ mtag }}'">{{ mtag }}</a>
-{%- endfor %}
-            </h1>
-            <h2>{{description}}</h2>
-        </div>
-            <div class="viewport infoblock">
-            <span></span>
-            <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
-
-            <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%Y-%m-%d" }}</time>
-        </div>
-    </section>
+    {% include "components/header", classes: "dark navOpacityOnScroll minimal", readingIndex: false %}
 
     <section class="fullPage light center">
+        <h1 id="title">{{ title }}
+{%- assign visibleTags = tags | filterTags %}
+{%- for mtag in visibleTags %}
+            <a href="/" class="tag" title="View posts tagged with '{{ mtag }}'">{{ mtag }}</a>
+{%- endfor %}
+        </h1>
+        <h2>{{description}}</h2>
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+
+
         <article class="readerblock mainPost">
             {{ content }}
         </article>

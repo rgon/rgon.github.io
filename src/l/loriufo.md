@@ -7,6 +7,9 @@ permalink: l/loriufo/
 ---
 
 ## La alergia tiene graves consecuencias para la calidad de vida de las personas.
+Source: trust me bro.
+
+## Hace falta una solución
 Según WikiHow, nuestra fuente más consultada en 2021, la alergia a los gatos se puede reducir aspirando el aire.
 ![wikihow](/img/wikihow.jpg)
 

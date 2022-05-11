@@ -13,7 +13,17 @@ description: Contact me for inquiries regarding Software Development or Lighting
     <link rel="stylesheet" type="text/css" href="/css/components/collage.css" />
     <link rel="stylesheet" type="text/css" href="/css/components/dragToScroll.css" />
 <style>
-
+.phoneMargin {
+    margin-top: 5em;
+}
+@media screen and (max-width: 700px) {
+    .phoneMargin {
+        margin: 0;
+    }
+}
+.socialLinks {
+    justify-content: center;
+}
 /* ************ */
 .postList {
     padding-left: 1em;
@@ -234,37 +244,32 @@ section, header {
     </div>
 
     <section class="fullpage center dark" style="min-height: calc(100vh - 500px); background-color: transparent;">
-        <div class="horizontalflex viewport">
+        <div class="horizontalflex viewport phoneMargin">
             <div class="hero">
                 <h1><a class="hiddenlink" href="/" style="padding: 0;">{{ site.name }}</a></h1>
             
-                <h2>I want <span class="knackered">Gonzalo</span> to ...</h2>
+                <h2>I want Gonzalo to ...</h2>
             </div>
 
             <div class="profilewrapper">
-                <!-- {% image "img/profilepic.jpg", "profile picture", "profilepic" %} -->
-
+                <!-- {% image "img/profilepic.jpg", "profile picture", "profilepic" %} 
                 {% include "components/toggle", a: "Day Mode", b: "Night Mode" %}
+                -->
+                <a class="stealth mailLink encMail" href="mailto:mailme_nospam@example.com?Subject=%C2%A1Hola Gonzalo!">u747gq6@9z51.wb</a>
+                <a class="stealth mailLink encMail" href="mailto:mailme_nospam@example.com?Subject=%C2%A1Hola Gonzalo!">31xvzw0u@9z51.wb</a>
             </div>
         </div>
 
         <section class="frontpageFeatured">
             <div class="frontpageFeaturedGrid">
                 <div class="purpose">
-                    <h3 class="">Code my way to valhalla:</h3>
+                    <h3 class="">Contact me for:</h3>
                     <ul class="postList">
                         <li><h3>Edge-computing Linux-based solutions</h3></li>
                         <li><h3>Home/venue automation and control interfaces</h3></li>
                         <li><h3>Python programs which communicate with the real world</h3></li>
                         <li><h3>Beautiful frontends written in Vue JS</h3></li>
-                        <li><h3><s>Fixing your printer</s></h3></li>
-                    </ul>
-                </div>
-                <a class="stealth mailLink encMail" href="mailto:mailme_nospam@example.com?Subject=%C2%A1Hola Gonzalo!">u747gq6@9z51.wb</a>
-
-                <div class="purpose">
-                    <h3>Light up my life:</h3>
-                    <ul class="postList">
+                        <li><h3><s>Printer repair</s></h3></li>
                         <li><h3>Club & Event lighting projects</h3></li>
                         <li><h3>Realistic 3D renders</h3></li>
                         <li><h3>Console programming</h3></li>
@@ -272,11 +277,9 @@ section, header {
                         <li><h3><s>Holding a flashlight</s></h3></li>
                     </ul>
                 </div>
-                <a class="stealth mailLink encMail" href="mailto:mailme_nospam@example.com?Subject=%C2%A1Hola Gonzalo!">31xvzw0u@9z51.wb</a>
             </div>
 
-            <div class="purpose" style="width: 100%;">
-                <h3>Just gossip!</h3>
+            <div class="purpose" style="width: 100%; margin-top: 5em;">
                 {% include "components/socialLinks" %}
             </div>
         </section>
@@ -311,26 +314,14 @@ section, header {
 
     <script src="/js/scrollTools.js" type="text/javascript"></script>
     <script src="/js/dragToScroll.js" type="text/javascript"></script>
-    <script src="/js/decryptMail.js" type="text/javascript"></script>
+    <script src="/js/encryptContactInfo.js" type="text/javascript"></script>
     <script src="/js/horizontalMouseScroll.js" type="text/javascript"></script>
     <script src="/js/components/header.js" type="text/javascript"></script>
     <script src="/js/components/collage.js" type="text/javascript"></script>
-    <script src="/js/components/knackeredText.js" type="text/javascript"></script>
+    <!-- <script src="/js/components/knackeredText.js" type="text/javascript"></script> -->
 
 <script>
-document.getElementById("dayNightToggle").checked = false
 
-document.getElementById("dayNightToggle").addEventListener('change', (event) => {
-    document.getElementsByTagName("section")[0].classList.toggle("night");
-    /*
-    document.getElementsByTagName("section")[0].classList.toggle("light");
-
-    document.getElementsByTagName("header")[0].classList.toggle("dark");
-    document.getElementsByTagName("header")[0].classList.toggle("light");
-    */
-    document.querySelector(".mainbg").classList.toggle("night");
-    decryptAllAddressesOnPage('strogonoff')
-})
 
 window.addEventListener('load', () => {
   document.querySelector(".mainbg").style.height = window.innerHeight + 'px' // avoid jump on mobile
@@ -340,12 +331,15 @@ window.addEventListener('load', () => {
   document.querySelector(".mainbg").classList.toggle("loaded")
 
   // -- auto enable night mode
+  /*
   setTimeout(() => {
     document.getElementById("dayNightToggle").click()
   }, 500);
+  */
 
-  knackeredTextBegin()
+  decryptAllAddressesOnPage('strogonoff')
 })
+
 </script>
 </body>
 </html>
