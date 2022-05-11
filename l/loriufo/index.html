@@ -34,10 +34,10 @@ Optional
     <meta property="og:image:alt" content="Happy birthday! | rgon.es" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202205102252"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202205102252" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202205111247"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202205111247" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202205102252" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202205111247" />
 <link rel="canonical" href="https://www.rgon.es/l/loriufo/"/>
 
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
@@ -301,13 +301,15 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
             <span></span>
             <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
 
-            <time datetime="2022-05-10">2022-05-10</time>
+            <time datetime="2022-05-11">2022-05-11</time>
         </div>
     </section>
 
     <section class="fullPage light center">
         <article class="readerblock mainPost">
             <h2 id="la-alergia-tiene-graves-consecuencias-para-la-calidad-de-vida-de-las-personas." tabindex="-1"><a class="header-anchor" href="#la-alergia-tiene-graves-consecuencias-para-la-calidad-de-vida-de-las-personas.">La alergia tiene graves consecuencias para la calidad de vida de las personas.</a></h2>
+<p>Source: trust me bro.</p>
+<h2 id="hace-falta-una-solucion" tabindex="-1"><a class="header-anchor" href="#hace-falta-una-solucion">Hace falta una solución</a></h2>
 <p>Según WikiHow, nuestra fuente más consultada en 2021, la alergia a los gatos se puede reducir aspirando el aire.<br>
 <img src="/img/wikihow.jpg" alt="wikihow"></p>
 <h2 id="pero-como-se-que-te-da-pereza" tabindex="-1"><a class="header-anchor" href="#pero-como-se-que-te-da-pereza">Pero como sé que te da pereza</a></h2>
@@ -330,20 +332,6 @@ No te preocupes que tiene una torreta de tanque encima para dipararle y un láse
 <script>
 let anchorElements = []
 document.querySelectorAll('.header-anchor').forEach(elem => anchorElements.push(elem.parentNode))
-detectScroll(anchorElements, (e) => {
-    // If scrolled on top of page
-    if (e.scrolled) {
-        document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-    }
-})
-
-detectScroll(document.querySelector('.readingIndexClear'), (e) => {
-    document.getElementById('readingIndexDesktop').innerHTML = 'intro'
-    document.getElementById('readingIndex').innerHTML = ''
-}, {
-    threshold: [1]
-})
 
 // Header items get the class titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#title'), (e) => {
