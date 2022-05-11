@@ -8,7 +8,12 @@ permalink: l/loribiza/
 ---
 
 ## Vale vale, ya llegamos al final.
-Existen 2 grandes problemas en el mundo: la pobreza mundial y los psicópatas. No voy a decir a quién me refiero.
+Existen 2 grandes problemas en el mundo: la pobreza mundial y los psicópatas. Ya sabes a quién me refiero.
+
+## Solución del problema:
+<div class="widget" id="geofenced" data-target="39.051511478500004, 1.5292909591928503">
+    <h3 class="info action">Haz clic para comprobar si estás en ibiza y poder ver los siguientes pasos.</h3>
+    <div class="fenced">
 
 ## Progreso de la solución:
 - [x] Ganas de solucionar
@@ -17,10 +22,6 @@ Existen 2 grandes problemas en el mundo: la pobreza mundial y los psicópatas. N
 - [] Altura aproximada de Octavio
 - [] Estar en ibiza
 
-## Resultado:
-<div class="widget" id="geofenced" data-target="39.051511478500004, 1.5292909591928503">
-    <h3 class="info action">Haz clic para comprobar si estás en ibiza y puedes ver el resultado.</h3>
-    <div class="fenced">
 ## Soluciones de ingeniería:
 Vas a tener que elegir dos de estas tres opciones:
 + Cierre magnético (lo suficientemente fuerte como para que Casper no lo abra)
