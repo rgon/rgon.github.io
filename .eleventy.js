@@ -156,6 +156,41 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  eleventyConfig.addShortcode("countDownTimer", function(target, keepCounting) {
+    return `<div id="countDownTimer" data-target="${target}" data-keepcounting="${keepCounting}">
+    <b class="finished">FINISHED</b>
+    <span><b class="days">00</b><i>days</i></span>
+    <span><b class="hours">00</b><i>hours</i></span>
+    <span><b class="minutes">00</b><i>minutes</i></span>
+    <span><b class="seconds">00</b><i>seconds</i></span>
+  </div>
+  <script src="/js/components/countDownTimer.js" type="text/javascript"></script>
+  <style>
+    #countDownTimer {
+        font-family: monospace;
+        align-self: center;
+        text-align: center;
+    }
+    #countDownTimer i {
+        font-weight: normal;
+        font-size: 1em;
+        font-style: normal;
+        text-transform: uppercase;
+    }
+    #countDownTimer b {
+        font-weight: bold;
+        font-size: 3em;
+    }
+    #countDownTimer:not(.finished) > b.finished {
+        display: none;
+    }
+    #countDownTimer.finished span {
+        display: none;
+    }
+  </style>
+    `;
+  });
+
   // -- eleventy run
   return {
     dir: {
