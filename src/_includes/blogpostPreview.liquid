@@ -258,20 +258,6 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
 <script>
 let anchorElements = []
 document.querySelectorAll('.header-anchor').forEach(elem => anchorElements.push(elem.parentNode))
-detectScroll(anchorElements, (e) => {
-    // If scrolled on top of page
-    if (e.scrolled) {
-        document.getElementById('readingIndexDesktop').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-        document.getElementById('readingIndex').innerHTML = (e.target.childNodes ? e.target.childNodes[0].textContent : '')
-    }
-})
-
-detectScroll(document.querySelector('.readingIndexClear'), (e) => {
-    document.getElementById('readingIndexDesktop').innerHTML = 'intro'
-    document.getElementById('readingIndex').innerHTML = ''
-}, {
-    threshold: [1]
-})
 
 // Header items get the class titlescrolled if the title has been scrolled past
 detectScroll(document.querySelector('#title'), (e) => {
