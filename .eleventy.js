@@ -167,7 +167,7 @@ module.exports = function(eleventyConfig) {
   <script src="/js/components/countDownTimer.js" type="text/javascript"></script>
   <style>
     #countDownTimer {
-        font-family: monospace;
+        font-family: 'DejaVu Sans Mono', monospace;
         align-self: center;
         text-align: center;
     }
