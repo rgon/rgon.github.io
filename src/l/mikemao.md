@@ -8,7 +8,7 @@ permalink: l/mikemao/
 ---
 
 ## Tanta espera?
-Por vago, hay pasos que tienes que cumplir.
+Puto vago, hay pasos que tienes que cumplir.
 
 ## El gran wait:
 <div class="widget" id="geofenced" data-target="39.051511478500004, 1.5292909591928503">
