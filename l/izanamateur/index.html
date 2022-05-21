@@ -16,29 +16,29 @@ Optional
 
 
 
-    <title>Error de dormida | rgon.es</title>
+    <title>Happy birthday! | rgon.es</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta charset="UTF-8" />
-    <meta name="description" content="La página de la derrota." />
+    <meta name="description" content="22 years, when entrepreneurshit really begins." />
     <meta name="keywords" content="Journal, Portfolio, Lighting Design, Software Development, Electronics" />
     <meta name="author" content="Gonzalo Ruiz" />
     
     <!-- openGraph -->
     <meta property="og:site_name" content="rgon.es" />
-    <meta property="og:title" content="Error de dormida | rgon.es" />
-    <meta property="og:url" content="https://www.rgon.es/l/fail/" />
-    <meta property="og:description" content="La página de la derrota." />
+    <meta property="og:title" content="Happy birthday! | rgon.es" />
+    <meta property="og:url" content="https://www.rgon.es/l/izanamateur/" />
+    <meta property="og:description" content="22 years, when entrepreneurshit really begins." />
     <meta property="og:image" content="https://www.rgon.es/img/profilepic.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="Error de dormida | rgon.es" />
+    <meta property="og:image:alt" content="Happy birthday! | rgon.es" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <link rel="shortcut icon" href="/logo/favicon.svg?cache=202205211520"  type="image/svg+xml" sizes="any" />
     <link rel="mask-icon" href="/logo/favicon.svg?cache=202205211520" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202205211520" />
-<link rel="canonical" href="https://www.rgon.es/l/fail/"/>
+<link rel="canonical" href="https://www.rgon.es/l/izanamateur/"/>
 
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
 
@@ -260,7 +260,7 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
 </style>
 </head>
 <body class="lightBG">
-    <header class="dark dark navOpacityOnScroll minimal">
+    <header class="dark dark fixed sticking navOpacityOnScroll minimal">
     <div class="hero" aria-hidden="true">
         <h2><a class="hiddenlink" href="/" style="padding: 0;">rgon.es</a></h2>
     
@@ -287,25 +287,91 @@ header.navOpacityOnScroll.titleScrolled ul li a, header.navOpacityOnScroll.title
     <button class="expand" id="expandHeader"><i class="screenreaderAssist">Expand header</i></button>
 </header>
 
+    <section class="center dark titleSection">
+        <div class="bgImg dark darkBG">
+            
+        </div>
+
+        <div class="viewport">
+            <h1 id="title">Happy birthday!
+            </h1>
+            <h2>22 years, when entrepreneurshit really begins.</h2>
+        </div>
+            <div class="viewport infoblock">
+            <span></span>
+            <!--<h2>Index: <button class="expandIndex">expand</button></h2>-->
+
+            <time datetime="2022-05-21">2022-05-21</time>
+        </div>
+    </section>
+
     <section class="fullPage light center">
-        <h1 id="title">Error de dormida
-            <a href="/" class="tag" title="View posts tagged with 'vaya fail'">vaya fail</a>
-        </h1>
-        <h2>La página de la derrota.</h2>
-        <time datetime="2022-05-11">2022-05-11</time>
-
-
         <article class="readerblock mainPost">
-            <p><a href="/l/loritime"><img src="/img/lfail.jpg" alt="dormida"></a></p>
-<p>Clic en la imagen para continuar.</p>
+            <h2 id="dedicatoria-begins-fotos-de-la-clase-de-judo" tabindex="-1"><a class="header-anchor" href="#dedicatoria-begins-fotos-de-la-clase-de-judo">Dedicatoria begins: Fotos de la clase de Judo:</a></h2>
+<div class="widget" id="geofenced" data-target="36.71930125227884, -4.453076704007021">
+    <h3 class="info action">Haz clic para comprobar si estás en Málaga y poder verla.</h3>
+    <div class="fenced">
+<h2 id="foto-judo" tabindex="-1"><a class="header-anchor" href="#foto-judo">Foto judo:</a></h2>
+<p><img src="http://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" alt="rickrolled"></p>
+<p>Ha ha troliado.</p>
+<p>Vale ahora mira el <a href="https://github.com/rgon/rgon.github.io/blob/master/src/l/izanamateur.md">código</a> y me dices por qué la fórmula que me he inventado para calcular si estás en málaga es una mierda lol. Entertainment 4 you.<br>
+A estudiar.<br>
+</div></p>
+</div>
+<style>
+    .widget {
+        text-align: center;
+    }
+    .widget h3 {
+        font-family: 'DejaVu Sans Mono', monospace;
+        font-weight: bold;
+    }
+    .widget .action {
+        cursor: pointer;
+    }
+    #geofenced .fenced {
+        display: none;
+    }
+</style>
+<script>
+function measureDistance(a, b) {
+    a = [parseFloat(a[0]), parseFloat(a[1])]
+    b = [parseFloat(b[0]), parseFloat(b[1])]
+    console.log(a, b)
 
+    // No crow distance, no haversine formula, nothing yet. The earth is flat (for this function, at least)
+    return Math.sqrt(Math.pow((b[0] - a[0]), 2) + Math.pow((b[1] - a[1]), 2))
+}
+function checkGeofence () {
+    // Ask for location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((location) => {
+            var lat = location.coords.latitude
+            var long = location.coords.longitude
+
+            let d = measureDistance([lat, long], document.querySelector("#geofenced").dataset.target.split(','))
+            if (d <= 1.0) {
+                document.querySelector("#geofenced .fenced").classList.remove('fenced')
+            } else {
+                document.querySelector("#geofenced .info").innerHTML = 'Todavía no estás en Málaga!'
+            }
+        }, (e) => { 
+            console.error(e)
+            document.querySelector("#geofenced .info").innerHTML = 'Error obteniendo la ubicación.'
+        })
+    } else {
+        document.querySelector("#geofenced .info").innerHTML = 'Error obteniendo la ubicación.'
+    }
+}
+document.querySelector("#geofenced .action").addEventListener('click', checkGeofence)
+</script>
         </article>
     </section>
 
     <hr>
 
     <footer class="dark center light">
-    <p style="text-align: center;">Keep on searching, there's more trolling coming along during the day.</p>
+    <p style="text-align: center;">Venga, no seas impaciente.</p>
     <p><a href="/">Go home -></a></p>
 </footer>
 
