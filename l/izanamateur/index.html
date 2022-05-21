@@ -34,10 +34,10 @@ Optional
     <meta property="og:image:alt" content="Happy birthday! | rgon.es" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202205211520"  type="image/svg+xml" sizes="any" />
-    <link rel="mask-icon" href="/logo/favicon.svg?cache=202205211520" color="#000000" />
+    <link rel="shortcut icon" href="/logo/favicon.svg?cache=202205211714"  type="image/svg+xml" sizes="any" />
+    <link rel="mask-icon" href="/logo/favicon.svg?cache=202205211714" color="#000000" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202205211520" />
+    <link rel="apple-touch-icon" href="/logo/favicon.svg?cache=202205211714" />
 <link rel="canonical" href="https://www.rgon.es/l/izanamateur/"/>
 
     <link rel="preload" href="/css/fonts/lmroman10-regular-webfont.woff2" as="font" type="font/woff2" />
@@ -350,7 +350,7 @@ function checkGeofence () {
             var long = location.coords.longitude
 
             let d = measureDistance([lat, long], document.querySelector("#geofenced").dataset.target.split(','))
-            if (d <= 1.0) {
+            if (d <= 0.10) {
                 document.querySelector("#geofenced .fenced").classList.remove('fenced')
             } else {
                 document.querySelector("#geofenced .info").innerHTML = 'Todavía no estás en Málaga!'
@@ -365,6 +365,7 @@ function checkGeofence () {
 }
 document.querySelector("#geofenced .action").addEventListener('click', checkGeofence)
 </script>
+
         </article>
     </section>
 
