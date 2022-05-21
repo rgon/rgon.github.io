@@ -54,7 +54,7 @@ function checkGeofence () {
             var long = location.coords.longitude
 
             let d = measureDistance([lat, long], document.querySelector("#geofenced").dataset.target.split(','))
-            if (d <= 1.0) {
+            if (d <= 0.10) {
                 document.querySelector("#geofenced .fenced").classList.remove('fenced')
             } else {
                 document.querySelector("#geofenced .info").innerHTML = 'Todavía no estás en Málaga!'
